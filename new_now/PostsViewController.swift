@@ -28,7 +28,6 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     postViewModel.delegate = self
 //    navigationController?.setNavigationBarHidden(true, animated: false)
-    postViewModel.loadPosts()
 
   }
   

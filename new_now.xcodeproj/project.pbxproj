@@ -24,6 +24,7 @@
 		27C481951E7AD38D00E6022B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C481941E7AD38D00E6022B /* AppDelegate.swift */; };
 		27C4819C1E7AD38D00E6022B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C4819B1E7AD38D00E6022B /* Assets.xcassets */; };
 		27C4819F1E7AD38D00E6022B /* LaunchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C4819D1E7AD38D00E6022B /* LaunchViewController.storyboard */; };
+		27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */; };
 		9138C0058D13A2DE3F6363EE /* Pods_new_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD42200BDAA4107728A10BE /* Pods_new_now.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		27C4819B1E7AD38D00E6022B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27C4819E1E7AD38D00E6022B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchViewController.storyboard; sourceTree = "<group>"; };
 		27C481A01E7AD38D00E6022B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingInterstitialViewController.storyboard; sourceTree = "<group>"; };
 		4CD42200BDAA4107728A10BE /* Pods_new_now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_new_now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67187359C376984006590177 /* Pods-new_now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new_now.release.xcconfig"; path = "Pods/Target Support Files/Pods-new_now/Pods-new_now.release.xcconfig"; sourceTree = "<group>"; };
 		C85B92ED14670F8A82123237 /* Pods-new_now.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new_now.debug.xcconfig"; path = "Pods/Target Support Files/Pods-new_now/Pods-new_now.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				27C4819D1E7AD38D00E6022B /* LaunchViewController.storyboard */,
 				279BED891E7AEF5B00E52B3A /* LaunchViewController.swift */,
+				27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */,
 			);
 			name = LaunchScreen;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279BED941E7AF32A00E52B3A /* WebView.storyboard in Resources */,
+				27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */,
 				279BED8E1E7AF01C00E52B3A /* PostsViewController.storyboard in Resources */,
 				27C4819F1E7AD38D00E6022B /* LaunchViewController.storyboard in Resources */,
 				27C4819C1E7AD38D00E6022B /* Assets.xcassets in Resources */,

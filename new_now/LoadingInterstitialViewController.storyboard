@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="DcH-dx-iVS">
+            <objects>
+                <viewController storyboardIdentifier="LoadingInterstitialVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cIT-9C-00g" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="npk-8T-uLI"/>
+                        <viewControllerLayoutGuide type="bottom" id="WND-gS-bUq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qho-V4-e8v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2K3-MQ-kxZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AnyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mUY-CS-R3W">
+                                        <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                    </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-Ck-GiO">
+                                        <rect key="frame" x="177" y="470" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vcW-Ck-GiO" firstAttribute="centerX" secondItem="2K3-MQ-kxZ" secondAttribute="centerX" id="F7N-TS-moW"/>
+                                    <constraint firstItem="mUY-CS-R3W" firstAttribute="centerY" secondItem="2K3-MQ-kxZ" secondAttribute="centerY" id="Wkx-jd-K1N"/>
+                                    <constraint firstItem="mUY-CS-R3W" firstAttribute="centerX" secondItem="2K3-MQ-kxZ" secondAttribute="centerX" id="ahr-Wg-eC4"/>
+                                    <constraint firstItem="vcW-Ck-GiO" firstAttribute="top" secondItem="mUY-CS-R3W" secondAttribute="bottom" constant="-20" id="oRF-NJ-mi2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2K3-MQ-kxZ" firstAttribute="top" secondItem="Qho-V4-e8v" secondAttribute="top" id="6M1-la-IBg"/>
+                            <constraint firstItem="WND-gS-bUq" firstAttribute="top" secondItem="2K3-MQ-kxZ" secondAttribute="bottom" id="DyU-0U-ES4"/>
+                            <constraint firstAttribute="trailing" secondItem="2K3-MQ-kxZ" secondAttribute="trailing" id="fhl-qs-NWX"/>
+                            <constraint firstItem="2K3-MQ-kxZ" firstAttribute="leading" secondItem="Qho-V4-e8v" secondAttribute="leading" id="xkQ-DK-Zrz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5SS-bX-ykq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="-118.29085457271366"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AnyLogo" width="400" height="400"/>
+    </resources>
+</document>
