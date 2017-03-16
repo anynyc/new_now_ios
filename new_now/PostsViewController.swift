@@ -12,7 +12,7 @@ import UIKit
 class PostsViewController: BaseViewController, PostViewModelDelegate {
   
 
-  let postViewModel = PostsViewModel()
+  let postViewModel = PostViewModel()
   var postIndex = 0
 
   
@@ -25,6 +25,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     postViewModel.delegate = self
 //    navigationController?.setNavigationBarHidden(true, animated: false)
     postViewModel.loadPosts()
@@ -39,7 +40,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   }
   
-  func noVideos() {
+  func noPosts() {
     
   }
 

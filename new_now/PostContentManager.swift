@@ -42,7 +42,7 @@ class PostContentManager: NSObject {
     return isPresent
   }
   
-  static func loadHomePagePosts(withCompletion completion: @escaping ([PostModel]?) -> Void) {
+  static func loadPosts(withCompletion completion: @escaping ([PostModel]?) -> Void) {
     //    guard Reachability.connectedToNetwork() else {
     //      completion(nil)
     //      return

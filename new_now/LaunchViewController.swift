@@ -9,20 +9,23 @@
 import Foundation
 import UIKit
 
-class LaunchViewController: BaseViewController {
+class LaunchViewController: BaseViewController, PostViewModelDelegate {
   
-  let postViewModel = PostsViewModel()
+  let postViewModel = PostViewModel()
   
   
   static func storyboardInstance() -> LaunchViewController? {
+    
     let storyboard = UIStoryboard(name:
       "LaunchViewController", bundle: nil)
     return storyboard.instantiateViewController(withIdentifier: VCNameConstants.launch) as? LaunchViewController
   }
   
   override func viewDidLoad() {
+    
     super.viewDidLoad()
-    self.presentHomeScreen()
+    postViewModel.delegate = self
+    postViewModel.loadPosts()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -45,9 +48,10 @@ class LaunchViewController: BaseViewController {
     
   }
   
-  func videosDidLoad() {
+  func postsDidLoad() {
+    
   }
-  func noVideos() {
+  func noPosts() {
   }
   
   

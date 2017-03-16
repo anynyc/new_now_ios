@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
       return
     }
     for vc in navCon.viewControllers {
-      if let postsScreenVC = vc as? PostsScreenViewController {
+      if let postsScreenVC = vc as? PostsViewController {
         _ = navigationController?.popToViewController(postsScreenVC, animated: true)
       }
     }

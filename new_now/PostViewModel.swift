@@ -15,7 +15,7 @@ protocol PostViewModelDelegate: class {
   func noPosts()
 }
 //store background emoji arrays.  Positive and negative arrays
-class PostsViewModel: NSObject {
+class PostViewModel: NSObject {
   var postsArray = [PostModel]()
   weak var delegate: PostViewModelDelegate?
   
@@ -23,14 +23,14 @@ class PostsViewModel: NSObject {
   
   
   //loads all home page games with users, initially without pictures(only photo urls)
-  func loadVideos() {
+  func loadPosts() {
     
     PostContentManager.loadPosts { [weak self] (postArray) in
       guard postArray != nil else {
         //call delegate for custom no more videos message
         return
       }
-      
+      //unwrap this
       self?.postsArray = postArray!
       self?.delegate?.postsDidLoad()
       //call delegate method in view to do something with the videos, loading active gif

@@ -16,9 +16,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    createNavController()
+
     return true
   }
 
+  func createNavController() {
+    let navController = UINavigationController()
+    navController.setNavigationBarHidden(true, animated: false)
+    navController.view.layer.backgroundColor = UIColor.white.cgColor
+    
+    let navBar = navController.navigationBar
+    navBar.setBackgroundImage(UIImage(), for: .default)
+    navBar.shadowImage = UIImage()
+    navBar.isTranslucent = true
+    
+    let backBarImage = UIImage(named: "reshetNavLogo")
+    let renderedBackBarImage = backBarImage?.withRenderingMode(.alwaysTemplate)
+    navBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+    navBar.backIndicatorImage = renderedBackBarImage
+    navBar.backIndicatorImage?.withAlignmentRectInsets(UIEdgeInsetsMake(10, 10, 10, 10))
+    navController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    UINavigationBar.appearance().tintColor = UIColor.lightGray
+    UINavigationBar.appearance().isOpaque = true
+    UINavigationBar.appearance().titleTextAttributes = ([NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)!, NSForegroundColorAttributeName: UIColor.lightGray])
+    UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -500, vertical: -500), for: .default)
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = navController
+    
+    if let launchVC = LaunchViewController.storyboardInstance() {
+      navController.setViewControllers([launchVC], animated: false)
+    }
+    window?.makeKeyAndVisible()
+  }
+
+  
+  
   func applicationWillResignActive(_ application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

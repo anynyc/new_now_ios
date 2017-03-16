@@ -14,6 +14,7 @@ struct PostConstants {
   static let link = "link"
   static let headline = "headline"
   static let body = "body"
+  static let read = "read"
 
   
   
@@ -25,6 +26,7 @@ class PostModel: ContentItemModel, NSCoding {
   var link: String
   var headline: String
   var body: String
+  var read: Bool?
   
   
   
@@ -55,6 +57,11 @@ class PostModel: ContentItemModel, NSCoding {
     
     body = bodyText
     
+    if let userRead = dictionary[PostConstants.read] as? Bool {
+      read = userRead
+    }
+    
+    
     super.init(dictionary: dictionary)
   }
   
@@ -64,6 +71,7 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(link, forKey: PostConstants.link)
     aCoder.encode(body, forKey: PostConstants.body)
     aCoder.encode(headline, forKey: PostConstants.headline)
+    aCoder.encode(read, forKey: PostConstants.read)
     
     super.encodeWithEncoder(aCoder)
   }
@@ -90,7 +98,10 @@ class PostModel: ContentItemModel, NSCoding {
     }
     
     body = bodyText
-    
+   
+    if let userRead = aDecoder.decodeObject(forKey: PostConstants.read) as? Bool {
+      self.read = userRead
+    }
     
     super.init(coder: aDecoder)
   }
