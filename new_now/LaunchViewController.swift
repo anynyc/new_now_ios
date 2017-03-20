@@ -28,7 +28,6 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    
   }
   
   //before loading hides Nav
@@ -55,12 +54,6 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     }
   }
   
-//  func presentHomeScreen() {
-//    let postsScreenStoryboard = StoryboardInstanceConstants.postsScreen
-//    let postsScreenViewController = postsScreenStoryboard.instantiateViewController(withIdentifier: VCNameConstants.posts) as! PostsViewController
-//    navigationController?.pushViewController(postsScreenViewController, animated: false)
-//    
-//  }
   
   func postsReceived() {
     UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {

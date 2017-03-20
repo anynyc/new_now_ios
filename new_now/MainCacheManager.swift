@@ -109,6 +109,15 @@ class MainCacheManager : NSObject {
     return postsArray
   }
   
+  
+  static func clearAllCachedPosts() {
+    let cachedPostsArray = MainCacheManager.fetchCachedPosts(ItemCacheType.postHomePage)
+    for post in cachedPostsArray {
+      let filePath = MainCacheManager.cacheLocationForObject(post, itemType: ItemCacheType.postHomePage)
+      MainCacheManager.clearCacheForObject(filePath)
+    }
+  }
+  
 
   
   

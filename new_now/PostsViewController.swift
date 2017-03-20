@@ -14,7 +14,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   let postViewModel = PostViewModel()
   var postIndex = 0
-
+  let contentManager = PostContentManager()
   
   
   static func storyboardInstance() -> PostsViewController? {
@@ -25,8 +25,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    let posts = contentManager.fetchCachedPosts(ItemCacheType.postHomePage)
     postViewModel.delegate = self
+    postViewModel.postsArray = posts
 //    navigationController?.setNavigationBarHidden(true, animated: false)
 
   }
@@ -34,7 +35,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
 
   
-
+  
   func postsDidLoad() {
 
   }
