@@ -34,6 +34,19 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   
 
+  @IBAction func shareButtonPressed(_ sender: Any) {
+    
+    let message = "Message goes here."
+    //Set the link to share.
+    if let link = NSURL(string: "http://yoururl.com")
+    {
+      let objectsToShare = [message,link] as [Any]
+      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+      activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+      self.present(activityVC, animated: true, completion: nil)
+    }
+    
+  }
   
   
   func postsDidLoad() {
@@ -43,6 +56,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   func noPosts() {
     
   }
+  
+  
 
   
   
