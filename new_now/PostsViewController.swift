@@ -22,9 +22,15 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-    cell.imageView.image = UIImage.init(named: "AnyLogo")
+    cell.imageView.image = UIImage.init(named: "instagramsports")
+    let text = "Technology"
+    let attributedString = NSMutableAttributedString(string: text)
+    attributedString.addAttribute(NSKernAttributeName, value: 1.0, range: NSMakeRange(0, text.characters.count))
+    cell.topicLabel.attributedText = attributedString
+    
     return cell
   }
+  
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
@@ -69,7 +75,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     gridLayout = GridLayout()
     gridCollectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: gridLayout)
-    gridCollectionView.backgroundColor = UIColor.orange
+    gridCollectionView.backgroundColor = UIColor.clear
     gridCollectionView.showsVerticalScrollIndicator = false
     gridCollectionView.showsHorizontalScrollIndicator = false
     self.view.addSubview(gridCollectionView)

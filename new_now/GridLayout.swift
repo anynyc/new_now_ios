@@ -25,14 +25,18 @@ class GridLayout: UICollectionViewFlowLayout {
     super.init(coder: aDecoder)
   }
   func itemWidth() -> CGFloat {
+//    return (collectionView!.frame.size.width/self.numberOfCellsOnRow)-self.innerSpace
     return (collectionView!.frame.size.width/self.numberOfCellsOnRow)-self.innerSpace
+
   }
   override var itemSize: CGSize {
     set {
+//      self.itemSize = CGSize(width:itemWidth(), height:itemWidth())
       self.itemSize = CGSize(width:itemWidth(), height:itemWidth())
+
     }
     get {
-      return CGSize(width:itemWidth(),height:itemWidth())
+      return CGSize(width:itemWidth(), height: 667.0)
     }
   }
 
