@@ -14,6 +14,7 @@ class ImageCell: UICollectionViewCell {
   var grayOverlay: UIView!
   var cellContainer: UIView!
   var topicLabel: UILabel!
+  var bodyLabel: UILabel!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -24,7 +25,7 @@ class ImageCell: UICollectionViewCell {
     imageView = UIImageView()
     imageView.contentMode = .scaleToFill
     imageView.isUserInteractionEnabled = false
-    //overlay
+    //overlay needs to be a gradient
     grayOverlay = UIView()
     grayOverlay.backgroundColor = UIColor(white: 1, alpha: 0.5)
     
@@ -36,10 +37,17 @@ class ImageCell: UICollectionViewCell {
     topicLabel.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
 //    contentView.addSubview(imageView)
 
+    bodyLabel = UILabel()
+    bodyLabel.numberOfLines = 3
+    bodyLabel.font = bodyLabel.font.withSize(36)
+    
     contentView.addSubview(cellContainer)
     cellContainer.addSubview(imageView)
     cellContainer.addSubview(grayOverlay)
     cellContainer.addSubview(topicLabel)
+    cellContainer.addSubview(bodyLabel)
+
+    
     
   }
   
@@ -55,13 +63,19 @@ class ImageCell: UICollectionViewCell {
     containerFrame.origin.y = 0.0
     cellContainer.frame = containerFrame
     
+    var bodyFrame = bodyLabel.frame
+    bodyFrame.size.height = self.frame.size.height / 2
+    bodyFrame.size.width = self.frame.size.width / 1.5
+    bodyFrame.origin.x = 60.0
+    bodyFrame.origin.y = 216.0
+    bodyLabel.frame = bodyFrame
     
     //making the frame for imageView.  subview of container.  positioned off centered
     var frame = imageView.frame
     frame.size.height = 450.0
     frame.size.width = 286.0
     frame.origin.x = 100.0
-    frame.origin.y = 109.0
+    frame.origin.y = 90.0
     imageView.frame = frame
     
     //same frame as image view

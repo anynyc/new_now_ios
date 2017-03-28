@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ImageCell.swift"
-            timestampString = "512427421.974274"
+            timestampString = "512429222.245825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "init(frame:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ImageCell.swift"
-            timestampString = "512428574.442439"
+            timestampString = "512429222.245825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "ImageCell"
             landmarkType = "3">
          </BreakpointContent>
