@@ -41,27 +41,28 @@ class PostAPIManager: NSObject {
     }
   }
   
-//  static func fetchImageWithCompletion(_ video: EspressoVideoModel, comp: @escaping (UIImage?) -> Void) {
-//    guard let url = video.videoImageURL else {
-//      comp(nil)
-//      return
-//    }
-//    let urlString = "https://604ca666.ngrok.io" + "\(url)"
-//    
-//    
-//    URLCache.shared.removeAllCachedResponses()
-//    Alamofire.request(urlString, encoding: URLEncoding.default).responseJSON { response in
-//      guard let imageData = response.data else {
-//        comp(nil)
-//        return
-//      }
-//      guard let image = UIImage(data: imageData) else {
-//        comp(nil)
-//        return
-//      }
-//      comp(image)
-//    }
-//  }
+  static func fetchImageWithCompletion(_ post: PostModel, comp: @escaping (UIImage?) -> Void) {
+    guard let url = post.imageUrl else {
+      comp(nil)
+      return
+    }
+    let urlString = "https://efe2d6e4.ngrok.io" + "\(url)"
+    
+    
+    URLCache.shared.removeAllCachedResponses()
+    
+    Alamofire.request(urlString, encoding: URLEncoding.default).responseJSON { response in
+      guard let imageData = response.data else {
+        comp(nil)
+        return
+      }
+      guard let image = UIImage(data: imageData) else {
+        comp(nil)
+        return
+      }
+      comp(image)
+    }
+  }
   
   
   

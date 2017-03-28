@@ -13,12 +13,13 @@ import UIKit
 protocol PostViewModelDelegate: class {
   func postsDidLoad()
   func noPosts()
+  func imagesDidLoad()
 }
 //store background emoji arrays.  Positive and negative arrays
 class PostViewModel: NSObject {
   var postsArray = [PostModel]()
   weak var delegate: PostViewModelDelegate?
-  
+  var postImages = [UIImage]()
   
   
   
@@ -39,7 +40,18 @@ class PostViewModel: NSObject {
   
   
   
-
+  func getPostImages() {
+    //main.async
+    PostContentManager.getPostImages(postArray: postsArray) {[weak self] (imageArray) in
+      
+      guard imageArray != nil else {
+        return
+      }
+      
+      self?.postImages = imageArray!
+      self?.delegate?.imagesDidLoad()
+    }
+  }
   
   
   

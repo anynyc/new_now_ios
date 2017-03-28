@@ -120,13 +120,19 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   
   func postsDidLoad() {
-
+    postViewModel.getPostImages()
   }
   
   func noPosts() {
     
   }
   
+  func imagesDidLoad() {
+    
+  }
+  
+  
+  //sample methods that won't be used
   func hideFullImage() {
     UIView.animate(withDuration: 0.5, delay: 0, options: [], animations:{[unowned self] in
       self.fullImageView.alpha = 0

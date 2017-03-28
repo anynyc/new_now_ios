@@ -64,6 +64,28 @@ class PostContentManager: NSObject {
     })
   }
   
+  static func getPostImages(postArray: [PostModel], withCompletion completion: @escaping ([UIImage]?) -> Void) {
+    //    VideoAPIManager.fetchEspressoVideosWithCompletion(comp: { contentArray in
+    //      guard let videos = contentArray, videos.count > 0 else {
+    //        completion(nil)
+    //        return
+    //      }
+    let postArray = postArray
+    var imageArray = [UIImage]()
+    
+    for postModel in postArray {
+      PostAPIManager.fetchImageWithCompletion(postModel) { (image) in
+        postModel.image = image
+        let newPostFilePath = MainCacheManager.cacheLocationForObject(postModel, itemType: ItemCacheType.postHomePage)
+        MainCacheManager.cacheInformationForItem(postModel, filePath: newPostFilePath)
+        imageArray.append(image!)
+      }
+      completion(imageArray)
+    }
+    completion(imageArray)
+    
+  }
+  
 
   
 
