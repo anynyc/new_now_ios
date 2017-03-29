@@ -15,6 +15,8 @@ class ImageCell: UICollectionViewCell {
   var cellContainer: UIView!
   var topicLabel: UILabel!
   var bodyLabel: UILabel!
+  var gl: CAGradientLayer!
+
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -27,7 +29,10 @@ class ImageCell: UICollectionViewCell {
     imageView.isUserInteractionEnabled = false
     //overlay needs to be a gradient
     grayOverlay = UIView()
-    grayOverlay.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//    grayOverlay.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    grayOverlay.backgroundColor = UIColor.clear
+
+    
     
     topicLabel = UILabel()
 //    topicLabel.numberOfLines = 0
@@ -80,6 +85,19 @@ class ImageCell: UICollectionViewCell {
     
     //same frame as image view
     grayOverlay.frame = frame
+    
+    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
+    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+    gl = CAGradientLayer()
+    gl.colors = [colorTop, colorBottom]
+    gl.locations = [0.0, 1.0]
+//    gl.frame = frame
+//    let gl = CALayer()
+//    gl.backgroundColor = UIColor.green.cgColor
+    gl.frame = frame
+    
+    cellContainer.layer.insertSublayer(gl, at: 3)
+    
     
     var topicFrame = topicLabel.frame
     topicFrame.size.height = 100
