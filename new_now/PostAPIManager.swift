@@ -18,7 +18,7 @@ class PostAPIManager: NSObject {
   
   
   static func fetchPostsWithCompletion(comp: @escaping ([[String: AnyObject]]?) -> Void) {
-    let baseUrl = "https://efe2d6e4.ngrok.io"
+    let baseUrl = "https://329cbcb8.ngrok.io"
     
     let postUrlString = baseUrl + APIConstants.newNowApiUrl + APIConstants.postUrl
     

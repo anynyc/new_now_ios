@@ -23,11 +23,12 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
     cell.imageView.image = UIImage.init(named: "instagramsports")
-    let text = "Technology"
-    let attributedString = NSMutableAttributedString(string: text)
+    let topicText = "Technology"
+    let attributedString = NSMutableAttributedString(string: topicText)
     attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, text.characters.count))
     cell.topicLabel.attributedText = attributedString
-    cell.bodyLabel.text = "Is Instagram the best new way to get sports Highlights?"
+    let bodyText = postViewModel.postsArray[indexPath.row].body
+    cell.bodyLabel.text = bodyText
     return cell
   }
   

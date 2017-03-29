@@ -17,7 +17,7 @@ struct PostConstants {
   static let read = "read"
   static let imageUrl = "image"
   static let image = "image_url"
-  static let timesShared = "times_shared"
+//  static let timesShared = "times_shared"
 
   
   
@@ -32,7 +32,7 @@ class PostModel: ContentItemModel, NSCoding {
   var read: Bool?
   var imageUrl: URL?
   var image: UIImage?
-  var timesShared: Int
+//  var timesShared: Int
   
   
   
@@ -71,11 +71,11 @@ class PostModel: ContentItemModel, NSCoding {
       self.imageUrl = URL(string: imageString)
     }
     
-    guard let shared = dictionary[PostConstants.timesShared] as? Int else {
-      return nil
-    }
-    
-    timesShared = shared
+//    guard let shared = dictionary[PostConstants.timesShared] as? Int else {
+//      return nil
+//    }
+//    
+//    timesShared = shared
     
     
     super.init(dictionary: dictionary)
@@ -88,7 +88,7 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(body, forKey: PostConstants.body)
     aCoder.encode(headline, forKey: PostConstants.headline)
     aCoder.encode(read, forKey: PostConstants.read)
-    aCoder.encode(timesShared, forKey: PostConstants.timesShared)
+//    aCoder.encode(timesShared, forKey: PostConstants.timesShared)
     aCoder.encode(imageUrl, forKey: PostConstants.imageUrl)
     aCoder.encode(image, forKey: PostConstants.image)
     super.encodeWithEncoder(aCoder)
@@ -131,11 +131,11 @@ class PostModel: ContentItemModel, NSCoding {
       image = imageRaw
     }
     
-    guard let shared = aDecoder.decodeObject(forKey: PostConstants.timesShared) as? Int else  {
-     return nil
-    }
-    
-    timesShared = shared
+//    guard let shared = aDecoder.decodeObject(forKey: PostConstants.timesShared) as? Int else  {
+//     return nil
+//    }
+//    
+//    timesShared = shared
     
     
     super.init(coder: aDecoder)

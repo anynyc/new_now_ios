@@ -13,7 +13,8 @@ class PostContentManager: NSObject {
   //access item type directory, add each item in
   func fetchCachedPosts(_ itemType: ItemCacheType) -> Array<PostModel> {
     var postsArray = Array<PostModel>()
-    let postDirectory = MainCacheManager.cacheLocationForItemType(itemType)
+    //hardcoding item type as was receiving error
+    let postDirectory = MainCacheManager.cacheLocationForItemType(ItemCacheType.postHomePage)
     let fileManager = FileManager.default
     if let subPaths = fileManager.subpaths(atPath: postDirectory) {
       for path in subPaths {
