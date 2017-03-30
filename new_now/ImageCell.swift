@@ -16,6 +16,7 @@ class ImageCell: UICollectionViewCell {
   var topicLabel: UILabel!
   var bodyLabel: UILabel!
   var gl: CAGradientLayer!
+  var articleUrl: String!
 
   
   override init(frame: CGRect) {

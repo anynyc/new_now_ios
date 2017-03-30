@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension UIApplication {
+  var statusBarView: UIView? {
+    return value(forKey: "statusBar") as? UIView
+  }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     createNavController()
+    UIApplication.shared.statusBarView?.backgroundColor = .white
 
     return true
   }
@@ -27,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     navController.view.layer.backgroundColor = UIColor.white.cgColor
     
     let navBar = navController.navigationBar
-    navBar.setBackgroundImage(UIImage(), for: .default)
+    navBar.backgroundColor = (UIColor.white)
+
+//    navBar.setBackgroundImage(UIImage(), for: .default)
     navBar.shadowImage = UIImage()
     navBar.isTranslucent = true
     
@@ -36,7 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     navBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     navBar.backIndicatorImage = renderedBackBarImage
     navBar.backIndicatorImage?.withAlignmentRectInsets(UIEdgeInsetsMake(10, 10, 10, 10))
-    navController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    navController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+    
+    
+    
+    //back button
     UINavigationBar.appearance().tintColor = UIColor.lightGray
     UINavigationBar.appearance().isOpaque = true
     UINavigationBar.appearance().titleTextAttributes = ([NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)!, NSForegroundColorAttributeName: UIColor.lightGray])

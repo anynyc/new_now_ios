@@ -22,8 +22,8 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-    cell.imageView.image = UIImage.init(named: "instagramsports")
-    let topicText = "Technology"
+    
+    let topicText = postViewModel.postsArray[indexPath.row].category
     let attributedString = NSMutableAttributedString(string: topicText)
     attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, topicText.characters.count))
     cell.topicLabel.attributedText = attributedString
@@ -31,18 +31,23 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     let image = postViewModel.postsArray[indexPath.row].image
     cell.imageView.image = image
     cell.bodyLabel.text = bodyText
+    cell.articleUrl = postViewModel.postsArray[indexPath.row].link
     return cell
   }
   
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
+//    let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
     
-    if let image = cell.imageView.image {
-      self.showFullImage(of: image)
-    } else {
-      print("no photo")
-    }
+//    if let link = cell.imageView.image {
+//      self.showFullImage(of: image)
+//    } else {
+//      print("no photo")
+//    }
+    let link = postViewModel.postsArray[indexPath.row].link
+    self.showFullImage(of: link)
+
+    
   }
   
   
@@ -82,7 +87,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     gridCollectionView.showsVerticalScrollIndicator = false
     gridCollectionView.showsHorizontalScrollIndicator = false
     self.view.addSubview(gridCollectionView)
-//    navigationController?.setNavigationBarHidden(true, animated: false)
+    navigationController?.setNavigationBarHidden(true, animated: false)
 
     gridCollectionView!.register(ImageCell.self, forCellWithReuseIdentifier: "cell")
     gridCollectionView.dataSource = self
@@ -111,6 +116,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     self.fullImageView.frame = gridCollectionView.frame
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    navigationController?.setNavigationBarHidden(true, animated: false)
+  }
   
 
   @IBAction func shareButtonPressed(_ sender: Any) {
@@ -148,15 +156,26 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       }, completion: nil)
   }
   
-  func showFullImage(of image:UIImage) {
-    fullImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
-    fullImageView.contentMode = .scaleAspectFit
-    UIView.animate(withDuration: 0.5, delay: 0, options: [], animations:{
-      self.fullImageView.image = image
-      self.fullImageView.alpha = 1
-      self.fullImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-    }, completion: nil)
+  func showFullImage(of link:String) {
+//    fullImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
+//    fullImageView.contentMode = .scaleAspectFit
+//    UIView.animate(withDuration: 0.5, delay: 0, options: [], animations:{
+//      self.fullImageView.image = image
+//      self.fullImageView.alpha = 1
+//      self.fullImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+//    }, completion: nil)
+    let webViewStoryboard = StoryboardInstanceConstants.webView
+    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+    webViewController.urlString = link
+    navigationController?.pushViewController(webViewController, animated: false)
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let backItem = UIBarButtonItem()
+    backItem.title = "Back"
+    navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+  }
+  
   
   
 }

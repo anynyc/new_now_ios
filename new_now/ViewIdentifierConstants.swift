@@ -17,7 +17,7 @@ struct VCNameConstants {
 
 struct StoryboardInstanceConstants {
   static let launch = UIStoryboard(name: "LaunchViewController", bundle: nil)
-  static let webView = UIStoryboard(name: "WebViewViewController", bundle: nil)
+  static let webView = UIStoryboard(name: "WebViewController", bundle: nil)
   static let postsScreen = UIStoryboard(name: "PostsViewController", bundle: nil)
   
 }

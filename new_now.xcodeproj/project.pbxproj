@@ -12,8 +12,8 @@
 		279BED8C1E7AEFD400E52B3A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED8B1E7AEFD400E52B3A /* BaseViewController.swift */; };
 		279BED8E1E7AF01C00E52B3A /* PostsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279BED8D1E7AF01C00E52B3A /* PostsViewController.storyboard */; };
 		279BED901E7AF0DC00E52B3A /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED8F1E7AF0DC00E52B3A /* PostsViewController.swift */; };
-		279BED941E7AF32A00E52B3A /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279BED931E7AF32A00E52B3A /* WebView.storyboard */; };
-		279BED961E7AF33600E52B3A /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED951E7AF33600E52B3A /* WebView.swift */; };
+		279BED941E7AF32A00E52B3A /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279BED931E7AF32A00E52B3A /* WebViewController.storyboard */; };
+		279BED961E7AF33600E52B3A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED951E7AF33600E52B3A /* WebViewController.swift */; };
 		279BED981E7AF3C600E52B3A /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED971E7AF3C600E52B3A /* PostViewModel.swift */; };
 		279BED9A1E7AF47900E52B3A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED991E7AF47900E52B3A /* PostModel.swift */; };
 		279BED9C1E7AF55100E52B3A /* ContentItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED9B1E7AF55100E52B3A /* ContentItemModel.swift */; };
@@ -36,8 +36,8 @@
 		279BED8B1E7AEFD400E52B3A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		279BED8D1E7AF01C00E52B3A /* PostsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostsViewController.storyboard; sourceTree = "<group>"; };
 		279BED8F1E7AF0DC00E52B3A /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		279BED931E7AF32A00E52B3A /* WebView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
-		279BED951E7AF33600E52B3A /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		279BED931E7AF32A00E52B3A /* WebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
+		279BED951E7AF33600E52B3A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		279BED971E7AF3C600E52B3A /* PostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		279BED991E7AF47900E52B3A /* PostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		279BED9B1E7AF55100E52B3A /* ContentItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemModel.swift; sourceTree = "<group>"; };
@@ -132,8 +132,8 @@
 		279BED911E7AF30A00E52B3A /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				279BED931E7AF32A00E52B3A /* WebView.storyboard */,
-				279BED951E7AF33600E52B3A /* WebView.swift */,
+				279BED931E7AF32A00E52B3A /* WebViewController.storyboard */,
+				279BED951E7AF33600E52B3A /* WebViewController.swift */,
 			);
 			name = WebView;
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				279BED941E7AF32A00E52B3A /* WebView.storyboard in Resources */,
+				279BED941E7AF32A00E52B3A /* WebViewController.storyboard in Resources */,
 				27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */,
 				279BED8E1E7AF01C00E52B3A /* PostsViewController.storyboard in Resources */,
 				27C4819F1E7AD38D00E6022B /* LaunchViewController.storyboard in Resources */,
@@ -335,7 +335,7 @@
 				279BED8A1E7AEF5B00E52B3A /* LaunchViewController.swift in Sources */,
 				279BEDA01E7AF81E00E52B3A /* MainCacheManager.swift in Sources */,
 				279BED9C1E7AF55100E52B3A /* ContentItemModel.swift in Sources */,
-				279BED961E7AF33600E52B3A /* WebView.swift in Sources */,
+				279BED961E7AF33600E52B3A /* WebViewController.swift in Sources */,
 				279BEDA31E7B011800E52B3A /* NewNowAPIConstants.swift in Sources */,
 				27BA149B1E89D6CF0025663C /* ImageCell.swift in Sources */,
 			);

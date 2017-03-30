@@ -75,6 +75,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     navigationController?.view.layer.add(transition, forKey: nil)
     let homeScreenStoryboard = StoryboardInstanceConstants.postsScreen
     let homeScreenViewController = homeScreenStoryboard.instantiateViewController(withIdentifier: VCNameConstants.posts)
+
     navigationController?.pushViewController(homeScreenViewController, animated: false)
   }
   
@@ -102,5 +103,6 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
 
   }
   
+
   
 }

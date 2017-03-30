@@ -24,9 +24,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQi-Cp-joS" userLabel="grayRect">
-                                <rect key="frame" x="0.0" y="0.0" width="262.5" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
                                 <color key="backgroundColor" red="0.2196078431372549" green="0.25882352941176467" blue="0.30588235294117649" alpha="0.34588788006756754" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AnyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
+                                <rect key="frame" x="17" y="22" width="68" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="TNM-8B-WJr"/>
+                                    <constraint firstAttribute="width" constant="68" id="xZS-XV-WpR"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-87.62 S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
                                 <rect key="frame" x="300" y="22" width="41" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -34,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="41.52 E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-nE-niF" userLabel="longLabel">
-                                <rect key="frame" x="305.5" y="40" width="35.5" height="12"/>
+                                <rect key="frame" x="305" y="40" width="36" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -44,12 +51,14 @@
                         <constraints>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="Dut-1x-kRF" secondAttribute="bottom" multiplier="1.1" id="3gw-L5-03h"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
+                            <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="wQG-AY-ZWV" secondAttribute="top" id="FS3-vI-ps0"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="SYU-ic-oMA"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="top" secondItem="Dut-1x-kRF" secondAttribute="bottom" multiplier="2" id="aru-nP-ia9"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" id="pQB-Aa-xQL"/>
+                            <constraint firstItem="wQG-AY-ZWV" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" id="yYM-vq-uis"/>
                         </constraints>
                     </view>
                     <connections>
@@ -62,4 +71,7 @@
             <point key="canvasLocation" x="160.80000000000001" y="205.54722638680661"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AnyLogo" width="400" height="400"/>
+    </resources>
 </document>
