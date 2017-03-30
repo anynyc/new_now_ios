@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     navBar.backIndicatorImage?.withAlignmentRectInsets(UIEdgeInsetsMake(10, 10, 10, 10))
     navController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     
-    
+
     
     //back button
     UINavigationBar.appearance().tintColor = UIColor.lightGray
