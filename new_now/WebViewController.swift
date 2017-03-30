@@ -24,16 +24,27 @@ class WebViewController: BaseViewController, WKUIDelegate {
     let webConfiguration = WKWebViewConfiguration()
 
     navigationController?.setNavigationBarHidden(false, animated: false)
+    navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50)
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"shareShape"), style: .plain, target: self, action: #selector(rightButtonAction))
-
+    
+    
+    
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backShape"), style: .plain, target: self, action: #selector(leftButtonAction))
     
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 159, height: 69))
+    imageView.contentMode = .scaleAspectFit
+    let image = UIImage(named: "AnyLogo")
+    imageView.image = image
+    navigationItem.titleView = imageView
 //    self.navigationItem.rightBarButtonItem = rightButtonItem
     webView = WKWebView(frame: UIScreen.main.bounds, configuration: webConfiguration)
 
 //    webView = WKWebView(frame: UIScreen.main.bounds)
     webView.uiDelegate = self
     view.addSubview(webView)
+    
+    
     
     let topConstraint = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 50)
     view.addConstraints([topConstraint])

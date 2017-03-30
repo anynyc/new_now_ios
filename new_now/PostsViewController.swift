@@ -45,7 +45,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 //      print("no photo")
 //    }
     let link = postViewModel.postsArray[indexPath.row].link
-    self.showFullImage(of: link)
+    self.showArticle(of: link)
 
     
   }
@@ -156,18 +156,11 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       }, completion: nil)
   }
   
-  func showFullImage(of link:String) {
-//    fullImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
-//    fullImageView.contentMode = .scaleAspectFit
-//    UIView.animate(withDuration: 0.5, delay: 0, options: [], animations:{
-//      self.fullImageView.image = image
-//      self.fullImageView.alpha = 1
-//      self.fullImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-//    }, completion: nil)
+  func showArticle(of link:String) {
     let webViewStoryboard = StoryboardInstanceConstants.webView
     let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
     webViewController.urlString = link
-    navigationController?.pushViewController(webViewController, animated: false)
+    navigationController?.pushViewController(webViewController, animated: true)
   }
 
 
