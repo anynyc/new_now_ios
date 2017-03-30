@@ -25,9 +25,11 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     cell.imageView.image = UIImage.init(named: "instagramsports")
     let topicText = "Technology"
     let attributedString = NSMutableAttributedString(string: topicText)
-    attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, text.characters.count))
+    attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, topicText.characters.count))
     cell.topicLabel.attributedText = attributedString
     let bodyText = postViewModel.postsArray[indexPath.row].body
+    let image = postViewModel.postsArray[indexPath.row].image
+    cell.imageView.image = image
     cell.bodyLabel.text = bodyText
     return cell
   }

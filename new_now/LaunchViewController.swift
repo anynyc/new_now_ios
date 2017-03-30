@@ -84,11 +84,15 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   }
   
   
+  func loadPostsImages() {
+    postViewModel.postsDidLoad()
+  }
   
   func postsDidLoad() {
 //    getPostImages()
-    postsReceived()
-
+//    postsReceived()
+    loadPostsImages()
+    
   }
   func noPosts() {
   }

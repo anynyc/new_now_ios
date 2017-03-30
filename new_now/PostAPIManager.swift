@@ -46,12 +46,17 @@ class PostAPIManager: NSObject {
       comp(nil)
       return
     }
-    let urlString = "https://efe2d6e4.ngrok.io" + "\(url)"
+    let urlString = "https://329cbcb8.ngrok.io" + "\(url)"
     
+    guard let imageUrl = URL(string: urlString) else {
+      print("CAPI: contacts url failed")
+      comp(nil)
+      return
+    }
     
-    URLCache.shared.removeAllCachedResponses()
+//    URLCache.shared.removeAllCachedResponses()
     
-    Alamofire.request(urlString, encoding: URLEncoding.default).responseJSON { response in
+    Alamofire.request(imageUrl, encoding: URLEncoding.default).responseJSON { response in
       guard let imageData = response.data else {
         comp(nil)
         return
