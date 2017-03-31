@@ -46,11 +46,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 //    }
     let link = postViewModel.postsArray[indexPath.row].link
     self.showArticle(of: link)
-
-    
   }
-  
-  
 }
 
 
@@ -60,7 +56,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
   let fullImageView = UIImageView()
-
+  @IBInspectable var startColor:UIColor = UIColor.red
+  @IBInspectable var endColor:UIColor = UIColor.blue
+  
   @IBOutlet weak var latLabelText: UILabel!
   
   @IBOutlet weak var longLabelText: UILabel!
@@ -102,6 +100,20 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let dismissWihtTap = UITapGestureRecognizer(target: self, action: #selector(hideFullImage))
     fullImageView.addGestureRecognizer(dismissWihtTap)
     
+    
+    // Build the slider
+    let slider:BWCircularSlider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: self.view.bounds)
+    
+    // Attach an Action and a Target to the slider
+    slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
+    self.view.addSubview(slider)
+
+    
+  }
+
+  func valueChanged(slider:BWCircularSlider){
+    // Do something with the value...
+    print("Value changed \(slider.angle)")
   }
   
   override func viewWillLayoutSubviews() {
