@@ -32,9 +32,29 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     cell.imageView.image = image
     cell.bodyLabel.text = bodyText
     cell.articleUrl = postViewModel.postsArray[indexPath.row].link
+    
+    feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+
+//    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
+//                               animations: {
+//                                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//                                
+//    },
+//                               completion: { finished in
+//                                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: .curveEaseInOut,
+//                                                           animations: {
+//                                                            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+//                                },
+//                                                           completion: nil
+//                                )
+//                                
+//    }
+//    )
+
     return cell
   }
   
+
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //    let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
@@ -44,8 +64,11 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 //    } else {
 //      print("no photo")
 //    }
-    let link = postViewModel.postsArray[indexPath.row].link
-    self.showArticle(of: link)
+//    let link = postViewModel.postsArray[indexPath.row].link
+//    self.showArticle(of: link)
+//    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+    collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
+
   }
 }
 
@@ -56,6 +79,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
   let fullImageView = UIImageView()
+  var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
+
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
   
@@ -79,6 +104,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     postViewModel.delegate = self
     postViewModel.postsArray = posts
     
+    feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
+    feedbackGenerator?.prepare()
+    
+    
     gridLayout = GridLayout()
     gridCollectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: gridLayout)
     gridCollectionView.backgroundColor = UIColor.clear
@@ -86,10 +115,11 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     gridCollectionView.showsHorizontalScrollIndicator = false
     self.view.addSubview(gridCollectionView)
     navigationController?.setNavigationBarHidden(true, animated: false)
-
     gridCollectionView!.register(ImageCell.self, forCellWithReuseIdentifier: "cell")
     gridCollectionView.dataSource = self
     gridCollectionView.delegate = self
+    gridCollectionView.allowsSelection = true
+    gridCollectionView.allowsMultipleSelection = false
     
     fullImageView.contentMode = .scaleAspectFit
     fullImageView.backgroundColor = UIColor.lightGray
@@ -112,7 +142,16 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   }
 
   func valueChanged(slider:BWCircularSlider){
-    // Do something with the value...
+    //depending on the angle value reveal certain card
+    let row = getSection(int: slider.angle)
+    //if cell is different call below to display a new cell. maybe call an animate out method first?
+    let indexPath = IndexPath(row: row, section: 0)
+    gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+
+    //deselecet
+//    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+
     print("Value changed \(slider.angle)")
   }
   
@@ -175,6 +214,30 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     navigationController?.pushViewController(webViewController, animated: true)
   }
 
+  func getSection(int: Int) -> Int {
+    var returnInt = 0
+    
+    if int <= 71 {
+        returnInt = 0
+    } else if int >= 72 && int <= 77  {
+      returnInt = 1
+    } else if int >= 78 && int <= 83 {
+      returnInt = 2
+    } else if int >= 84 && int <= 89 {
+      returnInt = 3
+    } else if int >= 90 && int <= 95 {
+      returnInt = 4
+    } else if int >= 96 && int <= 101 {
+      returnInt = 5
+    } else if int >= 102 {
+      returnInt = 6
+    } else {
+      
+    }
+    
+    return returnInt
+    
+  }
 
   
   

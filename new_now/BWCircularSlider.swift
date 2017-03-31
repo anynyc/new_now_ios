@@ -12,7 +12,7 @@ struct Config {
   
   static let TB_SLIDER_SIZE:CGFloat = UIScreen.main.bounds.size.width
   static let TB_SAFEAREA_PADDING:CGFloat = 60.0
-  static let TB_LINE_WIDTH:CGFloat = 10.0
+  static let TB_LINE_WIDTH:CGFloat = 20.0
   static let TB_FONTSIZE:CGFloat = 40.0
   
 }
@@ -57,7 +57,7 @@ class BWCircularSlider: UIControl {
     
     self.backgroundColor = UIColor.clear
     self.isOpaque = true
-    
+
     //Define the circle radius taking into account the safe area
     //        radius = self.frame.size.width/2 - Config.TB_SAFEAREA_PADDING
     radius = 400.0
@@ -127,7 +127,7 @@ class BWCircularSlider: UIControl {
 //    CGContextAddArc(ctx!, CGFloat(self.frame.size.width / 2.0), CGFloat(400.0), radius, 0, CGFloat(M_PI * 2), 0)
 //    UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).set()
 //    
-    ctx!.setStrokeColor(UIColor.blue.cgColor)
+    ctx!.setStrokeColor(UIColor.lightGray.cgColor)
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
     let center = CGPoint(x: self.frame.size.width / 2.0, y: CGFloat(900.0))
@@ -217,15 +217,16 @@ class BWCircularSlider: UIControl {
     ctx.saveGState();
     
     //I Love shadows
-    ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 3, color: UIColor.black.cgColor);
+//    ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 3, color: UIColor.black.cgColor);
     
     //Get the handle position
     var handleCenter = pointFromAngle(angleInt: angle)
     
     //Draw It!
     UIColor.blue.set();
+    ctx.setLineWidth(2.0)
+
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
-    
     ctx.restoreGState();
   }
   
