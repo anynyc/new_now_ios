@@ -65,7 +65,7 @@ class BWCircularSlider: UIControl {
     let font = UIFont(name: "Avenir", size: Config.TB_FONTSIZE)
     //Calculate font size needed to display 3 numbers
     let str = "000" as NSString
-    let fontSize:CGSize = str.size(attributes: [NSFontAttributeName:font!])
+//    let fontSize:CGSize = str.size(attributes: [NSFontAttributeName:font!])
     
     //Using a TextField area we can easily modify the control to get user input from this field
     //        let textFieldRect = CGRectMake(
@@ -93,11 +93,6 @@ class BWCircularSlider: UIControl {
     return true
   }
   
-  //    override func beginTrackingWith(touch: UITouch, withEvent event: UIEvent) -> Bool {
-  //        super.beginTrackingWithTouch(touch, withEvent: event)
-  //
-  //        return true
-  //    }
   
   
   override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -116,10 +111,7 @@ class BWCircularSlider: UIControl {
   override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
     super.endTracking(touch, with: event)
   }
-  //    override func endTrackingWith(touch: UITouch?, withEvent event: UIEvent?) {
-  //        super.endTrackingWithTouch(touch, withEvent: event)
-  //    }
-  //
+
   
   
   
@@ -246,14 +238,12 @@ class BWCircularSlider: UIControl {
     //Get the center
     let centerPoint:CGPoint  = CGPoint(x: self.frame.size.width/2, y: self.frame.size.width/2);
     //Calculate the direction from a center point and a arbitrary position.
-    let currentAngle:Double = AngleFromNorth(p1: centerPoint, p2: lastPoint, flipped: true);
+    let currentAngle:Double = AngleFromNorth(p1: centerPoint, p2: lastPoint, flipped: false);
     let angleInt = Int(floor(currentAngle))
     
     //Store the new angle
     angle = Int(180 - angleInt)
-    
-    //Update the textfield
-    //        textField!.text = "\(angle)"
+
     
     //Redraw
     setNeedsDisplay()
@@ -268,7 +258,7 @@ class BWCircularSlider: UIControl {
     //The point position on the circumference
     var result:CGPoint = CGPoint.zero
     let y = round(Double(radius) * sin(DegreesToRadians(value: Double(-angleInt)))) + Double(centerPoint.y)
-    let x = round(Double(radius) * cos(DegreesToRadians(value: Double(-angleInt)))) + Double(centerPoint.x)
+    let x = round(Double(radius) * -(cos(DegreesToRadians(value: Double(-angleInt))))) + Double(centerPoint.x)
     result.y = CGFloat(y)
     result.x = CGFloat(x)
     
@@ -286,7 +276,7 @@ class BWCircularSlider: UIControl {
     v.y /= vmag;
     let radians = Double(atan2(v.y,v.x))
     result = RadiansToDegrees(value: radians)
-    return (result >= 0  ? result : result + 180);
+    return (result >= 0  ? result : result + 360);
   }
   
 }
