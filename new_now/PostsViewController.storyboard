@@ -27,8 +27,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
                                 <color key="backgroundColor" red="0.2196078431372549" green="0.25882352941176467" blue="0.30588235294117649" alpha="0.34588788006756754" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="AnyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
-                                <rect key="frame" x="17" y="22" width="68" height="43"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
+                                <rect key="frame" x="16" y="22" width="68" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="TNM-8B-WJr"/>
                                     <constraint firstAttribute="width" constant="68" id="xZS-XV-WpR"/>
@@ -46,14 +46,23 @@
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
+                                <rect key="frame" x="260.5" y="603.5" width="77" height="30"/>
+                                <state key="normal" title="READ THIS"/>
+                                <connections>
+                                    <action selector="readThisBtnPressed:" destination="BQc-PW-zHq" eventType="touchUpInside" id="lc7-Xx-mUM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="Dut-1x-kRF" secondAttribute="bottom" multiplier="1.1" id="3gw-L5-03h"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="wQG-AY-ZWV" secondAttribute="top" id="FS3-vI-ps0"/>
+                            <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="SYU-ic-oMA"/>
+                            <constraint firstItem="ygK-jw-gjf" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.9" id="UJv-U8-Mee"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="top" secondItem="Dut-1x-kRF" secondAttribute="bottom" multiplier="2" id="aru-nP-ia9"/>
@@ -64,6 +73,7 @@
                     <connections>
                         <outlet property="latLabelText" destination="NCg-Ee-H4k" id="GDm-ha-nFX"/>
                         <outlet property="longLabelText" destination="Moz-nE-niF" id="gHx-6k-bia"/>
+                        <outlet property="readThisButton" destination="ygK-jw-gjf" id="FcX-ht-BHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za1-Aj-z40" userLabel="First Responder" sceneMemberID="firstResponder"/>

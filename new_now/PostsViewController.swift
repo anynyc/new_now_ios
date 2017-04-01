@@ -51,22 +51,14 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 //    }
 //    )
 
+    
     return cell
   }
   
 
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
-    
-//    if let link = cell.imageView.image {
-//      self.showFullImage(of: image)
-//    } else {
-//      print("no photo")
-//    }
-//    let link = postViewModel.postsArray[indexPath.row].link
-//    self.showArticle(of: link)
-//    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+
     collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
 
   }
@@ -78,9 +70,11 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
+  var activeCell = 0
   let fullImageView = UIImageView()
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
 
+  
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
   
@@ -91,6 +85,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var postIndex = 0
   let contentManager = PostContentManager()
   
+  @IBOutlet weak var readThisButton: UIButton!
   
   static func storyboardInstance() -> PostsViewController? {
     let storyboard = UIStoryboard(name:
@@ -106,6 +101,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
     feedbackGenerator?.prepare()
+
     
     
     gridLayout = GridLayout()
@@ -137,6 +133,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     // Attach an Action and a Target to the slider
     slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
     self.view.addSubview(slider)
+    
+    setupBottomButtons()
 
     
   }
@@ -144,13 +142,19 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   func valueChanged(slider:BWCircularSlider){
     //depending on the angle value reveal certain card
     let row = getSection(int: slider.angle)
+    if row != activeCell {
+      activeCell = row
+      
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+    }
     //if cell is different call below to display a new cell. maybe call an animate out method first?
-    let indexPath = IndexPath(row: row, section: 0)
-    gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+    
 
-    //deselecet
-//    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
-    gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
 
     print("Value changed \(slider.angle)")
   }
@@ -185,6 +189,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     }
     
   }
+
   
   
   func postsDidLoad() {
@@ -239,6 +244,38 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
   }
 
+  @IBAction func readThisBtnPressed(_ sender: Any) {
+    let articleUrl = postViewModel.postsArray[activeCell].link
+    
+    showArticle(of: articleUrl)
+    
+  }
+  func setupBottomButtons() {
+    self.view.bringSubview(toFront: readThisButton)
+    //REPURPOSE THE BELOW FOR POSITION COUNTER ON LEFT SIDE OF SCREEN
+    
+    /*
+    readThisButton =  UIButton()
+    readThisButton.titleLabel?.text = "READ THIS"
+    readThisButton.titleLabel?.textColor = UIColor.blue
+    readThisButton.titleLabel
+    
+    
+    self.view.addSubview(readThisButton)
+    var readThisButtonFrame = readThisButton.frame
+    readThisButtonFrame.size.height = 200.0
+    readThisButtonFrame.size.width = 300.0
+    readThisButtonFrame.origin.x = self.view.frame.width / 2
+    readThisButtonFrame.origin.y = self.view.frame.height / 2
+    readThisButton.frame = readThisButtonFrame
+    */
+    
+    //constraints
+//    let bottomConstraint = NSLayoutConstraint(item: readThisButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+//    let rightConstraint = NSLayoutConstraint(item: readThisButton, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
+//    self.view.addConstraints([bottomConstraint, rightConstraint])
+//    
+  }
   
   
 }
