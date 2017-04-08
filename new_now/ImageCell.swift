@@ -46,6 +46,7 @@ class ImageCell: UICollectionViewCell {
     bodyLabel = UILabel()
     bodyLabel.numberOfLines = 3
     bodyLabel.font = bodyLabel.font.withSize(36)
+    bodyLabel.font = UIFont(name: "Miller-Display", size: 36)
     
     contentView.addSubview(cellContainer)
     cellContainer.addSubview(imageView)
@@ -81,7 +82,7 @@ class ImageCell: UICollectionViewCell {
     frame.size.height = 450.0
     frame.size.width = 286.0
     frame.origin.x = 100.0
-    frame.origin.y = 90.0
+    frame.origin.y = 109.0
     imageView.frame = frame
     
     //same frame as image view
@@ -101,7 +102,7 @@ class ImageCell: UICollectionViewCell {
     
     
     var topicFrame = topicLabel.frame
-    topicFrame.size.height = 100
+    topicFrame.size.height = 200
     topicFrame.size.width = 20
     topicFrame.origin.x = 45.0
     topicFrame.origin.y = 175.0

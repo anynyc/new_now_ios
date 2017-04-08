@@ -27,6 +27,8 @@
 		27C4819C1E7AD38D00E6022B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C4819B1E7AD38D00E6022B /* Assets.xcassets */; };
 		27C4819F1E7AD38D00E6022B /* LaunchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C4819D1E7AD38D00E6022B /* LaunchViewController.storyboard */; };
 		27DED27B1E8D85470084C92C /* BWCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DED27A1E8D85470084C92C /* BWCircularSlider.swift */; };
+		27DED2801E9426160084C92C /* Miller-Display.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27DED27E1E9426150084C92C /* Miller-Display.otf */; };
+		27DED2811E9426160084C92C /* Miller-DisplayItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27DED27F1E9426150084C92C /* Miller-DisplayItalic.otf */; };
 		27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */; };
 		9138C0058D13A2DE3F6363EE /* Pods_new_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD42200BDAA4107728A10BE /* Pods_new_now.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 		27C4819E1E7AD38D00E6022B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchViewController.storyboard; sourceTree = "<group>"; };
 		27C481A01E7AD38D00E6022B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DED27A1E8D85470084C92C /* BWCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWCircularSlider.swift; sourceTree = "<group>"; };
+		27DED27E1E9426150084C92C /* Miller-Display.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Miller-Display.otf"; path = "../../Downloads/Miller-Display.otf"; sourceTree = "<group>"; };
+		27DED27F1E9426150084C92C /* Miller-DisplayItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Miller-DisplayItalic.otf"; path = "../../Downloads/Miller-DisplayItalic.otf"; sourceTree = "<group>"; };
 		27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingInterstitialViewController.storyboard; sourceTree = "<group>"; };
 		4CD42200BDAA4107728A10BE /* Pods_new_now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_new_now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67187359C376984006590177 /* Pods-new_now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new_now.release.xcconfig"; path = "Pods/Target Support Files/Pods-new_now/Pods-new_now.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 		27C481881E7AD38C00E6022B = {
 			isa = PBXGroup;
 			children = (
+				27DED27C1E9421E90084C92C /* Resources */,
 				27C481931E7AD38D00E6022B /* new_now */,
 				27C481921E7AD38D00E6022B /* Products */,
 				BDA3FB8289D3FECC069995C3 /* Pods */,
@@ -189,6 +194,15 @@
 				27DED27A1E8D85470084C92C /* BWCircularSlider.swift */,
 			);
 			name = Slider;
+			sourceTree = "<group>";
+		};
+		27DED27C1E9421E90084C92C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27DED27E1E9426150084C92C /* Miller-Display.otf */,
+				27DED27F1E9426150084C92C /* Miller-DisplayItalic.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BDA3FB8289D3FECC069995C3 /* Pods */ = {
@@ -274,8 +288,10 @@
 				279BED941E7AF32A00E52B3A /* WebViewController.storyboard in Resources */,
 				27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */,
 				279BED8E1E7AF01C00E52B3A /* PostsViewController.storyboard in Resources */,
+				27DED2811E9426160084C92C /* Miller-DisplayItalic.otf in Resources */,
 				27C4819F1E7AD38D00E6022B /* LaunchViewController.storyboard in Resources */,
 				27C4819C1E7AD38D00E6022B /* Assets.xcassets in Resources */,
+				27DED2801E9426160084C92C /* Miller-Display.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

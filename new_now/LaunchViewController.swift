@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
+
 
 class LaunchViewController: BaseViewController, PostViewModelDelegate {
   
   let postViewModel = PostViewModel()
   
+  @IBOutlet weak var loaderView: NVActivityIndicatorView!
   
   static func storyboardInstance() -> LaunchViewController? {
     
@@ -28,51 +31,76 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   }
   
   override func viewDidAppear(_ animated: Bool) {
+    
   }
   
   //before loading hides Nav
   //checks if credentials are cached, if they are go to home page
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    view.alpha = 0
     navigationController?.setNavigationBarHidden(true, animated: false)
+    loaderView.type = .ballClipRotate
+    loaderView.color = UIColor.blue
+    loaderView.startAnimating()
     presentInterstitialLoadingIndicator()
   }
   
-  
+  override func viewDidLayoutSubviews() {
+    
+  }
   
   func presentInterstitialLoadingIndicator() {
-    let loadingStoryboard = UIStoryboard.init(name: "LoadingInterstitialViewController", bundle: nil)
-    let loadingViewController = loadingStoryboard.instantiateViewController(withIdentifier: "LoadingInterstitialVC")
-    loadingViewController.modalPresentationStyle = .overCurrentContext
+//    let loader = NVActivityIndicatorView(frame: self.loaderView.frame, type: .ballClipRotate, color: UIColor.black)
+//    loaderView.addSubview(loader)
+//    loader.startAnimating()
+
+//    let loadingStoryboard = UIStoryboard.init(name: "LoadingInterstitialViewController", bundle: nil)
+//    let loadingViewController = loadingStoryboard.instantiateViewController(withIdentifier: "LoadingInterstitialVC")
+//    loadingViewController.modalPresentationStyle = .overCurrentContext
 //    guard Reachability.connectedToNetwork() else {
 //      navigateToHomeScreenIfLoggedIn()
 //      return
 //    }
-    present(loadingViewController, animated: false) { [weak self] _ in
-      self?.postViewModel.loadPosts()
-    }
+//
+//    let activityIndicatorView = NVActivityIndicatorView(frame: loadingViewController.view.frame, type: NVActivityIndicatorType(rawValue: 0)!)
+//    loadingViewController.view.addSubview(activityIndicatorView)
+//
+//    present(loadingViewController, animated: false) { [weak self] _ in
+      postViewModel.loadPosts()
+//    }
   }
   
   
   func postsReceived() {
-    UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {
-      if let views = self.presentedViewController?.view.subviews {
-        for view in views {
-          view.alpha = 0
-        }
-      }
-    }, completion: { (true) in
-      self.perform(#selector(self.navigateToMainScreen), with: self, afterDelay: 1.0)
+//    moveLoader(view: loaderView)
+    
+    
+    UIView.animate(withDuration: 5, delay: 0.5, options: UIViewAnimationOptions.curveLinear, animations: {
+      self.view.alpha = 0
+      self.view.center.y = self.view.center.y + 225
+      self.view.center.x = self.view.center.x - 175
+      self.loaderView.frame.size.width = self.loaderView.frame.size.width / 2
+      self.loaderView.frame.size.height = self.loaderView.frame.size.height / 2
+    }, completion: {(true) in
+      self.perform(#selector(self.navigateToMainScreen), with: self, afterDelay: 0.0)
     })
+//    UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {
+//      if let views = self.presentedViewController?.view.subviews {
+//        for view in views {
+//          view.alpha = 0
+//        }
+//      }
+//    }, completion: { (true) in
+//      self.perform(#selector(self.navigateToMainScreen), with: self, afterDelay: 1.0)
+//    })
   }
   
   func navigateToMainScreen() {
-    dismiss(animated: false, completion: nil)
-    let transition = CATransition()
-    transition.duration = 0.5
-    transition.type = kCATransitionFade
-    navigationController?.view.layer.add(transition, forKey: nil)
+//    dismiss(animated: false, completion: nil)
+//    let transition = CATransition()
+//    transition.duration = 0.2
+//    transition.type = kCATransitionFade
+//    navigationController?.view.layer.add(transition, forKey: nil)
     let homeScreenStoryboard = StoryboardInstanceConstants.postsScreen
     let homeScreenViewController = homeScreenStoryboard.instantiateViewController(withIdentifier: VCNameConstants.posts)
 
@@ -103,6 +131,21 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
 
   }
   
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
+  
+  
+  func moveLoader(view: UIView){
+    let toPoint:CGPoint = CGPoint(x: 0.0, y: -10.0)
+    let fromPoint:CGPoint = CGPoint.zero
+    let movement = CABasicAnimation(keyPath: "movement")
+    movement.isAdditive = true
+    movement.fromValue = NSValue(cgPoint: fromPoint)
+    movement.toValue = NSValue(cgPoint: toPoint)
+    movement.duration = 0.3
+    view.layer.add(movement, forKey: "move")
+  }
 
   
 }

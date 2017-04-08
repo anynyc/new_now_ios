@@ -62,9 +62,9 @@ class BWCircularSlider: UIControl {
     //        radius = self.frame.size.width/2 - Config.TB_SAFEAREA_PADDING
     radius = 400.0
     //Define the Font
-    let font = UIFont(name: "Avenir", size: Config.TB_FONTSIZE)
+//    let font = UIFont(name: "Avenir", size: Config.TB_FONTSIZE)
     //Calculate font size needed to display 3 numbers
-    let str = "000" as NSString
+//    let str = "000" as NSString
 //    let fontSize:CGSize = str.size(attributes: [NSFontAttributeName:font!])
     
     //Using a TextField area we can easily modify the control to get user input from this field
@@ -220,7 +220,7 @@ class BWCircularSlider: UIControl {
 //    ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 3, color: UIColor.black.cgColor);
     
     //Get the handle position
-    var handleCenter = pointFromAngle(angleInt: angle)
+    let handleCenter = pointFromAngle(angleInt: angle)
     
     //Draw It!
     UIColor.blue.set();

@@ -277,7 +277,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 //    
   }
   
-  
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
 }
 
 
