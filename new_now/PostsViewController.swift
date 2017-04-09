@@ -74,6 +74,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   let fullImageView = UIImageView()
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
 
+  @IBOutlet weak var counterLabel: UILabel!
   
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
@@ -144,7 +145,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let row = getSection(int: slider.angle)
     if row != activeCell {
       activeCell = row
-      
+      counterLabel.text = "0\(row + 1)"
       let indexPath = IndexPath(row: row, section: 0)
       gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
       
