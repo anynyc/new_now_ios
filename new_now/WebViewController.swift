@@ -9,18 +9,24 @@
 import Foundation
 import UIKit
 import WebKit
+import NVActivityIndicatorView
 
 
-class WebViewController: BaseViewController, WKUIDelegate {
+
+class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
   
   var navBar: UINavigationBar = UINavigationBar()
   var urlString = ""
   var webView: WKWebView!
-
+  
+  @IBOutlet weak var loaderView: NVActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    self.setNavBarToTheView()
+    view.bringSubview(toFront: loaderView)
+    loaderView.type = .ballClipRotate
+    loaderView.color = UIColor.blue
+    loaderView.startAnimating()
     let webConfiguration = WKWebViewConfiguration()
 
     navigationController?.setNavigationBarHidden(false, animated: false)
@@ -39,10 +45,12 @@ class WebViewController: BaseViewController, WKUIDelegate {
     navigationItem.titleView = imageView
 //    self.navigationItem.rightBarButtonItem = rightButtonItem
     webView = WKWebView(frame: UIScreen.main.bounds, configuration: webConfiguration)
+    webView.navigationDelegate = self
 
 //    webView = WKWebView(frame: UIScreen.main.bounds)
     webView.uiDelegate = self
     view.addSubview(webView)
+    webView.alpha = 0
     
     
     
@@ -58,11 +66,9 @@ class WebViewController: BaseViewController, WKUIDelegate {
   
   
   
-  
-  
 
   
-
+  
   
   func setNavBarToTheView() {
     self.navBar.frame = CGRect(x: 0, y: 0, width: 320, height: 10)  // Here you can set you Width and Height for your navBar
@@ -89,6 +95,27 @@ class WebViewController: BaseViewController, WKUIDelegate {
   func leftButtonAction(sender: UIBarButtonItem) {
     
     _ = self.navigationController?.popViewController(animated: false)
+  }
+  
+  func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+    
+  }
+  
+  func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    
+  }
+  
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    loaderView.stopAnimating()
+    UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+      self.webView.alpha = 1
+
+      
+    }, completion: {(true) in
+    })
+
+
+    
   }
 
 }

@@ -75,12 +75,12 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
 //    moveLoader(view: loaderView)
     
     
-    UIView.animate(withDuration: 5, delay: 0.5, options: UIViewAnimationOptions.curveLinear, animations: {
+    UIView.animate(withDuration: 3, delay: 0.5, options: UIViewAnimationOptions.curveLinear, animations: {
       self.view.alpha = 0
       self.view.center.y = self.view.center.y + 225
       self.view.center.x = self.view.center.x - 175
-      self.loaderView.frame.size.width = self.loaderView.frame.size.width / 2
-      self.loaderView.frame.size.height = self.loaderView.frame.size.height / 2
+      self.loaderView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+
     }, completion: {(true) in
       self.perform(#selector(self.navigateToMainScreen), with: self, afterDelay: 0.0)
     })

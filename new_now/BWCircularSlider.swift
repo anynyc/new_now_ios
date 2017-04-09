@@ -39,7 +39,7 @@ class BWCircularSlider: UIControl {
   
   //    var textField:UITextField?
   var radius:CGFloat = 0
-  var angle:Int = 360
+  var angle:Int = 67
   var startColor = UIColor.blue
   var endColor = UIColor.purple
   

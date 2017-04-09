@@ -20,8 +20,31 @@
                     <view key="view" contentMode="scaleToFill" id="pPo-zz-sqv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4C-rr-tSs" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="162" y="308" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="acn-gT-1r2"/>
+                                    <constraint firstAttribute="height" constant="50" id="gJ0-G1-2lm"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballClipRotate"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X4C-rr-tSs" firstAttribute="centerY" secondItem="pPo-zz-sqv" secondAttribute="centerY" id="2UV-OO-gTj"/>
+                            <constraint firstItem="X4C-rr-tSs" firstAttribute="centerX" secondItem="pPo-zz-sqv" secondAttribute="centerX" id="B7Z-Wr-VhK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loaderView" destination="X4C-rr-tSs" id="tfy-fr-Ehk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53s-T4-8x1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
