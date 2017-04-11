@@ -229,7 +229,7 @@ class BWCircularSlider: UIControl {
     
     //Draw It!
     UIColor.blue.set();
-    ctx.setLineWidth(2.0)
+    ctx.setLineWidth(3.0)
 
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
     ctx.restoreGState();

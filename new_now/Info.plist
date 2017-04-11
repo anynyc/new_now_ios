@@ -39,5 +39,7 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App Displays lat and long on home screen</string>
 </dict>
 </plist>

@@ -96,6 +96,28 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let prefs = UserDefaults.standard
+
+    if let latitude = prefs.string(forKey: "latitude") {
+      if latitude.characters.first! != "-" {
+        let first5 = String(latitude.characters.prefix(5))
+        latLabelText.text = first5
+      } else {
+        let first6 = String(latitude.characters.prefix(6))
+        latLabelText.text = first6
+      }
+
+    }
+    if let longitude = prefs.string(forKey: "longitude") {
+      if longitude.characters.first! != "-" {
+        let first5 = String(longitude.characters.prefix(5))
+        longLabelText.text = first5
+      } else {
+        let first6 = String(longitude.characters.prefix(6))
+        longLabelText.text = first6
+      }
+    }
+    
     let posts = contentManager.fetchCachedPosts(ItemCacheType.postHomePage)
     postViewModel.delegate = self
     postViewModel.postsArray = posts

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 extension UIApplication {
   var statusBarView: UIView? {
@@ -15,15 +17,20 @@ extension UIApplication {
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
   var window: UIWindow?
+  var locationManager: CLLocationManager!
+  var locationFixAchieved : Bool = false
+  var locationStatus : NSString = "Not Started"
+  var seenError : Bool = false
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     createNavController()
     UIApplication.shared.statusBarView?.backgroundColor = .white
+    initLocationManager()
 
     return true
   }
@@ -88,6 +95,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
+  //LOCATION MANAGER STUFF
+  
+  // Location Manager helper stuff
+  func initLocationManager() {
+    let prefs = UserDefaults.standard
+    prefs.set("", forKey: "latitude")
+    prefs.set("", forKey: "longitude")
+    seenError = false
+    locationFixAchieved = false
+    locationManager = CLLocationManager()
+    locationManager.delegate = self
+    CLLocationManager.locationServicesEnabled()
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.requestWhenInUseAuthorization()
+    locationManager.startUpdatingLocation()
+    
+  }
+  
+  // Location Manager Delegate stuff
+  
+  
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    locationManager.stopUpdatingLocation()
+    if (seenError == false) {
+      seenError = true
+      print(error)
+    }
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if (locationFixAchieved == false) {
+      locationFixAchieved = true
+      let locationArray = locations as NSArray
+      let locationObj = locationArray.lastObject as! CLLocation
+      let coord = locationObj.coordinate
+      let prefs = UserDefaults.standard
+      
+      prefs.set(coord.latitude, forKey: "latitude")
+      prefs.set(coord.longitude, forKey: "longitude")
+      locationManager.stopUpdatingLocation()
+      
+    } else {
+      locationManager.stopUpdatingLocation()
+      locationManager = nil
+    }
+  }
+  
+  
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    var shouldIAllow = false
+    switch status {
+    case CLAuthorizationStatus.restricted:
+      locationStatus = "Restricted Access to location"
+    case CLAuthorizationStatus.denied:
+      locationStatus = "User denied access to location"
+      locationManager.stopUpdatingLocation()
+    case CLAuthorizationStatus.notDetermined:
+      locationStatus = "Status not determined"
+    default:
+      locationStatus = "Allowed to location Access"
+      shouldIAllow = true
+    }
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LabelHasbeenUpdated"), object: nil)
+    if (shouldIAllow == true) {
+      NSLog("Location to Allowed")
+      // Start location services
+      locationManager.startUpdatingLocation()
+    } else {
+      NSLog("Denied access: \(locationStatus)")
+    }
+  }
 
 
 }

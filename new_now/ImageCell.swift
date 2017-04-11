@@ -89,10 +89,12 @@ class ImageCell: UICollectionViewCell {
     grayOverlay.frame = frame
     
     let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.25).cgColor
+    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
     let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+    let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.99).cgColor
     gl = CAGradientLayer()
-    gl.colors = [colorTop, colorBottom]
-    gl.locations = [0.0, 1.0]
+    gl.colors = [colorTop, colorMiddle, colorBottom, lineBottom]
+    gl.locations = [0.0, 0.8, 0.99, 0.99999999]
 //    gl.frame = frame
 //    let gl = CALayer()
 //    gl.backgroundColor = UIColor.green.cgColor
