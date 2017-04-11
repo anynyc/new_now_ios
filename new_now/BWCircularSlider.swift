@@ -132,6 +132,11 @@ class BWCircularSlider: UIControl {
     ctx!.setLineCap(CGLineCap.butt)
     let center = CGPoint(x: self.frame.size.width / 2.0, y: CGFloat(900.0))
 //    ctx.setFillColor(UIColor.clear.cgColor)
+    
+    
+    let dashArray:[CGFloat] = [37,6]
+    ctx!.setLineDash(phase: 3, lengths: dashArray)
+    
     ctx!.addArc(center: center,
                    radius: radius,
                    startAngle: 0,

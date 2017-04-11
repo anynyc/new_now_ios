@@ -77,8 +77,8 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     
     UIView.animate(withDuration: 3, delay: 0.5, options: UIViewAnimationOptions.curveLinear, animations: {
       self.view.alpha = 0
-      self.view.center.y = self.view.center.y + 225
-      self.view.center.x = self.view.center.x - 175
+      self.view.center.y = self.view.center.y + 195
+      self.view.center.x = self.view.center.x - 155
       self.loaderView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
 
     }, completion: {(true) in
