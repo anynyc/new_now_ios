@@ -33,6 +33,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     cell.bodyLabel.text = bodyText
     cell.articleUrl = postViewModel.postsArray[indexPath.row].link
     
+    
     feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
 
 //    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
@@ -60,6 +61,8 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
+    self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
+
 
   }
 }

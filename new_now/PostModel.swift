@@ -18,6 +18,7 @@ struct PostConstants {
   static let imageUrl = "image"
   static let image = "image_url"
   static let category = "category"
+  static let linkText = "link_text"
 //  static let timesShared = "times_shared"
 
   
@@ -34,6 +35,7 @@ class PostModel: ContentItemModel, NSCoding {
   var imageUrl: URL?
   var image: UIImage?
   var category: String
+  var linkText: String
 //  var timesShared: Int
   
   
@@ -85,6 +87,12 @@ class PostModel: ContentItemModel, NSCoding {
     
     category = categoryText
     
+    guard let linkDescription = dictionary[PostConstants.linkText] as? String else {
+      return nil
+    }
+    
+    linkText = linkDescription
+    
     
     super.init(dictionary: dictionary)
   }
@@ -97,6 +105,7 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(headline, forKey: PostConstants.headline)
     aCoder.encode(read, forKey: PostConstants.read)
 //    aCoder.encode(timesShared, forKey: PostConstants.timesShared)
+    aCoder.encode(linkText, forKey: PostConstants.linkText)
     aCoder.encode(category, forKey: PostConstants.category)
     aCoder.encode(imageUrl, forKey: PostConstants.imageUrl)
     aCoder.encode(image, forKey: PostConstants.image)
@@ -151,6 +160,15 @@ class PostModel: ContentItemModel, NSCoding {
     }
     
     category = categoryText
+    
+    guard let linkDescription = aDecoder.decodeObject(forKey: PostConstants.linkText) as? String else {
+      return nil
+    }
+    
+    linkText = linkDescription
+    
+    
+    
     
     super.init(coder: aDecoder)
   }
