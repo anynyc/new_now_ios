@@ -38,16 +38,18 @@ class ImageCell: UICollectionViewCell {
     topicLabel = UILabel()
 //    topicLabel.numberOfLines = 0
 //    topicLabel.lineBreakMode = .byCharWrapping
-    topicLabel.font = topicLabel.font.withSize(12)
+    topicLabel.font = UIFont(name: "Avenir-Heavy", size: 9)
     topicLabel.textColor = UIColor.lightGray
     topicLabel.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
+    topicLabel.textAlignment = .right
 //    contentView.addSubview(imageView)
 
     bodyLabel = UILabel()
     bodyLabel.numberOfLines = 3
     bodyLabel.font = bodyLabel.font.withSize(36)
     bodyLabel.font = UIFont(name: "Miller-Display", size: 36)
-    
+    bodyLabel.textColor = UIColor(red: 25.0 / 255, green: 26.0 / 255, blue: 36.0 / 255, alpha: 1.0)
+
     contentView.addSubview(cellContainer)
     cellContainer.addSubview(imageView)
     cellContainer.addSubview(grayOverlay)
@@ -72,9 +74,10 @@ class ImageCell: UICollectionViewCell {
     
     var bodyFrame = bodyLabel.frame
     bodyFrame.size.height = self.frame.size.height / 2
-    bodyFrame.size.width = self.frame.size.width / 1.5
+    bodyFrame.size.width = 336.0
+//    bodyLabel.backgroundColor = UIColor.red
     bodyFrame.origin.x = 60.0
-    bodyFrame.origin.y = 216.0
+    bodyFrame.origin.y = 230.0
     bodyLabel.frame = bodyFrame
     
     //making the frame for imageView.  subview of container.  positioned off centered
@@ -84,6 +87,11 @@ class ImageCell: UICollectionViewCell {
     frame.origin.x = 100.0
     frame.origin.y = 109.0
     imageView.frame = frame
+    
+    imageView.layer.shadowColor = UIColor.black.cgColor
+    imageView.layer.shadowOpacity = 0.1
+    imageView.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
+    imageView.layer.shadowRadius = 20
     
     //same frame as image view
     grayOverlay.frame = frame
@@ -106,8 +114,8 @@ class ImageCell: UICollectionViewCell {
     var topicFrame = topicLabel.frame
     topicFrame.size.height = 200
     topicFrame.size.width = 20
-    topicFrame.origin.x = 45.0
-    topicFrame.origin.y = 175.0
+    topicFrame.origin.x = 60.0
+    topicFrame.origin.y = 130.0
     topicLabel.frame = topicFrame
 
   }

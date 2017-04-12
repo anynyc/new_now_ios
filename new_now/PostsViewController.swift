@@ -99,6 +99,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    readThisButton.titleLabel?.adjustsFontSizeToFitWidth = true
     let prefs = UserDefaults.standard
 
     if let latitude = prefs.string(forKey: "latitude") {
