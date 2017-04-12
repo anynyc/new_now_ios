@@ -17,6 +17,7 @@ class ImageCell: UICollectionViewCell {
   var bodyLabel: UILabel!
   var gl: CAGradientLayer!
   var articleUrl: String!
+  var bodyLabelContainer: UIView!
 
   
   override init(frame: CGRect) {
@@ -41,20 +42,24 @@ class ImageCell: UICollectionViewCell {
     topicLabel.font = UIFont(name: "Avenir-Heavy", size: 9)
     topicLabel.textColor = UIColor.lightGray
     topicLabel.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
-    topicLabel.textAlignment = .right
+    topicLabel.textAlignment = .left
 //    contentView.addSubview(imageView)
 
     bodyLabel = UILabel()
-    bodyLabel.numberOfLines = 3
+    bodyLabel.numberOfLines = 5
     bodyLabel.font = bodyLabel.font.withSize(36)
     bodyLabel.font = UIFont(name: "Miller-Display", size: 36)
     bodyLabel.textColor = UIColor(red: 25.0 / 255, green: 26.0 / 255, blue: 36.0 / 255, alpha: 1.0)
-
+    
+    //view holding the body label.  will constrain bodylabel to bottom of this view.
+    bodyLabelContainer = UIView()
+    
     contentView.addSubview(cellContainer)
     cellContainer.addSubview(imageView)
     cellContainer.addSubview(grayOverlay)
     cellContainer.addSubview(topicLabel)
-    cellContainer.addSubview(bodyLabel)
+    cellContainer.addSubview(bodyLabelContainer)
+    bodyLabelContainer.addSubview(bodyLabel)
 
     
     
@@ -72,13 +77,30 @@ class ImageCell: UICollectionViewCell {
     containerFrame.origin.y = 0.0
     cellContainer.frame = containerFrame
     
+    
+    
+    var bodyLabelContainerFrame = bodyLabelContainer.frame
+    bodyLabelContainerFrame.size.height = self.frame.size.height / 2
+    bodyLabelContainerFrame.size.width = 315.0
+    bodyLabelContainerFrame.origin.x = 60.0
+    bodyLabelContainerFrame.origin.y = 230.0
+    bodyLabelContainer.frame = bodyLabelContainerFrame
+    
+    //use constraints instead.  leading trailing and bottom
     var bodyFrame = bodyLabel.frame
     bodyFrame.size.height = self.frame.size.height / 2
-    bodyFrame.size.width = 336.0
+    bodyFrame.size.width = 315.0
 //    bodyLabel.backgroundColor = UIColor.red
-    bodyFrame.origin.x = 60.0
-    bodyFrame.origin.y = 230.0
+//    bodyFrame.origin.x = 60.0
+//    bodyFrame.origin.y = 230.0
     bodyLabel.frame = bodyFrame
+    
+    let bottomConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .bottom, relatedBy: .equal, toItem: bodyLabelContainer, attribute: .bottom, multiplier: 1, constant: 0)
+//    let widthConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.width)
+//    let heightConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.height)
+
+    self.contentView.addConstraints([bottomConstraint])
+    
     
     //making the frame for imageView.  subview of container.  positioned off centered
     var frame = imageView.frame
@@ -115,7 +137,8 @@ class ImageCell: UICollectionViewCell {
     topicFrame.size.height = 200
     topicFrame.size.width = 20
     topicFrame.origin.x = 60.0
-    topicFrame.origin.y = 130.0
+    //align with 
+    topicFrame.origin.y = frame.origin.y
     topicLabel.frame = topicFrame
 
   }
