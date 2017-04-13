@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="263" height="400"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anyGoodLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anyGoodLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
                                 <rect key="frame" x="40" y="30" width="53" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="TNM-8B-WJr"/>
@@ -97,6 +97,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="anyLogo" destination="wQG-AY-ZWV" id="fD3-zX-KnH"/>
                         <outlet property="counterLabel" destination="eVg-gs-wIo" id="Hyc-Co-bxV"/>
                         <outlet property="latLabelText" destination="NCg-Ee-H4k" id="GDm-ha-nFX"/>
                         <outlet property="longLabelText" destination="Moz-nE-niF" id="gHx-6k-bia"/>

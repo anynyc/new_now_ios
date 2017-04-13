@@ -89,6 +89,8 @@ class BWCircularSlider: UIControl {
   
   
   override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    
+    
     super.beginTracking(touch, with: event)
     return true
   }
@@ -96,15 +98,24 @@ class BWCircularSlider: UIControl {
   
   
   override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-    super.continueTracking(touch, with: event)
     
-    let lastPoint = touch.location(in: self)
     
-    self.moveHandle(lastPoint: lastPoint)
+    var yPosition = touch.preciseLocation(in: self).y
+    if yPosition > 500.0 {
+      super.continueTracking(touch, with: event)
+      
+      let lastPoint = touch.location(in: self)
+      
+      self.moveHandle(lastPoint: lastPoint)
+      
+      self.sendActions(for: UIControlEvents.valueChanged)
+      
+      return true
+    } else {
+      return false
+    }
     
-    self.sendActions(for: UIControlEvents.valueChanged)
-    
-    return true
+
   }
   
   

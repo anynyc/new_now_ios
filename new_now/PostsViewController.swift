@@ -76,6 +76,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var activeCell = 0
   let fullImageView = UIImageView()
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
+  @IBOutlet weak var anyLogo: UIImageView!
 
   @IBOutlet weak var counterLabel: UILabel!
   
@@ -99,6 +100,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupLogoTap()
     readThisButton.titleLabel?.adjustsFontSizeToFitWidth = true
     let prefs = UserDefaults.standard
 
@@ -279,6 +281,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   }
   func setupBottomButtons() {
     self.view.bringSubview(toFront: readThisButton)
+    self.view.bringSubview(toFront: anyLogo)
+
     //REPURPOSE THE BELOW FOR POSITION COUNTER ON LEFT SIDE OF SCREEN
     
     /*
@@ -302,6 +306,22 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 //    let rightConstraint = NSLayoutConstraint(item: readThisButton, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
 //    self.view.addConstraints([bottomConstraint, rightConstraint])
 //    
+  }
+  
+  
+  func setupLogoTap() {
+    // or for swift 2 +
+    let gesture = UITapGestureRecognizer(target: self, action:  #selector(goToAny))
+    self.anyLogo.addGestureRecognizer(gesture)
+  }
+  
+  func goToAny(_ sender:UITapGestureRecognizer){
+    // do other task
+    let anyWebLink = "http://www.weareany.com"
+    let webViewStoryboard = StoryboardInstanceConstants.webView
+    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+    webViewController.urlString = anyWebLink
+    navigationController?.pushViewController(webViewController, animated: true)
   }
   
   override var prefersStatusBarHidden: Bool {
