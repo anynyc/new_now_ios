@@ -52,7 +52,7 @@
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
-                                <rect key="frame" x="168.5" y="608" width="168.5" height="26"/>
+                                <rect key="frame" x="169" y="608" width="168.5" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <state key="normal" title="READ THIS">
                                     <color key="titleColor" red="0.29331555962562561" green="0.37109845876693726" blue="0.8738599419593811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE3-nM-Qi8">
-                                <rect key="frame" x="52" y="617.5" width="11.5" height="14"/>
+                                <rect key="frame" x="52" y="615.5" width="11.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                             <constraint firstItem="eVg-gs-wIo" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" multiplier="2" id="n2C-sJ-IvB"/>
                             <constraint firstItem="wQG-AY-ZWV" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" constant="40" id="owC-FG-HJj"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" id="pQB-Aa-xQL"/>
-                            <constraint firstItem="rE3-nM-Qi8" firstAttribute="bottom" secondItem="eVg-gs-wIo" secondAttribute="bottom" id="rBX-3x-22b"/>
+                            <constraint firstItem="rE3-nM-Qi8" firstAttribute="bottom" secondItem="eVg-gs-wIo" secondAttribute="bottom" constant="-2" id="rBX-3x-22b"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="centerY" secondItem="eVg-gs-wIo" secondAttribute="centerY" id="t9b-nb-HaU"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="width" secondItem="Fc0-2c-33y" secondAttribute="width" multiplier="0.45" id="wLb-ut-Bey"/>
                         </constraints>

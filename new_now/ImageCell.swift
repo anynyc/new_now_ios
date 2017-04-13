@@ -86,16 +86,19 @@ class ImageCell: UICollectionViewCell {
     bodyLabelContainerFrame.origin.y = 230.0
     bodyLabelContainer.frame = bodyLabelContainerFrame
     
+
+
     //use constraints instead.  leading trailing and bottom
     var bodyFrame = bodyLabel.frame
     bodyFrame.size.height = self.frame.size.height / 2
-    bodyFrame.size.width = 315.0
+    bodyFrame.size.width = bodyLabelContainerFrame.size.width * 0.9
 //    bodyLabel.backgroundColor = UIColor.red
 //    bodyFrame.origin.x = 60.0
 //    bodyFrame.origin.y = 230.0
     bodyLabel.frame = bodyFrame
     
     let bottomConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .bottom, relatedBy: .equal, toItem: bodyLabelContainer, attribute: .bottom, multiplier: 1, constant: 0)
+
 //    let widthConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.width)
 //    let heightConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.height)
 

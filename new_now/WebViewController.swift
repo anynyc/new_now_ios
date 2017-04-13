@@ -32,15 +32,23 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     navigationController?.setNavigationBarHidden(false, animated: false)
     navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 50)
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"shareShape"), style: .plain, target: self, action: #selector(rightButtonAction))
+//    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"shareShape"), style: .plain, target: self, action: #selector(rightButtonAction))
+//    
+//    navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 90 / 255, green: 119 / 255 , blue: 229 / 255, alpha: 1.0)
     
-    
+    let button = UIButton.init(type: .custom)
+    button.setImage(UIImage.init(named: "shareShape"), for: UIControlState.normal)
+    button.frame = CGRect.init(x: 0, y: 0, width: 16, height: 20)
+    let barButton = UIBarButtonItem.init(customView: button)
+    button.addTarget(self, action: #selector(rightButtonAction), for: UIControlEvents.touchUpInside)
+
+    self.navigationItem.rightBarButtonItem = barButton
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backShape"), style: .plain, target: self, action: #selector(leftButtonAction))
     
-    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 159, height: 69))
-    imageView.contentMode = .scaleAspectFit
-    let image = UIImage(named: "AnyLogo")
+    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
+    imageView.contentMode = .scaleAspectFill
+    let image = UIImage(named: "anyGoodLogo")
     imageView.image = image
     navigationItem.titleView = imageView
 //    self.navigationItem.rightBarButtonItem = rightButtonItem
@@ -70,11 +78,11 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   
   
   
-  func setNavBarToTheView() {
-    self.navBar.frame = CGRect(x: 0, y: 0, width: 320, height: 10)  // Here you can set you Width and Height for your navBar
-    self.navBar.backgroundColor = (UIColor.black)
-    self.view.addSubview(navBar)
-  }
+//  func setNavBarToTheView() {
+//    self.navBar.frame = CGRect(x: 0, y: 0, width: 320, height: 10)  // Here you can set you Width and Height for your navBar
+//    self.navBar.backgroundColor = (UIColor.black)
+//    self.view.addSubview(navBar)
+//  }
   
   override var prefersStatusBarHidden: Bool {
     return true
