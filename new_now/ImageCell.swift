@@ -78,12 +78,20 @@ class ImageCell: UICollectionViewCell {
     cellContainer.frame = containerFrame
     
     
+    //Set up origin x and y programmatically
+    let bodyOriginXMultiplier = CGFloat(0.16)
+    let bodyOriginYMultiplier = CGFloat(0.344)
+    let bodyWidthMultiplier = CGFloat(0.84)
+    let bodyXPosition = containerFrame.size.width * bodyOriginXMultiplier
+    let bodyYPosition = containerFrame.size.height * bodyOriginYMultiplier
+    let bodyWidth = containerFrame.size.width * bodyWidthMultiplier
+    
     
     var bodyLabelContainerFrame = bodyLabelContainer.frame
     bodyLabelContainerFrame.size.height = self.frame.size.height / 2
-    bodyLabelContainerFrame.size.width = 315.0
-    bodyLabelContainerFrame.origin.x = 60.0
-    bodyLabelContainerFrame.origin.y = 230.0
+    bodyLabelContainerFrame.size.width = bodyWidth
+    bodyLabelContainerFrame.origin.x = bodyXPosition
+    bodyLabelContainerFrame.origin.y = bodyYPosition
     bodyLabelContainer.frame = bodyLabelContainerFrame
     
 
@@ -92,25 +100,30 @@ class ImageCell: UICollectionViewCell {
     var bodyFrame = bodyLabel.frame
     bodyFrame.size.height = self.frame.size.height / 2
     bodyFrame.size.width = bodyLabelContainerFrame.size.width * 0.9
-//    bodyLabel.backgroundColor = UIColor.red
-//    bodyFrame.origin.x = 60.0
-//    bodyFrame.origin.y = 230.0
     bodyLabel.frame = bodyFrame
     
     let bottomConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .bottom, relatedBy: .equal, toItem: bodyLabelContainer, attribute: .bottom, multiplier: 1, constant: 0)
-
-//    let widthConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.width)
-//    let heightConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: bodyLabelContainer.frame.size.height)
 
     self.contentView.addConstraints([bottomConstraint])
     
     
     //making the frame for imageView.  subview of container.  positioned off centered
+    
+    let imageFrameHeightMultiplier = CGFloat(0.6746)
+    let imageFrameWidthMultiplier = CGFloat(0.7626)
+    let imageFrameXPositionMultiplier = CGFloat(0.2666)
+    let imageFrameYPositionMultiplier = CGFloat(0.1634)
+    
+    let imageFrameHeight = containerFrame.size.height * imageFrameHeightMultiplier
+    let imageFrameWidth = containerFrame.size.width * imageFrameWidthMultiplier
+    let imageFrameXPosition = containerFrame.size.width * imageFrameXPositionMultiplier
+    let imageFrameYPosition = containerFrame.size.height * imageFrameYPositionMultiplier
+    
     var frame = imageView.frame
-    frame.size.height = 450.0
-    frame.size.width = 286.0
-    frame.origin.x = 100.0
-    frame.origin.y = 109.0
+    frame.size.height = imageFrameHeight
+    frame.size.width = imageFrameWidth
+    frame.origin.x = imageFrameXPosition
+    frame.origin.y = imageFrameYPosition
     imageView.frame = frame
     
     imageView.layer.shadowColor = UIColor.black.cgColor
@@ -135,11 +148,14 @@ class ImageCell: UICollectionViewCell {
     
     cellContainer.layer.insertSublayer(gl, at: 3)
     
+    //set origin x
+    let topicFrameOriginXMultiplier = CGFloat(0.16)
+    let topicFrameOriginXPosition = containerFrame.size.width * topicFrameOriginXMultiplier
     
     var topicFrame = topicLabel.frame
     topicFrame.size.height = 200
     topicFrame.size.width = 20
-    topicFrame.origin.x = 60.0
+    topicFrame.origin.x = topicFrameOriginXPosition
     //align with 
     topicFrame.origin.y = frame.origin.y
     topicLabel.frame = topicFrame
