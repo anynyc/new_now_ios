@@ -52,7 +52,7 @@
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
-                                <rect key="frame" x="169" y="608" width="168.5" height="26"/>
+                                <rect key="frame" x="169" y="608" width="169" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <state key="normal" title="READ THIS">
                                     <color key="titleColor" red="0.29331555962562561" green="0.37109845876693726" blue="0.8738599419593811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,13 +62,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-gs-wIo" userLabel="counter">
-                                <rect key="frame" x="32" y="611" width="17" height="20.5"/>
+                                <rect key="frame" x="32" y="611" width="17" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.3411764705882353" green="0.28627450980392155" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE3-nM-Qi8">
-                                <rect key="frame" x="52" y="615.5" width="11.5" height="14"/>
+                                <rect key="frame" x="52" y="616" width="12" height="14"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -79,7 +79,6 @@
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="wQG-AY-ZWV" secondAttribute="top" id="1MI-uX-G37"/>
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="leading" secondItem="eVg-gs-wIo" secondAttribute="trailing" constant="3" id="4BV-u2-nv2"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
-                            <constraint firstItem="Moz-nE-niF" firstAttribute="top" secondItem="NCg-Ee-H4k" secondAttribute="bottom" constant="3" id="GQ4-mu-GDM"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="SYU-ic-oMA"/>

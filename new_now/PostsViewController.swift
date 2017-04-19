@@ -340,7 +340,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let screenWidth = screenSize.width
     let screenHeight = screenSize.height
     
-    //ANY LOGO needs leading and top constraint added programmatically
+    //ANY LOGO leading and top constraint added programmatically
     let anyLeadingMultiplier = CGFloat(0.106666)
     let anyTopMultiplier = CGFloat(0.045)
     let anyLeadingDistance = screenWidth * anyLeadingMultiplier
@@ -352,6 +352,15 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     self.view.addConstraints([anyLeadingConstraint, anyTopConstraint])
     
+    //LatLabel bottom constraint added programmatically
+    
+    let latSpaceMultiplier = CGFloat(0.00449)
+    let latSpaceDistance = screenHeight * latSpaceMultiplier
+    
+    let latSpaceConstraint = NSLayoutConstraint(item: latLabelText, attribute: .bottom, relatedBy: .equal, toItem: longLabelText, attribute: .top, multiplier: 1, constant: latSpaceDistance)
+    
+    self.view.addConstraints([latSpaceConstraint])
+
     
     
   }
