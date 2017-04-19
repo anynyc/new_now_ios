@@ -51,8 +51,8 @@
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
-                                <rect key="frame" x="169" y="608" width="169" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
+                                <rect key="frame" x="32" y="608" width="169" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <state key="normal" title="READ THIS">
                                     <color key="titleColor" red="0.29331555962562561" green="0.37109845876693726" blue="0.8738599419593811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -62,13 +62,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVg-gs-wIo" userLabel="counter">
-                                <rect key="frame" x="32" y="611" width="17" height="21"/>
+                                <rect key="frame" x="291" y="611" width="17" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.3411764705882353" green="0.28627450980392155" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE3-nM-Qi8">
-                                <rect key="frame" x="52" y="616" width="12" height="14"/>
+                                <rect key="frame" x="311" y="616" width="12" height="14"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -78,18 +78,18 @@
                         <constraints>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="wQG-AY-ZWV" secondAttribute="top" id="1MI-uX-G37"/>
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="leading" secondItem="eVg-gs-wIo" secondAttribute="trailing" constant="3" id="4BV-u2-nv2"/>
+                            <constraint firstItem="Moz-nE-niF" firstAttribute="leading" secondItem="NCg-Ee-H4k" secondAttribute="leading" constant="-2.5" id="52h-gR-tSq"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
+                            <constraint firstItem="ygK-jw-gjf" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" multiplier="2" id="LBE-9V-dGk"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
-                            <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="SYU-ic-oMA"/>
-                            <constraint firstItem="ygK-jw-gjf" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.9" id="UJv-U8-Mee"/>
-                            <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.95" id="Wsi-rY-LH6"/>
+                            <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.913694" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
-                            <constraint firstItem="eVg-gs-wIo" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" multiplier="2" id="n2C-sJ-IvB"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" id="pQB-Aa-xQL"/>
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="bottom" secondItem="eVg-gs-wIo" secondAttribute="bottom" constant="-2" id="rBX-3x-22b"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="centerY" secondItem="eVg-gs-wIo" secondAttribute="centerY" id="t9b-nb-HaU"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="width" secondItem="Fc0-2c-33y" secondAttribute="width" multiplier="0.45" id="wLb-ut-Bey"/>
+                            <constraint firstItem="rE3-nM-Qi8" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.9" id="ziZ-1I-OUl"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

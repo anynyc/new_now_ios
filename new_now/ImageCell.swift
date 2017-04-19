@@ -102,7 +102,7 @@ class ImageCell: UICollectionViewCell {
     bodyFrame.size.width = bodyLabelContainerFrame.size.width * 0.9
     bodyLabel.frame = bodyFrame
     
-    let bottomConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .bottom, relatedBy: .equal, toItem: bodyLabelContainer, attribute: .bottom, multiplier: 1, constant: 0)
+    let bottomConstraint = NSLayoutConstraint(item: bodyLabel, attribute: .top, relatedBy: .equal, toItem: bodyLabelContainer, attribute: .top, multiplier: 1, constant: 0)
 
     self.contentView.addConstraints([bottomConstraint])
     
@@ -119,11 +119,16 @@ class ImageCell: UICollectionViewCell {
     let imageFrameXPosition = containerFrame.size.width * imageFrameXPositionMultiplier
     let imageFrameYPosition = containerFrame.size.height * imageFrameYPositionMultiplier
     
+    
+    //need to bring y position up to make perfect square of white space.  3 pixels on a 6
+    let yMultiplier = CGFloat(0.00449)
+    let yAdjustmentValue = containerFrame.size.height * yMultiplier
+    
     var frame = imageView.frame
     frame.size.height = imageFrameHeight
     frame.size.width = imageFrameWidth
     frame.origin.x = imageFrameXPosition
-    frame.origin.y = imageFrameYPosition
+    frame.origin.y = imageFrameYPosition - yAdjustmentValue
     imageView.frame = frame
     
     imageView.layer.shadowColor = UIColor.black.cgColor
@@ -134,13 +139,14 @@ class ImageCell: UICollectionViewCell {
     //same frame as image view
     grayOverlay.frame = frame
     
-    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.25).cgColor
-    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
-    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
+    let colorMid = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.2).cgColor
+    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
+    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
     let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.99).cgColor
     gl = CAGradientLayer()
-    gl.colors = [colorTop, colorMiddle, colorBottom, lineBottom]
-    gl.locations = [0.0, 0.8, 0.99, 0.99999999]
+    gl.colors = [colorTop, colorMid, colorMiddle, colorBottom, lineBottom]
+    gl.locations = [0.0, 0.4, 0.8, 0.99, 0.99999999]
 //    gl.frame = frame
 //    let gl = CALayer()
 //    gl.backgroundColor = UIColor.green.cgColor

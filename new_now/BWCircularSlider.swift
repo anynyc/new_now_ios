@@ -60,27 +60,12 @@ class BWCircularSlider: UIControl {
 
     //Define the circle radius taking into account the safe area
     //        radius = self.frame.size.width/2 - Config.TB_SAFEAREA_PADDING
-    radius = 400.0
-    //Define the Font
-//    let font = UIFont(name: "Avenir", size: Config.TB_FONTSIZE)
-    //Calculate font size needed to display 3 numbers
-//    let str = "000" as NSString
-//    let fontSize:CGSize = str.size(attributes: [NSFontAttributeName:font!])
-    
-    //Using a TextField area we can easily modify the control to get user input from this field
-    //        let textFieldRect = CGRectMake(
-    //            (frame.size.width  - fontSize.width) / 2.0,
-    //            (frame.size.height - fontSize.height) / 2.0,
-    //            fontSize.width, fontSize.height);
-    
-    //        textField = UITextField(frame: textFieldRect)
-    //        textField?.backgroundColor = UIColor.clearColor()
-    //        textField?.textColor = UIColor(white: 1.0, alpha: 0.8)
-    //        textField?.textAlignment = .Center
-    //        textField?.font = font
-    //        textField?.text = "\(self.angle)"
-    
-    //        addSubview(textField!)
+    let screenWidth = self.frame.size.width
+
+    let radiusMultiplier = CGFloat(1.0666)
+    let radiusSize = screenWidth * radiusMultiplier
+    radius = radiusSize
+
   }
   
   required init(coder aDecoder: NSCoder) {
@@ -101,6 +86,9 @@ class BWCircularSlider: UIControl {
     
     
     var yPosition = touch.preciseLocation(in: self).y
+    
+    
+    //need to find out what the yPosition max is on the plus
     if yPosition > 500.0 {
       super.continueTracking(touch, with: event)
       
@@ -141,7 +129,11 @@ class BWCircularSlider: UIControl {
     ctx!.setStrokeColor(UIColor.lightGray.cgColor)
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
-    let center = CGPoint(x: self.frame.size.width / 2.0, y: CGFloat(900.0))
+    
+    //Y position for circle center needs to be dynamic
+    let circleYPositionMultiplier = CGFloat(1.3493)
+    let circleYPosition = self.frame.size.height * circleYPositionMultiplier
+    let center = CGPoint(x: self.frame.size.width / 2.0, y: circleYPosition)
 //    ctx.setFillColor(UIColor.clear.cgColor)
     
     
@@ -268,9 +260,10 @@ class BWCircularSlider: UIControl {
   
   /** Given the angle, get the point position on circumference **/
   func pointFromAngle(angleInt:Int)->CGPoint{
-    
+    let circleYPositionMultiplier = CGFloat(1.3493)
+    let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     //Circle center
-    let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: 900.0 - Config.TB_LINE_WIDTH/2.0);
+    let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
     
     //The point position on the circumference
     var result:CGPoint = CGPoint.zero
