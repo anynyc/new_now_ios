@@ -59,7 +59,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+    //if making non active cells invisible, this will be the only cell with visible attributes
     collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
     self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
 
@@ -100,11 +100,13 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setUpConstraints()
     setupLogoTap()
     readThisButton.titleLabel?.adjustsFontSizeToFitWidth = true
     let prefs = UserDefaults.standard
 
-    if let latitude = prefs.string(forKey: "latitude") {
+    if prefs.string(forKey: "latitude") != ""  {
+      let latitude = prefs.string(forKey: "latitude")!
       if latitude.characters.first! != "-" {
         let first5 = String(latitude.characters.prefix(5))
         latLabelText.text = first5
@@ -112,9 +114,11 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         let first6 = String(latitude.characters.prefix(6))
         latLabelText.text = first6
       }
-
+    } else {
+      latLabelText.text = "-74.45"
     }
-    if let longitude = prefs.string(forKey: "longitude") {
+    if prefs.string(forKey: "longitude") != "" {
+      let longitude = prefs.string(forKey: "longitude")!
       if longitude.characters.first! != "-" {
         let first5 = String(longitude.characters.prefix(5))
         longLabelText.text = first5
@@ -122,6 +126,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         let first6 = String(longitude.characters.prefix(6))
         longLabelText.text = first6
       }
+    } else {
+      longLabelText.text = "45.14"
+
     }
     
     let posts = contentManager.fetchCachedPosts(ItemCacheType.postHomePage)
@@ -326,6 +333,27 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   override var prefersStatusBarHidden: Bool {
     return true
+  }
+  
+  func setUpConstraints() {
+    let screenSize = UIScreen.main.bounds
+    let screenWidth = screenSize.width
+    let screenHeight = screenSize.height
+    
+    //ANY LOGO needs leading and top constraint added programmatically
+    let anyLeadingMultiplier = CGFloat(0.106666)
+    let anyTopMultiplier = CGFloat(0.045)
+    let anyLeadingDistance = screenWidth * anyLeadingMultiplier
+    let anyTopDistance = screenHeight * anyTopMultiplier
+    
+    let anyLeadingConstraint = NSLayoutConstraint(item: anyLogo, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: anyLeadingDistance)
+    let anyTopConstraint = NSLayoutConstraint(item: anyLogo, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: anyTopDistance)
+    
+    
+    self.view.addConstraints([anyLeadingConstraint, anyTopConstraint])
+    
+    
+    
   }
 }
 
