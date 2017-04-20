@@ -13,7 +13,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 7
+    return 8
   }
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -21,48 +21,62 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-    
-    let topicText = postViewModel.postsArray[indexPath.row].category
-    let attributedString = NSMutableAttributedString(string: topicText)
-    attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, topicText.characters.count))
-    cell.topicLabel.attributedText = attributedString
-    let bodyText = postViewModel.postsArray[indexPath.row].body
-    let image = postViewModel.postsArray[indexPath.row].image
-    cell.imageView.image = image
-    cell.bodyLabel.text = bodyText
-    cell.articleUrl = postViewModel.postsArray[indexPath.row].link
-    
-    
-    feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+    puts(String(indexPath.row))
+    if indexPath.row != 7 {
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
+      
+      let topicText = postViewModel.postsArray[indexPath.row].category
+      let attributedString = NSMutableAttributedString(string: topicText)
+      attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, topicText.characters.count))
+      cell.topicLabel.attributedText = attributedString
+      let bodyText = postViewModel.postsArray[indexPath.row].body
+      let image = postViewModel.postsArray[indexPath.row].image
+      cell.imageView.image = image
+      cell.bodyLabel.text = bodyText
+      cell.articleUrl = postViewModel.postsArray[indexPath.row].link
+      cell.isHidden = false
+      
+      feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+      
+      //    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
+      //                               animations: {
+      //                                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+      //
+      //    },
+      //                               completion: { finished in
+      //                                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: .curveEaseInOut,
+      //                                                           animations: {
+      //                                                            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+      //                                },
+      //                                                           completion: nil
+      //                                )
+      //                                
+      //    }
+      //    )    
+      return cell
 
-//    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
-//                               animations: {
-//                                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//                                
-//    },
-//                               completion: { finished in
-//                                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: .curveEaseInOut,
-//                                                           animations: {
-//                                                            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-//                                },
-//                                                           completion: nil
-//                                )
-//                                
-//    }
-//    )
+    } else {
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gratificationCell", for: indexPath) as! GratificationCell
+      cell.isHidden = false
+      cell.messageLabel.text = postViewModel.gratification!.alternateMessage
+      cell.imageView.image = postViewModel.gratification!.image
+      return cell
+    }
+
 
     
-    return cell
   }
   
 
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //if making non active cells invisible, this will be the only cell with visible attributes
-    collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-    self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
-
+    if indexPath.row != 7 {
+      collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
+    } else {
+      collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 
   }
 }
@@ -135,6 +149,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     postViewModel.delegate = self
     postViewModel.postsArray = posts
     
+    let gratification = contentManager.fetchCachedGratification(ItemCacheType.gratificationHomePage)
+    postViewModel.gratification = gratification
+    postViewModel.getGratificationImage()
+    
     feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
     feedbackGenerator?.prepare()
 
@@ -148,6 +166,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     self.view.addSubview(gridCollectionView)
     navigationController?.setNavigationBarHidden(true, animated: false)
     gridCollectionView!.register(ImageCell.self, forCellWithReuseIdentifier: "cell")
+    gridCollectionView!.register(GratificationCell.self, forCellWithReuseIdentifier: "gratificationCell")
+
     gridCollectionView.dataSource = self
     gridCollectionView.delegate = self
     gridCollectionView.allowsSelection = true
@@ -178,7 +198,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   func valueChanged(slider:BWCircularSlider){
     //depending on the angle value reveal certain card
     let row = getSection(int: slider.angle)
-    if row != activeCell {
+    if row != activeCell && row != 7 {
       activeCell = row
       counterLabel.text = "0\(row + 1)"
       let indexPath = IndexPath(row: row, section: 0)
@@ -187,6 +207,15 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       //deselecet
       //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
       gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+    } else if row == 7 {
+      activeCell = row
+      counterLabel.text = "07"
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+
     }
     //if cell is different call below to display a new cell. maybe call an animate out method first?
     
@@ -270,9 +299,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       returnInt = 4
     } else if int >= 96 && int <= 101 {
       returnInt = 5
-    } else if int >= 102 {
+    } else if int >= 102 && int <= 107 {
       returnInt = 6
-    } else {
+    } else if int >= 108 {
+      returnInt = 7
       
     }
     

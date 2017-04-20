@@ -21,6 +21,8 @@ class PostViewModel: NSObject {
   weak var delegate: PostViewModelDelegate?
   var postImages = [UIImage]()
   var postIndex = 0
+  var gratification: GratificationModel?
+  var gratificationImage = UIImage()
 
   
   
@@ -100,6 +102,19 @@ class PostViewModel: NSObject {
       self?.postIndex += 1
       self?.postsDidLoad()
     })
+  }
+  
+  
+  func getGratificationImage() {
+    //main.async
+    PostContentManager.getGratificationImage(gratification: gratification!) {[weak self] (image) in
+      
+      guard image != nil else {
+        return
+      }
+      
+      self?.gratificationImage = image!
+    }
   }
   
   

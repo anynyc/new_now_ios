@@ -30,6 +30,27 @@ class PostContentManager: NSObject {
     return postsArray
   }
   
+  func fetchCachedGratification(_ itemType: ItemCacheType) -> GratificationModel? {
+    let gratificationDirectory = MainCacheManager.cacheLocationForItemType(ItemCacheType.gratificationHomePage)
+    let fileManager = FileManager.default
+    var gratificationModel: GratificationModel?
+    
+    if let subPaths = fileManager.subpaths(atPath: gratificationDirectory) {
+      for path in subPaths {
+        if path != ".DS_Store" {
+          let cachedGratificationPath = (gratificationDirectory as NSString).appendingPathComponent(path)
+          let item = NSKeyedUnarchiver.unarchiveObject(withFile: cachedGratificationPath)
+          if let cachedGratification = item as? GratificationModel {
+            gratificationModel = cachedGratification
+          }
+        }
+      }
+    }
+  
+    return gratificationModel
+  
+  }
+  
   func isPostCachePresent(_ contentItem: ContentItemModel, itemType: ItemCacheType) -> Bool {
     let postArray = fetchCachedPosts(itemType)
     let isPresent = false
@@ -48,11 +69,24 @@ class PostContentManager: NSObject {
     //      completion(nil)
     //      return
     //    }
-    PostAPIManager.fetchPostsWithCompletion(comp: { contentArray in
+    PostAPIManager.fetchPostsWithCompletion(comp: { contentArray, gratificationArray in
       guard let posts = contentArray, posts.count > 0 else {
         completion(nil)
         return
       }
+      
+      guard let gratificationRaw = gratificationArray else {
+        completion(nil)
+        return
+      }
+      
+      
+      if let gratification = GratificationModel(dictionary: gratificationRaw) {
+        let newGratificationFilePath = MainCacheManager.cacheLocationForObject(gratification, itemType: ItemCacheType.gratificationHomePage)
+        MainCacheManager.cacheInformationForItem(gratification, filePath: newGratificationFilePath)
+      }
+      
+      
       var postArray = [PostModel]()
       for postDict in posts {
         if let post = PostModel(dictionary: postDict) {
@@ -87,6 +121,23 @@ class PostContentManager: NSObject {
     
   }
   
+  static func getGratificationImage(gratification: GratificationModel, withCompletion completion: @escaping (UIImage?) -> Void) {
+    //    VideoAPIManager.fetchEspressoVideosWithCompletion(comp: { contentArray in
+    //      guard let videos = contentArray, videos.count > 0 else {
+    //        completion(nil)
+    //        return
+    //      }
+    var gratificationImage = UIImage()
+    
+    let gratificationModel = gratification
+      PostAPIManager.fetchGratificationImageWithCompletion(gratificationModel) { (image) in
+        gratification.image = image
+        let newGratificationFilePath = MainCacheManager.cacheLocationForObject(gratificationModel, itemType: ItemCacheType.gratificationHomePage)
+        MainCacheManager.cacheInformationForItem(gratificationModel, filePath: newGratificationFilePath)
+        gratificationImage = image!
+      }
+      completion(gratificationImage)
+  }
 
   
 

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
+            timestampString = "514410236.928568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "getPostImages(postArray:withCompletion:)"
             landmarkType = "7">
             <Locations>
@@ -57,92 +57,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "loadPosts(withCompletion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "loadPosts(withCompletion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "loadPosts(withCompletion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static new_now.PostContentManager.(loadPosts (withCompletion : (Swift.Optional&lt;Swift.Array&lt;new_now.PostModel&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "new_now"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mike/good_repo/new_now/new_now/PostContentManager.swift"
-                  timestampString = "512441651.919365"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "338">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static new_now.PostContentManager.(loadPosts (withCompletion : (Swift.Optional&lt;Swift.Array&lt;new_now.PostModel&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "new_now"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mike/good_repo/new_now/new_now/PostContentManager.swift"
-                  timestampString = "512441651.923365"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "478">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "new_now/PostViewModel.swift"
-            timestampString = "512517712.457598"
+            timestampString = "514410236.928568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "getPostImages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
+            timestampString = "514410236.928568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "getPostImages(postArray:withCompletion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -198,31 +118,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "loadPosts(withCompletion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostContentManager.swift"
-            timestampString = "512441962.010338"
+            timestampString = "514410236.928568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "isPostCachePresent(_:itemType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/MainCacheManager.swift"
-            timestampString = "512506984.377678"
+            timestampString = "514407997.167625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "fetchCachedPosts(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/MainCacheManager.swift"
-            timestampString = "512510150.996228"
+            timestampString = "514407997.167625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "cacheLocationForItemType(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostViewModel.swift"
-            timestampString = "512517629.869076"
+            timestampString = "514410236.928568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "loadImage(_:_:)"
             landmarkType = "7">
             <Locations>
@@ -410,11 +314,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "514323851.434032"
+            timestampString = "514413696.161311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375">
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "PostsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -424,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "514322860.342895"
+            timestampString = "514413696.161311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "valueChanged(slider:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "514322860.342895"
+            timestampString = "514413696.161311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "setupBottomButtons()"
             landmarkType = "7">
          </BreakpointContent>
@@ -551,22 +457,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "new_now/PostsViewController.swift"
-            timestampString = "513632663.812385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "new_now/ImageCell.swift"
             timestampString = "513720577.357738"
             startingColumnNumber = "9223372036854775807"
@@ -632,12 +522,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "514322860.342895"
+            timestampString = "514413696.161311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "showArticle(of:)"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "hideFullImage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -648,12 +538,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "514322860.342895"
+            timestampString = "514413696.161311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "showArticle(of:)"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "hideFullImage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -686,6 +576,22 @@
             startingLineNumber = "265"
             endingLineNumber = "265"
             landmarkName = "pointFromAngle(angleInt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "new_now/GratificationCell.swift"
+            timestampString = "514417301.50282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "layoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

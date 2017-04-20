@@ -33,7 +33,7 @@ class ImageCell: UICollectionViewCell {
     grayOverlay = UIView()
 //    grayOverlay.backgroundColor = UIColor(white: 1, alpha: 0.5)
     grayOverlay.backgroundColor = UIColor.clear
-
+    self.isHidden = true
     
     
     topicLabel = UILabel()
