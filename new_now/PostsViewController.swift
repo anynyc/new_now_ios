@@ -105,11 +105,20 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gratificationCell", for: indexPath) as! GratificationCell
       cell.isHidden = false
       cell.imageView.image = postViewModel.gratification!.image
-      cell.messageLabel.text = postViewModel.gratification!.alternateMessage
+      
+      //if no lat long show alternate message and hide button.  locationAllowed Boolean on prefs?
+      let prefs = UserDefaults.standard
+      if prefs.string(forKey: "locationGiven") == "true" {
+        cell.messageLabel.text = postViewModel.gratification!.message
+        cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
+        cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+      } else {
+        cell.messageLabel.text = postViewModel.gratification!.alternateMessage
+        cell.buttonLabel.isHidden = true
+      }
       cell.titleLabel.text = postViewModel.gratification!.title
       cell.searchTerm = postViewModel.gratification!.keyword
-      cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
-      cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+
 
       return cell
     }

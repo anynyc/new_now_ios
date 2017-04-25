@@ -134,6 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
       
       prefs.set(coord.latitude, forKey: "latitude")
       prefs.set(coord.longitude, forKey: "longitude")
+      prefs.set("true", forKey: "locationGiven")
       locationManager.stopUpdatingLocation()
       
     } else {
