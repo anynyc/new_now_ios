@@ -14,7 +14,7 @@ class ImageCell: UICollectionViewCell {
   var grayOverlay: UIView!
   var cellContainer: UIView!
   var topicLabel: UILabel!
-  var bodyLabel: UILabel!
+  var bodyLabel: NRLabel!
   var gl: CAGradientLayer!
   var articleUrl: String!
   var bodyLabelContainer: UIView!
@@ -45,7 +45,7 @@ class ImageCell: UICollectionViewCell {
     topicLabel.textAlignment = .left
 //    contentView.addSubview(imageView)
 
-    bodyLabel = UILabel()
+    bodyLabel = NRLabel()
     bodyLabel.numberOfLines = 5
     bodyLabel.font = bodyLabel.font.withSize(36)
     bodyLabel.font = UIFont(name: "Miller-Display", size: 36)

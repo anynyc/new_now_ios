@@ -32,7 +32,53 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let bodyText = postViewModel.postsArray[indexPath.row].body
       let image = postViewModel.postsArray[indexPath.row].image
       cell.imageView.image = image
-      cell.bodyLabel.text = bodyText
+      
+      
+      //attributed text for body.  background color
+      let backgroundColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.76)
+      let attributes = [
+        NSBackgroundColorAttributeName : backgroundColor,
+        NSForegroundColorAttributeName : UIColor.white
+      ]
+      
+      let attributedBodyString = NSAttributedString(string: bodyText, attributes: attributes)
+      let mutableBodyString = NSMutableAttributedString()
+      mutableBodyString.append(attributedBodyString)
+     
+      // Define paragraph styling
+      let paraStyle = NSMutableParagraphStyle()
+      paraStyle.firstLineHeadIndent = 15.0
+      paraStyle.paragraphSpacingBefore = 10.0
+      paraStyle.minimumLineHeight = 100.0
+      
+      
+      // Apply paragraph styles to paragraph
+      mutableBodyString.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange(location: 0,length: bodyText.characters.count))
+      
+      cell.bodyLabel.attributedText = attributedBodyString
+//
+//      var text = bodyText
+//      
+//      let paragraphStyle = NSMutableParagraphStyle()
+//      paragraphStyle.paragraphSpacing = 50
+//      paragraphStyle.alignment = NSTextAlignment.left
+//      paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
+//      
+//      let attributes = [
+//        NSParagraphStyleAttributeName: paragraphStyle
+//      ] as [String : Any]
+//      
+//      
+//      let attributedBodyString = NSAttributedString(string: text, attributes: attributes)
+//      
+//      cell.bodyLabel.attributedText = attributedBodyString
+//      cell.bodyLabel.numberOfLines = 0
+//      cell.bodyLabel.textColor = UIColor.white
+//      cell.bodyLabel.backgroundColor = UIColor.purple
+//      cell.bodyLabel.sizeToFit()
+//      
+//      
+      
       cell.articleUrl = postViewModel.postsArray[indexPath.row].link
       cell.isHidden = false
       
@@ -58,8 +104,13 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     } else {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gratificationCell", for: indexPath) as! GratificationCell
       cell.isHidden = false
-      cell.messageLabel.text = postViewModel.gratification!.alternateMessage
       cell.imageView.image = postViewModel.gratification!.image
+      cell.messageLabel.text = postViewModel.gratification!.alternateMessage
+      cell.titleLabel.text = postViewModel.gratification!.title
+      cell.searchTerm = postViewModel.gratification!.keyword
+      cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
+      cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+
       return cell
     }
 
@@ -72,9 +123,20 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //if making non active cells invisible, this will be the only cell with visible attributes
     if indexPath.row != 7 {
+      self.readThisButton.isHidden = false
+      self.counterLabel.isHidden = false
+      self.totalCountLabel.isHidden = false
+      self.latLabelText.isHidden = false
+      self.longLabelText.isHidden = false
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
       self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
     } else {
+      self.readThisButton.isHidden = true
+      self.counterLabel.isHidden = true
+      self.totalCountLabel.isHidden = true
+      self.latLabelText.isHidden = true
+      self.longLabelText.isHidden = true
+      self.view.sendSubview(toBack: self.slider)
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 
@@ -87,6 +149,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
+  var slider: BWCircularSlider!
   var activeCell = 0
   let fullImageView = UIImageView()
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
@@ -94,6 +157,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   @IBOutlet weak var counterLabel: UILabel!
   
+  @IBOutlet weak var totalCountLabel: UILabel!
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
   
@@ -184,7 +248,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     
     // Build the slider
-    let slider:BWCircularSlider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: self.view.bounds)
+    slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: self.view.bounds)
     
     // Attach an Action and a Target to the slider
     slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
@@ -390,8 +454,52 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let latSpaceConstraint = NSLayoutConstraint(item: latLabelText, attribute: .bottom, relatedBy: .equal, toItem: longLabelText, attribute: .top, multiplier: 1, constant: latSpaceDistance)
     
     self.view.addConstraints([latSpaceConstraint])
+  }
+  
+  func goToGoogle(_button : UIButton) {
+    let searchTerm = postViewModel.gratification!.keyword
+    let searchArray = searchTerm.characters.split{$0 == " "}.map(String.init)
+    let searchString = searchArray.joined(separator: "+")
+    let urlBaseString = "https://www.google.com/maps/search/\(searchString)/@"
+    var lat = ""
+    var long = ""
+    //get user lat and long
 
+    let prefs = UserDefaults.standard
     
+    if prefs.string(forKey: "latitude") != ""  {
+      let latitude = prefs.string(forKey: "latitude")!
+      if latitude.characters.first! != "-" {
+        let first5 = String(latitude.characters.prefix(5))
+        lat = first5
+      } else {
+        let first6 = String(latitude.characters.prefix(6))
+        lat = first6
+      }
+    } else {
+      //      lat = "-74.45"
+    }
+    if prefs.string(forKey: "longitude") != "" {
+      let longitude = prefs.string(forKey: "longitude")!
+      if longitude.characters.first! != "-" {
+        let first5 = String(longitude.characters.prefix(5))
+        long = first5
+      } else {
+        let first6 = String(longitude.characters.prefix(6))
+        long = first6
+      }
+    } else {
+      //      long = "45.14"
+    }
+    
+    let locationString = "\(lat),\(long)"
+    let fullURLString = urlBaseString + locationString
+    
+    // do other task
+    let webViewStoryboard = StoryboardInstanceConstants.webView
+    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+    webViewController.urlString = fullURLString
+    navigationController?.pushViewController(webViewController, animated: true)
     
   }
 }

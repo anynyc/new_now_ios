@@ -16,7 +16,8 @@ struct GratificationConstants {
   static let alternateMessage = "alternate_message"
   static let imageUrl = "image"
   static let image = "image_url"
-  
+  static let title = "title"
+  static let buttonLabel = "button_label"
   
   
 }
@@ -29,6 +30,8 @@ class GratificationModel: ContentItemModel, NSCoding {
   var alternateMessage: String
   var imageUrl: URL?
   var image: UIImage?
+  var title: String
+  var buttonLabel: String
 
   
   
@@ -66,6 +69,19 @@ class GratificationModel: ContentItemModel, NSCoding {
       self.imageUrl = URL(string: imageString)
     }
     
+    guard let titleText = dictionary[GratificationConstants.title] as? String else {
+      return nil
+    }
+    
+    title = titleText
+    
+    guard let buttonText = dictionary[GratificationConstants.buttonLabel] as? String else {
+      return nil
+    }
+    
+    buttonLabel = buttonText
+    
+    
     
     super.init(dictionary: dictionary)
   }
@@ -78,6 +94,9 @@ class GratificationModel: ContentItemModel, NSCoding {
     aCoder.encode(alternateMessage, forKey: GratificationConstants.alternateMessage)
     aCoder.encode(imageUrl, forKey: GratificationConstants.imageUrl)
     aCoder.encode(image, forKey: GratificationConstants.image)
+    aCoder.encode(title, forKey: GratificationConstants.title)
+    aCoder.encode(buttonLabel, forKey: GratificationConstants.buttonLabel)
+
     super.encodeWithEncoder(aCoder)
   }
   
@@ -114,7 +133,17 @@ class GratificationModel: ContentItemModel, NSCoding {
       image = imageRaw
     }
     
+    guard let titleText = aDecoder.decodeObject(forKey: GratificationConstants.title) as? String else {
+      return nil
+    }
     
+    title = titleText
+    
+    guard let buttonText = aDecoder.decodeObject(forKey: GratificationConstants.buttonLabel) as? String else {
+      return nil
+    }
+    
+    buttonLabel = buttonText
     
     
     super.init(coder: aDecoder)

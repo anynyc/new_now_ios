@@ -13,8 +13,10 @@ class GratificationCell: UICollectionViewCell {
   var imageView: UIImageView!
   var cellContainer: UIView!
   var messageLabel: UILabel!
-  var keywordButton: UIButton!
-
+  var titleLabel: UILabel!
+  var searchTerm: String!
+  var buttonLabel: UIButton!
+  
   
   
   override init(frame: CGRect) {
@@ -25,19 +27,33 @@ class GratificationCell: UICollectionViewCell {
     //image
     imageView = UIImageView()
     imageView.contentMode = .scaleToFill
-    //overlay needs to be a gradient
-
-    
     
     messageLabel = UILabel()
-    messageLabel.font = UIFont(name: "Avenir-Heavy", size: 18)
+    
+    messageLabel.font = UIFont(name: "Avenir-Roman", size: 16)
     messageLabel.textColor = UIColor.black
-    messageLabel.textAlignment = .center
+    messageLabel.textAlignment = .left
     messageLabel.numberOfLines = 2
     
     
+    buttonLabel = UIButton()
+    buttonLabel.setTitleColor(UIColor.blue, for: .normal)
+    buttonLabel.titleLabel!.font = UIFont(name: "Avenir-heavy", size: 10)
+    buttonLabel.contentHorizontalAlignment = .left
+    buttonLabel.isUserInteractionEnabled = true
+    
+    
+    titleLabel = UILabel()
+    titleLabel.font = UIFont(name: "Miller-Display", size: 40)
+    titleLabel.textColor = UIColor.black
+    titleLabel.textAlignment = .left
+    titleLabel.numberOfLines = 3
+    
+    
     self.addSubview(imageView)
+    self.addSubview(titleLabel)
     self.addSubview(messageLabel)
+    self.addSubview(buttonLabel)
 
     
     
@@ -54,51 +70,58 @@ class GratificationCell: UICollectionViewCell {
     containerFrame.origin.x = 0.0
     containerFrame.origin.y = 0.0
     cellContainer.frame = containerFrame
-    
-    
-    
+
 
     
     //making the frame for imageView.  subview of container.  positioned off centered
     
-    let imageFrameHeightMultiplier = CGFloat(0.6746)
-    let imageFrameWidthMultiplier = CGFloat(0.7626)
-    let imageFrameXPositionMultiplier = CGFloat(0.2666)
-    let imageFrameYPositionMultiplier = CGFloat(0.1634)
-    
-    let imageFrameHeight = containerFrame.size.height * imageFrameHeightMultiplier
-    let imageFrameWidth = containerFrame.size.width * imageFrameWidthMultiplier
-    let imageFrameXPosition = containerFrame.size.width * imageFrameXPositionMultiplier
-    let imageFrameYPosition = containerFrame.size.height * imageFrameYPositionMultiplier
-    
-    
-    //need to bring y position up to make perfect square of white space.  3 pixels on a 6
-    let yMultiplier = CGFloat(0.00449)
-    let yAdjustmentValue = containerFrame.size.height * yMultiplier
-    
-    var frame = imageView.frame
-    frame.size.height = imageFrameHeight
-    frame.size.width = imageFrameWidth
-    frame.origin.x = imageFrameXPosition
-    frame.origin.y = imageFrameYPosition - yAdjustmentValue
-    imageView.frame = frame
-    
+    imageView.frame = containerFrame
 
        
     //set origin x
 
-    var messageFrame = messageLabel.frame
-    messageFrame.size.width = self.frame.size.width / 2
-    messageFrame.size.height = 200
-    messageFrame.origin.x = 15
+    var titleFrame = titleLabel.frame
+    titleFrame.size.width = 296.0
+    titleFrame.size.height = 150.0
+    titleFrame.origin.x = 35
     //align with
-    messageFrame.origin.y = self.center.y
+    titleFrame.origin.y = 150
+    titleLabel.frame = titleFrame
+    
+    var messageFrame = messageLabel.frame
+    messageFrame.size.width = 295.0
+    messageFrame.size.height = 52.0
+    messageFrame.origin.x = 35
+    //align with
+    messageFrame.origin.y = 330
     messageLabel.frame = messageFrame
+    
+//    var buttonFrame = buttonLabel.frame
+//    buttonFrame.size.width = 295.0
+//    buttonFrame.size.height = 52.0
+//    buttonFrame.origin.x = 35
+//    //align with
+//    buttonFrame.origin.y = 330
+//    buttonLabel.frame = buttonFrame
+//    
+
+    var buttonFrame = buttonLabel.frame
+    buttonFrame.size.width  = 120.0
+    buttonFrame.size.height = 14.0
+    buttonFrame.origin.x = 35
+    buttonFrame.origin.y = 440
+    buttonLabel.frame = buttonFrame
+//
     
   }
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func goToGoogle(_ button: UIButton) {
+    //url example https://www.google.com/maps/search/ice+cream+near+me/@40.7230073,-74.0006327
+    
+
+  }
   
 }

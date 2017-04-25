@@ -99,6 +99,7 @@
                         <outlet property="latLabelText" destination="NCg-Ee-H4k" id="GDm-ha-nFX"/>
                         <outlet property="longLabelText" destination="Moz-nE-niF" id="gHx-6k-bia"/>
                         <outlet property="readThisButton" destination="ygK-jw-gjf" id="FcX-ht-BHL"/>
+                        <outlet property="totalCountLabel" destination="rE3-nM-Qi8" id="NwS-dx-r89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za1-Aj-z40" userLabel="First Responder" sceneMemberID="firstResponder"/>
