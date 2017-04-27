@@ -85,11 +85,9 @@ class BWCircularSlider: UIControl {
   override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     
     
-    var yPosition = touch.preciseLocation(in: self).y
+
     
-    
-    //need to find out what the yPosition max is on the plus
-    if yPosition > 500.0 {
+    //When this is resized to the bottom of the screen I do not need to check the y position
       super.continueTracking(touch, with: event)
       
       let lastPoint = touch.location(in: self)
@@ -99,9 +97,7 @@ class BWCircularSlider: UIControl {
       self.sendActions(for: UIControlEvents.valueChanged)
       
       return true
-    } else {
-      return false
-    }
+
     
 
   }
@@ -130,8 +126,8 @@ class BWCircularSlider: UIControl {
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
     
-    //Y position for circle center needs to be dynamic
-    let circleYPositionMultiplier = CGFloat(1.3493)
+    //Y position for circle center needs to be dynamic. Will have to change after resizing screen.  float will be   much less so it gets to the top of the frame
+    let circleYPositionMultiplier = CGFloat(1.205)
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     let center = CGPoint(x: self.frame.size.width / 2.0, y: circleYPosition)
 //    ctx.setFillColor(UIColor.clear.cgColor)
@@ -245,14 +241,21 @@ class BWCircularSlider: UIControl {
   func moveHandle(lastPoint:CGPoint){
     
     //Get the center
-    let centerPoint:CGPoint  = CGPoint(x: self.frame.size.width/2, y: self.frame.size.width/2);
+    
+//    let centerPoint:CGPoint  = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2);
+    
+    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPosition = self.frame.size.height * circleYPositionMultiplier
+    //Circle center
+    let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
     //Calculate the direction from a center point and a arbitrary position.
+    //currentAngle starting position is at 67.  let's replicate the current angle returning 67 to figure out what math we need to do to within AngleFromNorth
     let currentAngle:Double = AngleFromNorth(p1: centerPoint, p2: lastPoint, flipped: false);
     let angleInt = Int(floor(currentAngle))
     
     //Store the new angle
-    angle = Int(180 - angleInt)
-
+    angle = abs(Int(180 - angleInt))
+    
     
     //Redraw
     setNeedsDisplay()
@@ -260,7 +263,7 @@ class BWCircularSlider: UIControl {
   
   /** Given the angle, get the point position on circumference **/
   func pointFromAngle(angleInt:Int)->CGPoint{
-    let circleYPositionMultiplier = CGFloat(1.3493)
+    let circleYPositionMultiplier = CGFloat(1.205)
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     //Circle center
     let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
