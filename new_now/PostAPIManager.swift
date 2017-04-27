@@ -18,7 +18,7 @@ class PostAPIManager: NSObject {
   
   
   static func fetchPostsWithCompletion(comp: @escaping ([[String: AnyObject]]?, [String: AnyObject]?) -> Void) {
-    let baseUrl = "https://329cbcb8.ngrok.io"
+    let baseUrl = "https://27ec82f5.ngrok.io"
     
     let postUrlString = baseUrl + APIConstants.newNowApiUrl + APIConstants.postUrl
     
@@ -47,7 +47,7 @@ class PostAPIManager: NSObject {
       comp(nil)
       return
     }
-    let urlString = "https://329cbcb8.ngrok.io" + "\(url)"
+    let urlString = "https://27ec82f5.ngrok.io" + "\(url)"
     
     guard let imageUrl = URL(string: urlString) else {
       print("CAPI: contacts url failed")
@@ -75,7 +75,7 @@ class PostAPIManager: NSObject {
       comp(nil)
       return
     }
-    let urlString = "https://329cbcb8.ngrok.io" + "\(url)"
+    let urlString = "https://27ec82f5.ngrok.io" + "\(url)"
     
     guard let imageUrl = URL(string: urlString) else {
       print("CAPI: contacts url failed")

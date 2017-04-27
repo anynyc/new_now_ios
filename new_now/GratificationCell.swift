@@ -80,36 +80,62 @@ class GratificationCell: UICollectionViewCell {
        
     //set origin x
 
+    let titleOriginXMultiplier = CGFloat(0.09333)
+    let titleOriginYMultiplier = CGFloat(0.2248)
+    let titleWidthMultiplier = CGFloat(0.78933)
+    let titleHeightMultiplier = CGFloat(0.2248)
+
+    let titleXPosition = containerFrame.size.width * titleOriginXMultiplier
+    let titleYPosition = containerFrame.size.height * titleOriginYMultiplier
+    let titleWidth = containerFrame.size.width * titleWidthMultiplier
+    let titleHeight = containerFrame.size.height * titleHeightMultiplier
+    
     var titleFrame = titleLabel.frame
-    titleFrame.size.width = 296.0
-    titleFrame.size.height = 150.0
-    titleFrame.origin.x = 35
+    titleFrame.size.width = titleWidth
+    titleFrame.size.height = titleHeight
+    titleFrame.origin.x = titleXPosition
     //align with
-    titleFrame.origin.y = 150
+    titleFrame.origin.y = titleYPosition
     titleLabel.frame = titleFrame
     
+    //Make responsive.  iphone 6 375 X 667
+    
+    
+    let messageOriginXMultiplier = CGFloat(0.09333)
+    let messageOriginYMultiplier = CGFloat(0.494752)
+    let messageHeightMultiplier = CGFloat(0.07796)
+    let messageWidthMultiplier = CGFloat(0.78666)
+    
+    let messageXPosition = containerFrame.size.width * messageOriginXMultiplier
+    let messageYPosition = containerFrame.size.height * messageOriginYMultiplier
+    let messageHeight = containerFrame.size.height * messageHeightMultiplier
+    let messageWidth = containerFrame.size.width * messageWidthMultiplier
+    
+    
     var messageFrame = messageLabel.frame
-    messageFrame.size.width = 295.0
-    messageFrame.size.height = 52.0
-    messageFrame.origin.x = 35
+    messageFrame.size.width = messageWidth
+    messageFrame.size.height = messageHeight
+    messageFrame.origin.x = messageXPosition
     //align with
-    messageFrame.origin.y = 330
+    messageFrame.origin.y = messageYPosition
     messageLabel.frame = messageFrame
     
-//    var buttonFrame = buttonLabel.frame
-//    buttonFrame.size.width = 295.0
-//    buttonFrame.size.height = 52.0
-//    buttonFrame.origin.x = 35
-//    //align with
-//    buttonFrame.origin.y = 330
-//    buttonLabel.frame = buttonFrame
-//    
-
+    //Make responsive.  iphone 6 375 X 667
+    let buttonOriginXMultiplier = CGFloat(0.0933)
+    let buttonOriginYMultiplier = CGFloat(0.65967)
+    let buttonWidthMultiplier = CGFloat(0.32)
+    let buttonHeightMultiplier = CGFloat(0.0209)
+    
+    let buttonXPosition = containerFrame.size.width * buttonOriginXMultiplier
+    let buttonYPosition = containerFrame.size.height * buttonOriginYMultiplier
+    let buttonWidth = containerFrame.size.width * buttonWidthMultiplier
+    let buttonHeight = containerFrame.size.width * buttonHeightMultiplier
+    
     var buttonFrame = buttonLabel.frame
-    buttonFrame.size.width  = 120.0
-    buttonFrame.size.height = 14.0
-    buttonFrame.origin.x = 35
-    buttonFrame.origin.y = 440
+    buttonFrame.size.width  = buttonWidth
+    buttonFrame.size.height = buttonHeight
+    buttonFrame.origin.x = buttonXPosition
+    buttonFrame.origin.y = buttonYPosition
     buttonLabel.frame = buttonFrame
 //
     
