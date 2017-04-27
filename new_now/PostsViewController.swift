@@ -56,6 +56,10 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       mutableBodyString.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange(location: 0,length: bodyText.characters.count))
       
       cell.bodyLabel.attributedText = attributedBodyString
+//      cell.bodyLabelContainer.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+      let gesture = UITapGestureRecognizer(target: self, action:  #selector(articleBtnPressed))
+      cell.bodyLabelContainer.addGestureRecognizer(gesture)
+
 //
 //      var text = bodyText
 //      
@@ -145,7 +149,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       self.totalCountLabel.isHidden = true
       self.latLabelText.isHidden = true
       self.longLabelText.isHidden = true
-      self.view.sendSubview(toBack: self.slider)
+//      self.view.sendSubview(toBack: self.slider)
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 
@@ -236,6 +240,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     gridCollectionView.backgroundColor = UIColor.clear
     gridCollectionView.showsVerticalScrollIndicator = false
     gridCollectionView.showsHorizontalScrollIndicator = false
+    gridCollectionView.isScrollEnabled = false
+
     self.view.addSubview(gridCollectionView)
     navigationController?.setNavigationBarHidden(true, animated: false)
     gridCollectionView!.register(ImageCell.self, forCellWithReuseIdentifier: "cell")
@@ -394,6 +400,12 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     showArticle(of: articleUrl)
     
   }
+  
+  func articleBtnPressed(_ sender: Any) {
+    let articleUrl = postViewModel.postsArray[activeCell].link
+    
+    showArticle(of: articleUrl)
+  }
   func setupBottomButtons() {
     self.view.bringSubview(toFront: readThisButton)
     self.view.bringSubview(toFront: anyLogo)
@@ -514,7 +526,6 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
     webViewController.urlString = fullURLString
     navigationController?.pushViewController(webViewController, animated: true)
-    
   }
 }
 
