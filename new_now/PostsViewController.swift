@@ -265,7 +265,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     // Build the slider.  Changing slider frame size so it only occupies bottom of page and doesn't cover cell
 //    slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: self.view.bounds)
     
-    let sliderYPositionMultiplier = CGFloat(0.74362)
+//    let sliderYPositionMultiplier = CGFloat(0.74362)
+    let sliderYPositionMultiplier = CGFloat(0.73)
+
     let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
     
     slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: CGRect(x: 0, y: sliderYPosition, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))

@@ -127,7 +127,8 @@ class BWCircularSlider: UIControl {
     ctx!.setLineCap(CGLineCap.butt)
     
     //Y position for circle center needs to be dynamic. Will have to change after resizing screen.  float will be   much less so it gets to the top of the frame
-    let circleYPositionMultiplier = CGFloat(1.205)
+//    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPositionMultiplier = CGFloat(1.25)
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     let center = CGPoint(x: self.frame.size.width / 2.0, y: circleYPosition)
 //    ctx.setFillColor(UIColor.clear.cgColor)
@@ -244,7 +245,8 @@ class BWCircularSlider: UIControl {
     
 //    let centerPoint:CGPoint  = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2);
     
-    let circleYPositionMultiplier = CGFloat(1.205)
+//    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPositionMultiplier = CGFloat(1.25)
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     //Circle center
     let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
@@ -263,7 +265,9 @@ class BWCircularSlider: UIControl {
   
   /** Given the angle, get the point position on circumference **/
   func pointFromAngle(angleInt:Int)->CGPoint{
-    let circleYPositionMultiplier = CGFloat(1.205)
+//    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPositionMultiplier = CGFloat(1.25)
+
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     //Circle center
     let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
