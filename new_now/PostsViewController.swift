@@ -60,29 +60,17 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let gesture = UITapGestureRecognizer(target: self, action:  #selector(articleBtnPressed))
       cell.bodyLabelContainer.addGestureRecognizer(gesture)
 
-//
-//      var text = bodyText
-//      
-//      let paragraphStyle = NSMutableParagraphStyle()
-//      paragraphStyle.paragraphSpacing = 50
-//      paragraphStyle.alignment = NSTextAlignment.left
-//      paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
-//      
-//      let attributes = [
-//        NSParagraphStyleAttributeName: paragraphStyle
-//      ] as [String : Any]
-//      
-//      
-//      let attributedBodyString = NSAttributedString(string: text, attributes: attributes)
-//      
-//      cell.bodyLabel.attributedText = attributedBodyString
-//      cell.bodyLabel.numberOfLines = 0
-//      cell.bodyLabel.textColor = UIColor.white
-//      cell.bodyLabel.backgroundColor = UIColor.purple
-//      cell.bodyLabel.sizeToFit()
-//      
-//      
-      
+      //build box with same background color next to text
+      //get number of lines being used * line height.  Set height of preBodyBackground.
+      //height brefore sizeToFit()
+//      let preHeightBeforeSizeToFit = cell.bodyLabel.frame.size
+      //height after sizeToFit
+      let preBodySize = cell.bodyLabel.sizeThatFits(cell.bodyLabel.frame.size)
+//      let preHeight = cell.bodyLabel.sizeToFit()
+     
+      //origin.y needs to be dynamic as well
+      cell.preBodyBackground.backgroundColor = backgroundColor
+      cell.preBodyBackground.frame.size.height = preBodySize.height
       cell.articleUrl = postViewModel.postsArray[indexPath.row].link
       cell.isHidden = false
       
@@ -102,7 +90,33 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       //                                )
       //                                
       //    }
-      //    )    
+      //    )
+      
+     //maybe depending on height of body label or size to fit I can calculate origin.y??  
+      //Does this work on different screen sizes?  what are the other heights if 1 or 4 and 5 lines?
+      if preBodySize.height == 127.5 {
+        //3 lines
+
+        cell.preBodyBackground.frame.origin.y = 332.249777
+
+      } else if preBodySize.height == 170 {
+        //4 lines
+        cell.preBodyBackground.frame.origin.y = 311.4
+
+      } else if preBodySize.height == 212.5 {
+        //5 lines 
+        cell.preBodyBackground.frame.origin.y = 290.4
+
+      } else if preBodySize.height == 85 {
+        //2 lines
+        cell.preBodyBackground.frame.origin.y = 353.4
+
+      } else if preBodySize.height == 42.5 {
+        //1 line
+        cell.preBodyBackground.frame.origin.y = 374.4
+      }
+      
+      
       return cell
 
     } else {
@@ -321,6 +335,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     self.fullImageView.frame = gridCollectionView.frame
   }
+  
+  
   
   override func viewWillAppear(_ animated: Bool) {
     navigationController?.setNavigationBarHidden(true, animated: false)

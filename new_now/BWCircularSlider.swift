@@ -182,6 +182,7 @@ class BWCircularSlider: UIControl {
     /** Clip Context to the mask **/
     ctx!.saveGState()
     
+
     ctx!.clip(to: self.bounds, mask: mask)
     
     
@@ -207,8 +208,9 @@ class BWCircularSlider: UIControl {
     // Draw the gradient
 //    ctx!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)));
     ctx!.restoreGState();
-    
+    let emptyDashArray:[CGFloat] = []
     /* Draw the handle */
+    ctx!.setLineDash(phase: 3, lengths: emptyDashArray);
     drawTheHandle(ctx: ctx!)
     
   }

@@ -18,7 +18,10 @@ class ImageCell: UICollectionViewCell {
   var gl: CAGradientLayer!
   var articleUrl: String!
   var bodyLabelContainer: UIView!
-
+  var preBodyBackground: UIView!
+  
+  
+  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -53,15 +56,20 @@ class ImageCell: UICollectionViewCell {
     
     //view holding the body label.  will constrain bodylabel to bottom of this view.
     bodyLabelContainer = UIView()
+    preBodyBackground = UIView()
     
     contentView.addSubview(cellContainer)
     cellContainer.addSubview(imageView)
     cellContainer.addSubview(grayOverlay)
     cellContainer.addSubview(topicLabel)
+    cellContainer.addSubview(preBodyBackground)
     cellContainer.addSubview(bodyLabelContainer)
     bodyLabelContainer.addSubview(bodyLabel)
-
     
+    self.contentView.updateConstraints()
+    self.updateConstraints()
+    self.layoutIfNeeded()
+    self.contentView.layoutIfNeeded()
     
   }
   
@@ -94,8 +102,6 @@ class ImageCell: UICollectionViewCell {
     bodyLabelContainerFrame.origin.y = bodyYPosition
     bodyLabelContainer.frame = bodyLabelContainerFrame
     
-
-
     //use constraints instead.  leading trailing and bottom
     var bodyFrame = bodyLabel.frame
     bodyFrame.size.height = self.frame.size.height / 2
@@ -106,7 +112,24 @@ class ImageCell: UICollectionViewCell {
 
     self.contentView.addConstraints([bottomConstraint])
     
+    var preTextBackgroundFrame = preBodyBackground.frame
+    //height is off set height in view controller?
+//    preTextBackgroundFrame.size.height = 127.5
+    //need to make this dynamic.  distance between leading edge of frame and origin x of bodyLabelContainerFrame
+    preTextBackgroundFrame.size.width = 60.0
+//    preTextBackgroundFrame.origin.y = bodyLabelContainer.frame.origin.y + 80
+    preBodyBackground.frame = preTextBackgroundFrame
     
+    
+    //constraints.  equal heights btw pretextBackground and bodyLabel. verticalConstraint
+    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+    let preTextHeightConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
+    let preTextTopConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: .top, multiplier: 1, constant: 0)
+    let preTextLeadingConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+    
+    self.contentView.addConstraints([verticalConstraint, preTextHeightConstraint, preTextTopConstraint, preTextLeadingConstraint])
+    
+
     //making the frame for imageView.  subview of container.  positioned off centered
     
     let imageFrameHeightMultiplier = CGFloat(0.6746)
@@ -166,6 +189,9 @@ class ImageCell: UICollectionViewCell {
     topicFrame.origin.y = frame.origin.y
     topicLabel.frame = topicFrame
 
+    
+
+    
   }
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
