@@ -21,7 +21,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   var editionLabel: UILabel!
   
   var mainContentLabel: UILabel!
-  
+  var progressBar: UIProgressView!
   static func storyboardInstance() -> LaunchViewController? {
     
     let storyboard = UIStoryboard(name:
@@ -45,8 +45,8 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(true, animated: false)
-    loaderView.type = .ballClipRotate
-    loaderView.color = UIColor.blue
+//    loaderView.type = .ballClipRotate
+//    loaderView.color = UIColor.blue
 //    loaderView.startAnimating()
     presentInterstitialLoadingIndicator()
     
@@ -98,7 +98,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     editionLabel.attributedText = attributedBodyString
     
     self.view.addSubview(editionLabel)
-    
+    //make dynamic
     var editionFrame = editionLabel.frame
     editionFrame.size.height = 100
     editionFrame.size.width = 12
@@ -110,6 +110,31 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
 
     editionLabel.setNeedsLayout()
     editionLabel.layoutIfNeeded()
+    
+    progressBar = UIProgressView()
+    
+    let progressXMultiplier = CGFloat(0.109333)
+    let progressYMultiplier = CGFloat(0.65667)
+    let progressHeightMultiplier = CGFloat(0.00449)
+    let progressWidthMultiplier = CGFloat(0.770666)
+    
+    let progressXPosition = self.view.frame.size.width * progressXMultiplier
+    let progressYPosition = self.view.frame.size.height * progressYMultiplier
+    let progressHeight = self.view.frame.size.height * progressHeightMultiplier
+    let progressWidth = self.view.frame.size.width * progressWidthMultiplier
+    
+    
+    var progressFrame = progressBar.frame
+    progressFrame.origin.x = progressXPosition
+    progressFrame.origin.y = progressYPosition
+    progressFrame.size.width = progressWidth
+    progressFrame.size.height = progressHeight
+    
+    progressBar.frame = progressFrame
+    
+    progressBar.progress = 0.1
+    self.view.addSubview(progressBar)
+
 
   }
   
@@ -118,32 +143,15 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   }
   
   func presentInterstitialLoadingIndicator() {
-//    let loader = NVActivityIndicatorView(frame: self.loaderView.frame, type: .ballClipRotate, color: UIColor.black)
-//    loaderView.addSubview(loader)
-//    loader.startAnimating()
 
-//    let loadingStoryboard = UIStoryboard.init(name: "LoadingInterstitialViewController", bundle: nil)
-//    let loadingViewController = loadingStoryboard.instantiateViewController(withIdentifier: "LoadingInterstitialVC")
-//    loadingViewController.modalPresentationStyle = .overCurrentContext
-//    guard Reachability.connectedToNetwork() else {
-//      navigateToHomeScreenIfLoggedIn()
-//      return
-//    }
-//
-//    let activityIndicatorView = NVActivityIndicatorView(frame: loadingViewController.view.frame, type: NVActivityIndicatorType(rawValue: 0)!)
-//    loadingViewController.view.addSubview(activityIndicatorView)
-//
-//    present(loadingViewController, animated: false) { [weak self] _ in
       postViewModel.loadPosts()
-//    }
   }
   
   
   func postsReceived() {
-//    moveLoader(view: loaderView)
-    
-    //repurpose this for side loader?
-    UIView.animate(withDuration: 1, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {
+    progressBar.setProgress(1.0, animated: true)
+
+    UIView.animate(withDuration: 1.5, delay: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
       self.view.alpha = 0
 //      self.view.center.y = self.view.center.y + 195
 //      self.view.center.x = self.view.center.x - 155
@@ -178,11 +186,14 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   
   func getPostImages() {
    postViewModel.getPostImages()
+    
   }
   
   
   func loadPostsImages() {
     postViewModel.postsDidLoad()
+    //30%
+    progressBar.setProgress(0.3, animated: true)
   }
   
   func postsDidLoad() {
@@ -195,6 +206,8 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   }
   
   func imagesDidLoad() {
+    //70%
+    progressBar.setProgress(0.7, animated: true)
     postsReceived()
 
   }
