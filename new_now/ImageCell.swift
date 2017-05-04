@@ -134,8 +134,8 @@ class ImageCell: UICollectionViewCell {
     //making the frame for imageView.  subview of container.  positioned off centered
     
     let imageFrameHeightMultiplier = CGFloat(0.6746)
-    let imageFrameWidthMultiplier = CGFloat(0.7626)
-    let imageFrameXPositionMultiplier = CGFloat(0.2666)
+    let imageFrameWidthMultiplier = CGFloat(0.8213333)
+    let imageFrameXPositionMultiplier = CGFloat(0.17866667)
     let imageFrameYPositionMultiplier = CGFloat(0.1634)
     
     let imageFrameHeight = containerFrame.size.height * imageFrameHeightMultiplier
