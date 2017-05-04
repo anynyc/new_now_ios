@@ -42,7 +42,7 @@ class BWCircularSlider: UIControl {
   var angle:Int = 67
   var startColor = UIColor.blue
   var endColor = UIColor.purple
-  
+  var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
   // Custom initializer
   convenience init(startColor:UIColor, endColor:UIColor, frame:CGRect){
     self.init(frame: frame)
@@ -217,13 +217,12 @@ class BWCircularSlider: UIControl {
   
   
   
-  /** Draw a white knob over the circle **/
   
   func drawTheHandle(ctx:CGContext){
     
     ctx.saveGState();
     
-    //I Love shadows
+    //shadows
 //    ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 3, color: UIColor.black.cgColor);
     
     //Get the handle position
@@ -232,7 +231,7 @@ class BWCircularSlider: UIControl {
     //Draw It!
     UIColor.blue.set();
     ctx.setLineWidth(3.0)
-
+    
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
     ctx.restoreGState();
   }
@@ -253,7 +252,7 @@ class BWCircularSlider: UIControl {
     //Circle center
     let centerPoint = CGPoint(x: 187.5 - Config.TB_LINE_WIDTH/2.0, y: circleYPosition - Config.TB_LINE_WIDTH / 2);
     //Calculate the direction from a center point and a arbitrary position.
-    //currentAngle starting position is at 67.  let's replicate the current angle returning 67 to figure out what math we need to do to within AngleFromNorth
+
     let currentAngle:Double = AngleFromNorth(p1: centerPoint, p2: lastPoint, flipped: false);
     let angleInt = Int(floor(currentAngle))
     
@@ -261,10 +260,55 @@ class BWCircularSlider: UIControl {
     angle = abs(Int(180 - angleInt))
     
     
+    print("Angle  before set needs display \(angle)")
+    //logic before redrawing. check that it crossed X threshold
     //Redraw
-    setNeedsDisplay()
+    let crossedThresholdReturn = crossedThreshold(angle: angle, lastPoint: lastPoint)
+    
+    if crossedThresholdReturn.0 == true {
+      angle = crossedThresholdReturn.1
+      //trigger heptic feedback
+
+      self.setNeedsDisplay()
+
+
+    }
+    
   }
   
+  
+  func crossedThreshold(angle: Int, lastPoint: CGPoint) -> (Bool, Int) {
+    //if angle is X different from last point need to change display?
+    //just setNeeds display at closes hot spot?  
+    //need list of hot spots.  Find hotspot with the smallest difference
+    //the control for boolean
+//    var last = lastPoint
+    let currentAngle = angle
+    //initializations
+    var newAngle = angle
+    //will never be more than 360
+    var leastDifference = 360
+    //this will need to be dynamic eventually
+    let hotSpots = [68, 74, 80, 86, 92, 98, 104, 110]
+    
+    for spot in hotSpots {
+      
+      let difference = abs(spot - currentAngle)
+      
+      if difference < leastDifference {
+        leastDifference = difference
+        newAngle =  spot
+      }
+    }
+    
+    //may need to be more specific.
+    if newAngle != currentAngle {
+      
+      return(true, newAngle)
+    } else {
+      return (false, currentAngle)
+    }
+  }
   /** Given the angle, get the point position on circumference **/
   func pointFromAngle(angleInt:Int)->CGPoint{
 //    let circleYPositionMultiplier = CGFloat(1.205)
