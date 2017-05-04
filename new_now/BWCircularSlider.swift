@@ -49,6 +49,7 @@ class BWCircularSlider: UIControl {
     
     self.startColor = startColor
     self.endColor = endColor
+    
   }
   
   // Default initializer
@@ -65,6 +66,9 @@ class BWCircularSlider: UIControl {
     let radiusMultiplier = CGFloat(1.0666)
     let radiusSize = screenWidth * radiusMultiplier
     radius = radiusSize
+    feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
+    feedbackGenerator?.prepare()
+
 
   }
   
@@ -133,9 +137,9 @@ class BWCircularSlider: UIControl {
     let center = CGPoint(x: self.frame.size.width / 2.0, y: circleYPosition)
 //    ctx.setFillColor(UIColor.clear.cgColor)
     
-    
-    let dashArray:[CGFloat] = [37,6]
-    ctx!.setLineDash(phase: 3, lengths: dashArray)
+//    
+//    let dashArray:[CGFloat] = [37,6]
+//    ctx!.setLineDash(phase: 3, lengths: dashArray)
     
     ctx!.addArc(center: center,
                    radius: radius,
@@ -176,7 +180,7 @@ class BWCircularSlider: UIControl {
     imageCtx!.drawPath(using: .stroke)
     
     //save the context content into the image mask
-    var mask:CGImage = UIGraphicsGetCurrentContext()!.makeImage()!
+    let mask:CGImage = UIGraphicsGetCurrentContext()!.makeImage()!
     UIGraphicsEndImageContext();
     
     /** Clip Context to the mask **/
@@ -223,13 +227,16 @@ class BWCircularSlider: UIControl {
     ctx.saveGState();
     
     //shadows
-//    ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 3, color: UIColor.black.cgColor);
+    let shadowColor = UIColor.black
+    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
+    ctx.setShadow(offset: CGSize(width: 0, height: 2), blur: 10)
+    
     
     //Get the handle position
     let handleCenter = pointFromAngle(angleInt: angle)
     
     //Draw It!
-    UIColor.blue.set();
+    UIColor.white.set();
     ctx.setLineWidth(3.0)
     
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
@@ -268,7 +275,7 @@ class BWCircularSlider: UIControl {
     if crossedThresholdReturn.0 == true {
       angle = crossedThresholdReturn.1
       //trigger heptic feedback
-
+      self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
       self.setNeedsDisplay()
 
 
