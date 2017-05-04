@@ -87,7 +87,8 @@ class ImageCell: UICollectionViewCell {
     
     
     //Set up origin x and y programmatically
-    let bodyOriginXMultiplier = CGFloat(0.16)
+//    let bodyOriginXMultiplier = CGFloat(0.16)
+    let bodyOriginXMultiplier = CGFloat(0.106666)
     let bodyOriginYMultiplier = CGFloat(0.344)
     let bodyWidthMultiplier = CGFloat(0.84)
     let bodyXPosition = containerFrame.size.width * bodyOriginXMultiplier
@@ -116,7 +117,7 @@ class ImageCell: UICollectionViewCell {
     //height is off set height in view controller?
 //    preTextBackgroundFrame.size.height = 127.5
     //need to make this dynamic.  distance between leading edge of frame and origin x of bodyLabelContainerFrame
-    preTextBackgroundFrame.size.width = 60.0
+    preTextBackgroundFrame.size.width = 40.0
 //    preTextBackgroundFrame.origin.y = bodyLabelContainer.frame.origin.y + 80
     preBodyBackground.frame = preTextBackgroundFrame
     
@@ -161,31 +162,33 @@ class ImageCell: UICollectionViewCell {
     
     //same frame as image view
     grayOverlay.frame = frame
-    
-    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
-    let colorMid = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.2).cgColor
-    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
-    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
-    let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.99).cgColor
-    gl = CAGradientLayer()
-    gl.colors = [colorTop, colorMid, colorMiddle, colorBottom, lineBottom]
-    gl.locations = [0.0, 0.4, 0.8, 0.99, 0.99999999]
+    //not USING GRADIENT NOW??
+//    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
+//    let colorMid = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.2).cgColor
+//    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
+//    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
+//    let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.99).cgColor
+//    gl = CAGradientLayer()
+//    gl.colors = [colorTop, colorMid, colorMiddle, colorBottom, lineBottom]
+//    gl.locations = [0.0, 0.4, 0.8, 0.99, 0.99999999]
+////    gl.frame = frame
+////    let gl = CALayer()
+////    gl.backgroundColor = UIColor.green.cgColor
 //    gl.frame = frame
-//    let gl = CALayer()
-//    gl.backgroundColor = UIColor.green.cgColor
-    gl.frame = frame
-    
-    cellContainer.layer.insertSublayer(gl, at: 3)
+//    
+//    cellContainer.layer.insertSublayer(gl, at: 3)
     
     //set origin x
-    let topicFrameOriginXMultiplier = CGFloat(0.16)
+    let topicFrameOriginXMultiplier = CGFloat(0.09333333)
+    
     let topicFrameOriginXPosition = containerFrame.size.width * topicFrameOriginXMultiplier
     
     var topicFrame = topicLabel.frame
     topicFrame.size.height = 200
     topicFrame.size.width = 20
     topicFrame.origin.x = topicFrameOriginXPosition
-    //align with 
+
+    //align with
     topicFrame.origin.y = frame.origin.y
     topicLabel.frame = topicFrame
 

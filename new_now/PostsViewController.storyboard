@@ -34,19 +34,20 @@
                                     <constraint firstAttribute="width" constant="53" id="xZS-XV-WpR"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
-                                <rect key="frame" x="302.5" y="30" width="38.5" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
+                                <rect key="frame" x="289.5" y="30" width="38.5" height="14"/>
                                 <attributedString key="attributedText">
                                     <fragment content="-87.62 S">
                                         <attributes>
                                             <font key="NSFont" size="10" name="Avenir-Heavy"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="41.52 E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-nE-niF" userLabel="longLabel">
-                                <rect key="frame" x="305" y="47" width="36" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="41.52 E" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-nE-niF" userLabel="longLabel">
+                                <rect key="frame" x="292" y="47" width="36" height="14"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -78,11 +79,11 @@
                         <constraints>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="top" secondItem="wQG-AY-ZWV" secondAttribute="top" id="1MI-uX-G37"/>
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="leading" secondItem="eVg-gs-wIo" secondAttribute="trailing" constant="3" id="4BV-u2-nv2"/>
-                            <constraint firstItem="Moz-nE-niF" firstAttribute="leading" secondItem="NCg-Ee-H4k" secondAttribute="leading" constant="-2.5" id="52h-gR-tSq"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" multiplier="2" id="LBE-9V-dGk"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
+                            <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="NCg-Ee-H4k" secondAttribute="trailing" id="Pif-PK-pGZ"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.913694" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" id="pQB-Aa-xQL"/>

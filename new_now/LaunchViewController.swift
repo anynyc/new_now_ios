@@ -132,7 +132,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     
     progressBar.frame = progressFrame
     
-    progressBar.progress = 0.1
+    progressBar.setProgress(0.1, animated: true)
     self.view.addSubview(progressBar)
 
 
@@ -235,7 +235,9 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     
     //ANY LOGO leading and top constraint added programmatically
     let anyLeadingMultiplier = CGFloat(0.106666)
-    let anyTopMultiplier = CGFloat(0.045)
+//    let anyTopMultiplier = CGFloat(0.045)
+    let anyTopMultiplier = CGFloat(0.05997001)
+
     let anyLeadingDistance = screenWidth * anyLeadingMultiplier
     let anyTopDistance = screenHeight * anyTopMultiplier
     

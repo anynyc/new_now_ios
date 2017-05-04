@@ -220,7 +220,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         latLabelText.text = first6
       }
     } else {
-      latLabelText.text = "-74.45"
+      latLabelText.text = "74.45"
     }
     if prefs.string(forKey: "longitude") != "" {
       let longitude = prefs.string(forKey: "longitude")!
@@ -232,7 +232,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         longLabelText.text = first6
       }
     } else {
-      longLabelText.text = "45.14"
+      longLabelText.text = "-45.14"
 
     }
     
@@ -485,7 +485,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let anyTopDistance = screenHeight * anyTopMultiplier
     
     let anyLeadingConstraint = NSLayoutConstraint(item: anyLogo, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: anyLeadingDistance)
-    let anyTopConstraint = NSLayoutConstraint(item: anyLogo, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: anyTopDistance)
+    let anyTopConstraint = NSLayoutConstraint(item: anyLogo, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 40.0)
     
     
     self.view.addConstraints([anyLeadingConstraint, anyTopConstraint])
