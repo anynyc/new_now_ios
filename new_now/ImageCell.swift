@@ -156,7 +156,7 @@ class ImageCell: UICollectionViewCell {
     imageView.frame = frame
     
     imageView.layer.shadowColor = UIColor.black.cgColor
-    imageView.layer.shadowOpacity = 0.1
+    imageView.layer.shadowOpacity = 0.4
     imageView.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
     imageView.layer.shadowRadius = 20
     

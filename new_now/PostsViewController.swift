@@ -49,6 +49,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let paraStyle = NSMutableParagraphStyle()
       paraStyle.firstLineHeadIndent = 15.0
       paraStyle.paragraphSpacingBefore = 10.0
+      paraStyle.tailIndent = 10.0
       paraStyle.minimumLineHeight = 100.0
       
       
@@ -184,6 +185,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   @IBOutlet weak var counterLabel: UILabel!
   
+  @IBOutlet weak var youAreHereLabel: UILabel!
   @IBOutlet weak var totalCountLabel: UILabel!
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
@@ -220,7 +222,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         latLabelText.text = first6
       }
     } else {
-      latLabelText.text = "74.45"
+      latLabelText.isHidden = true
     }
     if prefs.string(forKey: "longitude") != "" {
       let longitude = prefs.string(forKey: "longitude")!
@@ -232,7 +234,9 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
         longLabelText.text = first6
       }
     } else {
-      longLabelText.text = "-45.14"
+      longLabelText.isHidden = true
+      showYouAreHere()
+//      longLabelText.text = "-45.14"
 
     }
     
@@ -498,6 +502,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let latSpaceConstraint = NSLayoutConstraint(item: latLabelText, attribute: .bottom, relatedBy: .equal, toItem: longLabelText, attribute: .top, multiplier: 1, constant: latSpaceDistance)
     
     self.view.addConstraints([latSpaceConstraint])
+    
+    
+    
+    
   }
   
   func goToGoogle(_button : UIButton) {
@@ -545,6 +553,24 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     webViewController.urlString = fullURLString
     navigationController?.pushViewController(webViewController, animated: true)
   }
+  
+  
+  
+  func showYouAreHere() {
+    youAreHereLabel.isHidden = false
+    let screenSize = UIScreen.main.bounds
+    let screenWidth = screenSize.width
+    let screenHeight = screenSize.height
+    let leadingMultiplier = CGFloat(0.7333333)
+    let leadingDistance = screenWidth * leadingMultiplier
+    
+    //    //constraints. verticalConstraint
+    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: anyLogo, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+    let leadingConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: leadingDistance)
+    self.view.addConstraints([verticalConstraint, leadingConstraint])
+
+  }
+
 }
 
 
