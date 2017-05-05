@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "515611103.428232"
+            timestampString = "515695608.471307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,15 +278,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "515612760.825828"
+            timestampString = "515695608.471307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "drawTheHandle(ctx:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,12 +506,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/PostsViewController.swift"
-                  timestampString = "515610366.34097"
+                  timestampString = "515622784.767487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "377"
-                  endingLineNumber = "377"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "15">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -521,12 +521,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/PostsViewController.swift"
-                  timestampString = "515610366.34689"
+                  timestampString = "515622784.771949"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "377"
-                  endingLineNumber = "377"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -586,12 +586,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/PostsViewController.swift"
-                  timestampString = "515610366.358772"
+                  timestampString = "515622784.784647"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "505"
-                  endingLineNumber = "505"
-                  offsetFromSymbolStart = "324">
+                  startingLineNumber = "513"
+                  endingLineNumber = "513"
+                  offsetFromSymbolStart = "343">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -601,12 +601,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/PostsViewController.swift"
-                  timestampString = "515610366.362987"
+                  timestampString = "515622784.788976"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "505"
-                  endingLineNumber = "505"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "513"
+                  endingLineNumber = "513"
+                  offsetFromSymbolStart = "23">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "515612760.825828"
+            timestampString = "515695608.471307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "moveHandle(lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "515612760.825828"
+            timestampString = "515695608.471307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "AngleFromNorth(p1:p2:flipped:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,12 +746,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "515612760.825828"
+            timestampString = "515695608.471307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "moveHandle(lastPoint:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "new_now/BWCircularSlider.swift"
+            timestampString = "515695608.471307"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "drawHotSpotDots(ctx:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "new_now/BWCircularSlider.swift"
+            timestampString = "515695608.471307"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "drawTheHandle(ctx:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

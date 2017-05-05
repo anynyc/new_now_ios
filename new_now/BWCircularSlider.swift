@@ -126,6 +126,7 @@ class BWCircularSlider: UIControl {
 //    CGContextAddArc(ctx!, CGFloat(self.frame.size.width / 2.0), CGFloat(400.0), radius, 0, CGFloat(M_PI * 2), 0)
 //    UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).set()
 //    
+    
     ctx!.setStrokeColor(UIColor.lightGray.cgColor)
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
@@ -140,7 +141,9 @@ class BWCircularSlider: UIControl {
 //    
 //    let dashArray:[CGFloat] = [37,6]
 //    ctx!.setLineDash(phase: 3, lengths: dashArray)
-    
+    let shadowColor = UIColor.black
+    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
+    ctx!.setShadow(offset: CGSize(width: 0, height: 4), blur: 10)
     ctx!.addArc(center: center,
                    radius: radius,
                    startAngle: 0,
@@ -216,7 +219,7 @@ class BWCircularSlider: UIControl {
     /* Draw the handle */
     ctx!.setLineDash(phase: 3, lengths: emptyDashArray);
     drawTheHandle(ctx: ctx!)
-    
+    drawHotSpotDots(ctx: ctx!)
   }
   
   
@@ -237,12 +240,36 @@ class BWCircularSlider: UIControl {
     
     //Draw It!
     UIColor.white.set();
+    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.5)
+    ctx.setStrokeColor(strokeColor.cgColor)
     ctx.setLineWidth(3.0)
     
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
     ctx.restoreGState();
   }
   
+  func drawHotSpotDots(ctx: CGContext) {
+    ctx.saveGState();
+    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 110]
+
+    
+    for spot in hotSpots {
+      //Get the handle position
+//      let dotCenter = pointFromAngle(angleInt: spot)
+      let dotCenter = pointFromAngleForSpots(angleInt: spot)
+      //Draw It!
+      UIColor.white.set();
+      ctx.setLineWidth(2.0)
+      ctx.setStrokeColor(UIColor.white.cgColor)
+      ctx.setFillColor(UIColor.white.cgColor)
+      
+      ctx.strokeEllipse(in: CGRect(x: dotCenter.x, y: dotCenter.y, width: 2.0, height: 2.0))
+      
+    }
+
+    ctx.restoreGState();
+
+  }
   
   
   /** Move the Handle **/
@@ -296,7 +323,7 @@ class BWCircularSlider: UIControl {
     //will never be more than 360
     var leastDifference = 360
     //this will need to be dynamic eventually
-    let hotSpots = [68, 74, 80, 86, 92, 98, 104, 110]
+    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 110]
     
     for spot in hotSpots {
       
@@ -334,6 +361,27 @@ class BWCircularSlider: UIControl {
     
     return result;
   }
+  
+  /** Given the angle, get the point position on circumference **/
+  func pointFromAngleForSpots(angleInt:Int)->CGPoint{
+    //    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPositionMultiplier = CGFloat(1.25)
+    
+    let circleYPosition = self.frame.size.height * circleYPositionMultiplier
+    //Circle center
+    let centerPoint = CGPoint(x: 187.5 - 2 / 2 , y: circleYPosition - 2 / 2);
+    
+    //The point position on the circumference
+    var result:CGPoint = CGPoint.zero
+    let y = round(Double(radius) * sin(DegreesToRadians(value: Double(-angleInt)))) + Double(centerPoint.y)
+    let x = round(Double(radius) * -(cos(DegreesToRadians(value: Double(-angleInt))))) + Double(centerPoint.x)
+    result.y = CGFloat(y)
+    result.x = CGFloat(x)
+    
+    return result;
+  }
+  
+  
   
   
   //Sourcecode from Apple example clockControl

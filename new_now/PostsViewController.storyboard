@@ -34,13 +34,22 @@
                                     <constraint firstAttribute="width" constant="53" id="xZS-XV-WpR"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
-                                <rect key="frame" x="328" y="30" width="0.0" height="14"/>
-                                <attributedString key="attributedText"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
+                                <rect key="frame" x="298" y="30" width="30" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="TYK-AR-Sj4"/>
+                                    <constraint firstAttribute="height" constant="14" id="c5F-KM-wUk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-nE-niF" userLabel="longLabel">
-                                <rect key="frame" x="328" y="47" width="0.0" height="14"/>
+                                <rect key="frame" x="298" y="47" width="30" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="BMd-Km-DDp"/>
+                                    <constraint firstAttribute="height" constant="14" id="jwU-Wy-vQi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
