@@ -230,8 +230,8 @@ class BWCircularSlider: UIControl {
     ctx.saveGState();
     
     //shadows
-    let shadowColor = UIColor.black
-    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
+//    let shadowColor = UIColor.black
+//    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
     ctx.setShadow(offset: CGSize(width: 0, height: 2), blur: 10)
     
     
@@ -245,6 +245,7 @@ class BWCircularSlider: UIControl {
     ctx.setLineWidth(3.0)
     
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
+    
     ctx.restoreGState();
   }
   
@@ -265,6 +266,12 @@ class BWCircularSlider: UIControl {
       
       ctx.strokeEllipse(in: CGRect(x: dotCenter.x, y: dotCenter.y, width: 2.0, height: 2.0))
       
+      
+//      ctx.move(to:CGPoint(x: 0, y: 0))
+//      ctx.addLine(to:CGPoint(x: self.bounds.size.width, y: 0))
+//      ctx.addLine(to:CGPoint(x: 175, y: 100))
+//      ctx.setFillColor(UIColor.blue.cgColor)
+//      ctx.fillPath()
     }
 
     ctx.restoreGState();
@@ -305,12 +312,39 @@ class BWCircularSlider: UIControl {
       self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
       self.setNeedsDisplay()
 
-
+      //call animation of dot to be enlarged
+      enlargeDot(angle: angle)
     }
     
   }
   
   
+  func enlargeDot(angle: Int) {
+    
+    let dotCenter = pointFromAngleForAnimation(angleInt: angle)
+    let lineWidth = CGFloat(1)
+    let lineHeight = CGFloat(1)
+    
+    let outerLayer = UIView()
+    //CGRect x and y are lower left corner not origin + linewidth / 2
+    outerLayer.backgroundColor = UIColor.white
+    outerLayer.frame = CGRect(x: dotCenter.x, y: dotCenter.y, width: lineWidth, height: lineHeight)
+    outerLayer.layer.cornerRadius = outerLayer.frame.size.height / 2
+    outerLayer.clipsToBounds = true
+    outerLayer.layer.masksToBounds = true
+    
+  
+
+
+    UIView.animate(withDuration: 1.5, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
+      outerLayer.transform = CGAffineTransform(scaleX: 17, y: 17)
+    })
+    
+    self.addSubview(outerLayer)
+    
+
+//    self.layer.addSublayer(redLayer)
+  }
   func crossedThreshold(angle: Int, lastPoint: CGPoint) -> (Bool, Int) {
     //if angle is X different from last point need to change display?
     //just setNeeds display at closes hot spot?  
@@ -370,6 +404,25 @@ class BWCircularSlider: UIControl {
     let circleYPosition = self.frame.size.height * circleYPositionMultiplier
     //Circle center
     let centerPoint = CGPoint(x: 187.5 - 2 / 2 , y: circleYPosition - 2 / 2);
+    
+    //The point position on the circumference
+    var result:CGPoint = CGPoint.zero
+    let y = round(Double(radius) * sin(DegreesToRadians(value: Double(-angleInt)))) + Double(centerPoint.y)
+    let x = round(Double(radius) * -(cos(DegreesToRadians(value: Double(-angleInt))))) + Double(centerPoint.x)
+    result.y = CGFloat(y)
+    result.x = CGFloat(x)
+    
+    return result;
+  }
+  
+  /** Given the angle, get the point position on circumference **/
+  func pointFromAngleForAnimation(angleInt:Int)->CGPoint{
+    //    let circleYPositionMultiplier = CGFloat(1.205)
+    let circleYPositionMultiplier = CGFloat(1.25)
+    
+    let circleYPosition = self.frame.size.height * circleYPositionMultiplier
+    //Circle center // 1 is the lineHeight and width of the frame
+    let centerPoint = CGPoint(x: 187.5 - 1 / 2 , y: circleYPosition - 1 / 2);
     
     //The point position on the circumference
     var result:CGPoint = CGPoint.zero
