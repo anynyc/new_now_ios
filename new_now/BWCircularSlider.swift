@@ -127,8 +127,9 @@ class BWCircularSlider: UIControl {
 //    CGContextAddArc(ctx!, CGFloat(self.frame.size.width / 2.0), CGFloat(400.0), radius, 0, CGFloat(M_PI * 2), 0)
 //    UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).set()
 //    
-    
-    ctx!.setStrokeColor(UIColor.lightGray.cgColor)
+    let strokeColor = UIColor(red: 174 / 255, green: 179 / 255, blue: 183 / 255, alpha: 0.1)
+   
+    ctx!.setStrokeColor(strokeColor.cgColor)
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
     
@@ -142,8 +143,8 @@ class BWCircularSlider: UIControl {
 //    
 //    let dashArray:[CGFloat] = [37,6]
 //    ctx!.setLineDash(phase: 3, lengths: dashArray)
-    let shadowColor = UIColor.black
-    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
+//    let shadowColor = UIColor.black
+//    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
     ctx!.setShadow(offset: CGSize(width: 0, height: 4), blur: 10)
     ctx!.addArc(center: center,
                    radius: radius,
@@ -240,8 +241,10 @@ class BWCircularSlider: UIControl {
     let handleCenter = pointFromAngle(angleInt: angle)
     
     //Draw It!
-    UIColor.white.set();
-    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.5)
+//    UIColor.white.set();
+//    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.5)
+    let strokeColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.5)
+
     ctx.setStrokeColor(strokeColor.cgColor)
     ctx.setLineWidth(3.0)
     
@@ -264,6 +267,7 @@ class BWCircularSlider: UIControl {
       //Draw It!
       UIColor.white.set();
       ctx.setLineWidth(2.0)
+      ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 0)
       ctx.setStrokeColor(UIColor.white.cgColor)
       ctx.setFillColor(UIColor.white.cgColor)
       
@@ -347,8 +351,8 @@ class BWCircularSlider: UIControl {
   
 
 
-    UIView.animate(withDuration: 1.5, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
-      outerLayer.transform = CGAffineTransform(scaleX: 17, y: 17)
+    UIView.animate(withDuration: 0.25, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
+      outerLayer.transform = CGAffineTransform(scaleX: 18, y: 18)
     })
     
     self.addSubview(outerLayer)

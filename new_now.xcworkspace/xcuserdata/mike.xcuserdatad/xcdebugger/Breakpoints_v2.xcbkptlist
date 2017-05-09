@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516053665.175834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516053665.175834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "drawTheHandle(ctx:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "moveHandle(lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
             landmarkName = "AngleFromNorth(p1:p2:flipped:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "crossedThreshold(angle:lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "moveHandle(lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "crossedThreshold(angle:lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516049043.309864"
+            timestampString = "516054059.485939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "crossedThreshold(angle:lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
