@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="262.5" height="400"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="anyGoodLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="anyPdf" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
                                 <rect key="frame" x="40" y="30" width="53" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="TNM-8B-WJr"/>
@@ -123,6 +123,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="anyGoodLogo" width="53" height="23"/>
+        <image name="anyPdf" width="53" height="23"/>
     </resources>
 </document>

@@ -34,18 +34,22 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     
 //    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"shareShape"), style: .plain, target: self, action: #selector(rightButtonAction))
 //    
-//    navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 90 / 255, green: 119 / 255 , blue: 229 / 255, alpha: 1.0)
-    
-    let button = UIButton.init(type: .custom)
-    button.setImage(UIImage.init(named: "shareShape"), for: UIControlState.normal)
-    button.frame = CGRect.init(x: 0, y: 0, width: 16, height: 20)
-    let barButton = UIBarButtonItem.init(customView: button)
-    button.addTarget(self, action: #selector(rightButtonAction), for: UIControlEvents.touchUpInside)
 
-    self.navigationItem.rightBarButtonItem = barButton
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backShape"), style: .plain, target: self, action: #selector(leftButtonAction))
+//    let button = UIButton.init(type: .custom)
+//    button.setImage(UIImage.init(named: "sharePdf"), for: UIControlState.normal)
+//    button.tintColor = UIColor(red: 87 / 255, green: 73 / 255 , blue: 226 / 255, alpha: 1.0)
+//    button.frame = CGRect.init(x: 0, y: 0, width: 16, height: 20)
+//    let barButton = UIBarButtonItem.init(customView: button)
+//    button.addTarget(self, action: #selector(rightButtonAction), for: UIControlEvents.touchUpInside)
+//
+//    self.navigationItem.rightBarButtonItem = barButton
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sharePdf"), style: .plain, target: self, action: #selector(rightButtonAction))
+    navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 87 / 255, green: 73 / 255 , blue: 226 / 255, alpha: 1.0)
     
+    
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backPdf"), style: .plain, target: self, action: #selector(leftButtonAction))
+    navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
     imageView.contentMode = .scaleAspectFill
     let image = UIImage(named: "anyGoodLogo")

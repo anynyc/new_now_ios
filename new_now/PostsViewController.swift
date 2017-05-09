@@ -34,8 +34,10 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       cell.imageView.image = image
       
       
-      //attributed text for body.  background color
-      let backgroundColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.76)
+      //attributed text for body.  background color DYNAMIC BG COLOR. will pull from backend
+//      let backgroundColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.76)
+      let backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.76)
+
       let attributes = [
         NSBackgroundColorAttributeName : backgroundColor,
         NSForegroundColorAttributeName : UIColor.white
@@ -56,6 +58,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       // Apply paragraph styles to paragraph
       mutableBodyString.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange(location: 0,length: bodyText.characters.count))
       
+      //want to append each individual line here. need to find line breaks in attribute body string
       cell.bodyLabel.attributedText = attributedBodyString
 //      cell.bodyLabelContainer.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
       let gesture = UITapGestureRecognizer(target: self, action:  #selector(articleBtnPressed))
