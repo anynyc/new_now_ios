@@ -40,6 +40,7 @@ class BWCircularSlider: UIControl {
   //    var textField:UITextField?
   var radius:CGFloat = 0
   var angle:Int = 67
+  var currentHotspot:Int = 67
   var startColor = UIColor.blue
   var endColor = UIColor.purple
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
@@ -62,7 +63,7 @@ class BWCircularSlider: UIControl {
     //Define the circle radius taking into account the safe area
     //        radius = self.frame.size.width/2 - Config.TB_SAFEAREA_PADDING
     let screenWidth = self.frame.size.width
-
+    
     let radiusMultiplier = CGFloat(1.0666)
     let radiusSize = screenWidth * radiusMultiplier
     radius = radiusSize
@@ -247,6 +248,8 @@ class BWCircularSlider: UIControl {
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
     
     ctx.restoreGState();
+    
+    enlargeDot(angle: angle)
   }
   
   func drawHotSpotDots(ctx: CGContext) {
@@ -320,6 +323,14 @@ class BWCircularSlider: UIControl {
   
   
   func enlargeDot(angle: Int) {
+    //clear subviews first
+    let subviews = self.subviews
+    
+    for subview in subviews {
+      subview.removeFromSuperview()
+    }
+    
+    
     
     let dotCenter = pointFromAngleForAnimation(angleInt: angle)
     let lineWidth = CGFloat(1)
@@ -368,10 +379,10 @@ class BWCircularSlider: UIControl {
         newAngle =  spot
       }
     }
-    
+    //need to set current hotspot if globally if hotspot is changing
     //may need to be more specific.
-    if newAngle != currentAngle {
-      
+    if newAngle != currentHotspot {
+      self.currentHotspot = newAngle
       return(true, newAngle)
     } else {
       return (false, currentAngle)
