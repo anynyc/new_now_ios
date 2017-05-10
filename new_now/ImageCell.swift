@@ -117,8 +117,9 @@ class ImageCell: UICollectionViewCell {
     //height is off set height in view controller?
 //    preTextBackgroundFrame.size.height = 127.5
     //need to make this dynamic.  distance between leading edge of frame and origin x of bodyLabelContainerFrame
-    preTextBackgroundFrame.size.width = 40.0
+    preTextBackgroundFrame.size.width = 20.0
 //    preTextBackgroundFrame.origin.y = bodyLabelContainer.frame.origin.y + 80
+    preTextBackgroundFrame.origin.x = 20.0
     preBodyBackground.frame = preTextBackgroundFrame
     
     
@@ -127,6 +128,7 @@ class ImageCell: UICollectionViewCell {
     let preTextHeightConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
     let preTextTopConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: .top, multiplier: 1, constant: 0)
     let preTextLeadingConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+
     
     self.contentView.addConstraints([verticalConstraint, preTextHeightConstraint, preTextTopConstraint, preTextLeadingConstraint])
     

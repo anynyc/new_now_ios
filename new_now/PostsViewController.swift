@@ -33,34 +33,72 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let image = postViewModel.postsArray[indexPath.row].image
       cell.imageView.image = image
       
-      
+      let lineArray = getIndividualLines(string: bodyText)
+//      var newSpacedBodyText = ""
+      let backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.76)
+      let foregroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
+      var fullAttributedString = NSMutableAttributedString()
+      var count = 1
+      for line in lineArray {
+        var lineWithDot = ""
+        if count >= lineArray.count {
+          lineWithDot = "\(line)."
+          //need to make each line its own attributed string. adding the . and new line.  foreground color to cover the . at end giving illusion of padding
+          var attributedText = NSMutableAttributedString(string: lineWithDot)
+          //add purple background for entire string
+          attributedText.addAttribute(NSBackgroundColorAttributeName, value: backgroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
+          attributedText.addAttribute(NSForegroundColorAttributeName, value: foregroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
+          attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.clear, range: NSRange(location: lineWithDot.characters.count - 1, length: 1))
+          fullAttributedString.append(attributedText)
+          count += 1
+        } else {
+          lineWithDot = "\(line).\n"
+          //need to make each line its own attributed string. adding the . and new line.  foreground color to cover the . at end giving illusion of padding
+          var attributedText = NSMutableAttributedString(string: lineWithDot)
+          //add purple background for entire string
+          attributedText.addAttribute(NSBackgroundColorAttributeName, value: backgroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
+          attributedText.addAttribute(NSForegroundColorAttributeName, value: foregroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
+          attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.clear, range: NSRange(location: lineWithDot.characters.count - 2, length: 1))
+          fullAttributedString.append(attributedText)
+          count += 1
+        }
+
+//        
+//        attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: lineWithDot.characters.count - 1, length: 1))
+
+        
+      }
       //attributed text for body.  background color DYNAMIC BG COLOR. will pull from backend
 //      let backgroundColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.76)
-      let backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.76)
 
-      let attributes = [
-        NSBackgroundColorAttributeName : backgroundColor,
-        NSForegroundColorAttributeName : UIColor.white
-      ]
+//      let attributes = [
+//        NSBackgroundColorAttributeName : backgroundColor,
+//        NSForegroundColorAttributeName : UIColor.white,
+//      ]
+//      //do the below for every line in line Array. make attributed body string array
+//      let attributedBodyString = NSAttributedString(string: newSpacedBodyText, attributes: attributes)
+//      let mutableBodyString = NSMutableAttributedString()
+//      mutableBodyString.append(attributedBodyString)
+//     
+//      // Define paragraph styling
+//      let paraStyle = NSMutableParagraphStyle()
+//      paraStyle.firstLineHeadIndent = 15.0
+//      paraStyle.paragraphSpacingBefore = 10.0
+//      paraStyle.tailIndent = 10.0
+//      paraStyle.minimumLineHeight = 100.0
+//      
+//      
+//      // Apply paragraph styles to paragraph
+//      mutableBodyString.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange(location: 0,length: newSpacedBodyText.characters.count))
+//      
       
-      let attributedBodyString = NSAttributedString(string: bodyText, attributes: attributes)
-      let mutableBodyString = NSMutableAttributedString()
-      mutableBodyString.append(attributedBodyString)
-     
-      // Define paragraph styling
-      let paraStyle = NSMutableParagraphStyle()
-      paraStyle.firstLineHeadIndent = 15.0
-      paraStyle.paragraphSpacingBefore = 10.0
-      paraStyle.tailIndent = 10.0
-      paraStyle.minimumLineHeight = 100.0
-      
-      
-      // Apply paragraph styles to paragraph
-      mutableBodyString.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange(location: 0,length: bodyText.characters.count))
+
       
       //want to append each individual line here. need to find line breaks in attribute body string
-      cell.bodyLabel.attributedText = attributedBodyString
+//      cell.bodyLabel.attributedText = attributedBodyString
 //      cell.bodyLabelContainer.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+      cell.bodyLabel.attributedText = fullAttributedString
+
       let gesture = UITapGestureRecognizer(target: self, action:  #selector(articleBtnPressed))
       cell.bodyLabelContainer.addGestureRecognizer(gesture)
 
@@ -71,7 +109,6 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       //height after sizeToFit
       let preBodySize = cell.bodyLabel.sizeThatFits(cell.bodyLabel.frame.size)
 //      let preHeight = cell.bodyLabel.sizeToFit()
-     
       //origin.y needs to be dynamic as well
       cell.preBodyBackground.backgroundColor = backgroundColor
       cell.preBodyBackground.frame.size.height = preBodySize.height
@@ -147,6 +184,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 
     
+    
   }
   
 
@@ -171,6 +209,41 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 
+  }
+  
+  
+  
+  func getIndividualLines(string: String) -> [String] {
+    
+    
+    let wordArray = string.components(separatedBy: " ")
+    let max = 16
+    var individualLineArray = [String]()
+    var currentLine = ""
+    var firstWord = true
+    
+    for word in wordArray {
+      let wordLength = word.characters.count
+      //if adding this word to current line is less than max
+      if currentLine.characters.count + wordLength < max {
+        //if first word add without space in front
+        if firstWord == true {
+          currentLine.append(word)
+          firstWord = false
+        } else {
+          let spacedWord = " \(word)"
+          currentLine.append(spacedWord)
+        }
+      } else {
+        currentLine.append(" ")
+        individualLineArray.append(currentLine)
+        currentLine = ""
+        currentLine.append(word)
+      }
+    }
+    
+    individualLineArray.append("\(currentLine) ")
+    return individualLineArray
   }
 }
 

@@ -44,6 +44,7 @@ class BWCircularSlider: UIControl {
   var startColor = UIColor.blue
   var endColor = UIColor.purple
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
+  var selectionGenerator: UISelectionFeedbackGenerator?
   // Custom initializer
   convenience init(startColor:UIColor, endColor:UIColor, frame:CGRect){
     self.init(frame: frame)
@@ -69,6 +70,8 @@ class BWCircularSlider: UIControl {
     radius = radiusSize
     feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
     feedbackGenerator?.prepare()
+    selectionGenerator = UISelectionFeedbackGenerator()
+    selectionGenerator?.prepare()
 
 
   }
@@ -316,7 +319,8 @@ class BWCircularSlider: UIControl {
     if crossedThresholdReturn.0 == true {
       angle = crossedThresholdReturn.1
       //trigger heptic feedback
-      self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+//      self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+      self.selectionGenerator?.selectionChanged()
       self.setNeedsDisplay()
 
       //call animation of dot to be enlarged
