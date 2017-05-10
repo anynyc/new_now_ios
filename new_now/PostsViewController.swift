@@ -37,14 +37,14 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 //      var newSpacedBodyText = ""
       let backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.76)
       let foregroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
-      var fullAttributedString = NSMutableAttributedString()
+      let fullAttributedString = NSMutableAttributedString()
       var count = 1
       for line in lineArray {
         var lineWithDot = ""
         if count >= lineArray.count {
           lineWithDot = "\(line)."
           //need to make each line its own attributed string. adding the . and new line.  foreground color to cover the . at end giving illusion of padding
-          var attributedText = NSMutableAttributedString(string: lineWithDot)
+          let attributedText = NSMutableAttributedString(string: lineWithDot)
           //add purple background for entire string
           attributedText.addAttribute(NSBackgroundColorAttributeName, value: backgroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
           attributedText.addAttribute(NSForegroundColorAttributeName, value: foregroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
@@ -54,7 +54,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         } else {
           lineWithDot = "\(line).\n"
           //need to make each line its own attributed string. adding the . and new line.  foreground color to cover the . at end giving illusion of padding
-          var attributedText = NSMutableAttributedString(string: lineWithDot)
+          let attributedText = NSMutableAttributedString(string: lineWithDot)
           //add purple background for entire string
           attributedText.addAttribute(NSBackgroundColorAttributeName, value: backgroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
           attributedText.addAttribute(NSForegroundColorAttributeName, value: foregroundColor, range: NSRange(location: 0, length: lineWithDot.characters.count - 1))
