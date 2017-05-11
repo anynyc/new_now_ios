@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516214631.022219"
+            timestampString = "516223894.390515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516214631.022219"
+            timestampString = "516223894.390515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "drawTheHandle(ctx:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
             landmarkName = "setUpConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "valueChanged(slider:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "setupBottomButtons()"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "PostsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
             landmarkName = "hideFullImage()"
             landmarkType = "7">
             <Locations>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
             landmarkName = "goToGoogle(_button:)"
             landmarkType = "7">
             <Locations>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516214631.022219"
+            timestampString = "516225795.544964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "moveHandle(lastPoint:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/BWCircularSlider.swift"
-            timestampString = "516214631.022219"
+            timestampString = "516225795.544964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "AngleFromNorth(p1:p2:flipped:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516217982.905789"
+            timestampString = "516223555.800443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "valueChanged(slider:)"
             landmarkType = "7">
          </BreakpointContent>

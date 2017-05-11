@@ -190,37 +190,41 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
 
     var topicTransform = CGAffineTransform.identity
-    topicTransform = topicTransform.translatedBy(x: 50, y: 0)
+    topicTransform = topicTransform.translatedBy(x: 25, y: 0)
     topicTransform = topicTransform.rotated(by: CGFloat.pi / 2)
     // ... add as many as you want, then apply it to to the view
     myCell?.topicLabel.transform = topicTransform
-    
+    myCell?.topicLabel.alpha = 0
+
     
     var bodyTextTransform = CGAffineTransform.identity
-    bodyTextTransform = bodyTextTransform.translatedBy(x: -70, y: 0)
+    bodyTextTransform = bodyTextTransform.translatedBy(x: -10, y: 0)
     myCell?.bodyLabelContainer.transform = bodyTextTransform
     myCell?.preBodyBackground.transform = bodyTextTransform
-//    myCell?.bodyLabelContainer.alpha = 0
-//    myCell?.preBodyBackground.alpha = 0
+    myCell?.bodyLabelContainer.alpha = 0
+    myCell?.preBodyBackground.alpha = 0
 
 
     var imageTransform = CGAffineTransform.identity
-    imageTransform = imageTransform.translatedBy(x: 0, y: -50)
+    imageTransform = imageTransform.translatedBy(x: 0, y: 0)
+    imageTransform = imageTransform.scaledBy(x: 0.96, y: 0.96)
     myCell?.imageView.transform = imageTransform
     
     
+
     
-    UIView.animate(withDuration: 0.4, animations: { () -> Void in
+    UIView.animate(withDuration: 0.2, delay: 0.2, animations: { () -> Void in
       
       var bodyTextFinish = CGAffineTransform.identity
       bodyTextFinish = bodyTextFinish.translatedBy(x: 0, y: 0)
       myCell?.bodyLabelContainer.transform = bodyTextFinish
       myCell?.preBodyBackground.transform = bodyTextFinish
-      
+      myCell?.preBodyBackground.alpha = 1
+      myCell?.bodyLabelContainer.alpha = 1
 
     })
     
-    UIView.animate(withDuration: 0.7, animations: { () -> Void in
+    UIView.animate(withDuration: 0.25, delay: 0.2, animations: { () -> Void in
       
       //      myCell?.bodyLabelContainer.alpha = 1
       //      myCell?.preBodyBackground.alpha = 1
@@ -228,14 +232,17 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       topicFinish = topicFinish.translatedBy(x: 0, y: 0)
       topicFinish = topicFinish.rotated(by: CGFloat.pi / 2)
       myCell?.topicLabel.transform = topicFinish
+      myCell?.topicLabel.alpha = 1
       
     })
     
-    UIView.animate(withDuration: 0.15, delay: 0.2, animations: { () -> Void in
+    UIView.animate(withDuration: 0.25, animations: { () -> Void in
       
       var imageFinish = CGAffineTransform.identity
       imageFinish = imageFinish.translatedBy(x: 0, y: 0)
+      imageFinish = imageFinish.scaledBy(x: 1, y: 1)
       myCell?.imageView.transform = imageFinish
+
     })
     
   }

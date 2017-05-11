@@ -133,8 +133,9 @@ class BWCircularSlider: UIControl {
 //    CGContextAddArc(ctx!, CGFloat(self.frame.size.width / 2.0), CGFloat(400.0), radius, 0, CGFloat(M_PI * 2), 0)
 //    UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0).set()
 //    
-    let strokeColor = UIColor(red: 174 / 255, green: 179 / 255, blue: 183 / 255, alpha: 0.1)
-   
+//    let strokeColor = UIColor(red: 174 / 255, green: 179 / 255, blue: 183 / 255, alpha: 0.1)
+    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
+
     ctx!.setStrokeColor(strokeColor.cgColor)
     ctx!.setLineWidth(1)
     ctx!.setLineCap(CGLineCap.butt)
@@ -247,6 +248,11 @@ class BWCircularSlider: UIControl {
     //Get the handle position
     let handleCenter = pointFromAngle(angleInt: angle)
     
+    
+    
+    
+    
+    
     //Draw It!
 //    UIColor.white.set();
 //    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.5)
@@ -272,7 +278,7 @@ class BWCircularSlider: UIControl {
 //      let dotCenter = pointFromAngle(angleInt: spot)
       let dotCenter = pointFromAngleForSpots(angleInt: spot)
       //Draw It!
-      UIColor.white.set();
+
       ctx.setLineWidth(2.0)
       ctx.setShadow(offset: CGSize(width: 0, height: 0), blur: 0)
       ctx.setStrokeColor(UIColor.white.cgColor)
@@ -364,7 +370,7 @@ class BWCircularSlider: UIControl {
     UIView.animate(withDuration: 0.25, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
       outerLayer.transform = CGAffineTransform(scaleX: 18, y: 18)
     })
-    
+    outerLayer.isUserInteractionEnabled = false
     self.addSubview(outerLayer)
     
 
