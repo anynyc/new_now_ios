@@ -44,7 +44,7 @@ class BWCircularSlider: UIControl {
   var startColor = UIColor.blue
   var endColor = UIColor.purple
 //  var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
-//  var selectionGenerator: UISelectionFeedbackGenerator?
+  var selectionGenerator: UISelectionFeedbackGenerator?
   var impactGenerator: UIImpactFeedbackGenerator?
   // Custom initializer
   convenience init(startColor:UIColor, endColor:UIColor, frame:CGRect){
@@ -71,10 +71,10 @@ class BWCircularSlider: UIControl {
     radius = radiusSize
 //    feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
 //    feedbackGenerator?.prepare()
-//    selectionGenerator = UISelectionFeedbackGenerator()
-//    selectionGenerator?.prepare()
-    impactGenerator = UIImpactFeedbackGenerator(style: .medium)
-    impactGenerator?.prepare()
+    selectionGenerator = UISelectionFeedbackGenerator()
+    selectionGenerator?.prepare()
+//    impactGenerator = UIImpactFeedbackGenerator(style: .light)
+//    impactGenerator?.prepare()
 
 
   }
@@ -314,7 +314,7 @@ class BWCircularSlider: UIControl {
     angle = abs(Int(180 - angleInt))
     
     
-    print("Angle  before set needs display \(angle)")
+//    print("Angle  before set needs display \(angle)")
     //logic before redrawing. check that it crossed X threshold
     //Redraw
     let crossedThresholdReturn = crossedThreshold(angle: angle, lastPoint: lastPoint)
@@ -323,8 +323,9 @@ class BWCircularSlider: UIControl {
       angle = crossedThresholdReturn.1
       //trigger heptic feedback
 //      self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
-//      self.selectionGenerator?.selectionChanged()
-      self.impactGenerator?.impactOccurred()
+      print("impact hit")
+      self.selectionGenerator?.selectionChanged()
+//      self.impactGenerator?.impactOccurred()
 
       self.setNeedsDisplay()
       //call animation of dot to be enlarged

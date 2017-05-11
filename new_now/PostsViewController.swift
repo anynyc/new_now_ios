@@ -182,12 +182,66 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       return cell
     }
 
+    
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    let myCell = cell as? ImageCell
+    
 
+    var topicTransform = CGAffineTransform.identity
+    topicTransform = topicTransform.translatedBy(x: 50, y: 0)
+    topicTransform = topicTransform.rotated(by: CGFloat.pi / 2)
+    // ... add as many as you want, then apply it to to the view
+    myCell?.topicLabel.transform = topicTransform
+    
+    
+    var bodyTextTransform = CGAffineTransform.identity
+    bodyTextTransform = bodyTextTransform.translatedBy(x: -70, y: 0)
+    myCell?.bodyLabelContainer.transform = bodyTextTransform
+    myCell?.preBodyBackground.transform = bodyTextTransform
+//    myCell?.bodyLabelContainer.alpha = 0
+//    myCell?.preBodyBackground.alpha = 0
+
+
+    var imageTransform = CGAffineTransform.identity
+    imageTransform = imageTransform.translatedBy(x: -50, y: 0)
+    myCell?.imageView.transform = imageTransform
+    
+    
+    UIView.animate(withDuration: 0.5, animations: { () -> Void in
+      
+      var imageFinish = CGAffineTransform.identity
+      imageFinish = imageFinish.translatedBy(x: 0, y: 0)
+      myCell?.imageView.transform = imageFinish
+    })
+    
+    UIView.animate(withDuration: 0.75, animations: { () -> Void in
+      
+      var bodyTextFinish = CGAffineTransform.identity
+      bodyTextFinish = bodyTextFinish.translatedBy(x: 0, y: 0)
+      myCell?.bodyLabelContainer.transform = bodyTextFinish
+      myCell?.preBodyBackground.transform = bodyTextFinish
+      
+
+    })
+    
+    UIView.animate(withDuration: 0.9, animations: { () -> Void in
+      
+      //      myCell?.bodyLabelContainer.alpha = 1
+      //      myCell?.preBodyBackground.alpha = 1
+      var topicFinish = CGAffineTransform.identity
+      topicFinish = topicFinish.translatedBy(x: 0, y: 0)
+      topicFinish = topicFinish.rotated(by: CGFloat.pi / 2)
+      myCell?.topicLabel.transform = topicFinish
+      
+      
+    })
+    
     
     
   }
   
-
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //if making non active cells invisible, this will be the only cell with visible attributes
