@@ -205,18 +205,12 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 
     var imageTransform = CGAffineTransform.identity
-    imageTransform = imageTransform.translatedBy(x: -50, y: 0)
+    imageTransform = imageTransform.translatedBy(x: 0, y: -50)
     myCell?.imageView.transform = imageTransform
     
     
-    UIView.animate(withDuration: 0.5, animations: { () -> Void in
-      
-      var imageFinish = CGAffineTransform.identity
-      imageFinish = imageFinish.translatedBy(x: 0, y: 0)
-      myCell?.imageView.transform = imageFinish
-    })
     
-    UIView.animate(withDuration: 0.75, animations: { () -> Void in
+    UIView.animate(withDuration: 0.4, animations: { () -> Void in
       
       var bodyTextFinish = CGAffineTransform.identity
       bodyTextFinish = bodyTextFinish.translatedBy(x: 0, y: 0)
@@ -226,7 +220,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
     })
     
-    UIView.animate(withDuration: 0.9, animations: { () -> Void in
+    UIView.animate(withDuration: 0.7, animations: { () -> Void in
       
       //      myCell?.bodyLabelContainer.alpha = 1
       //      myCell?.preBodyBackground.alpha = 1
@@ -235,10 +229,14 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       topicFinish = topicFinish.rotated(by: CGFloat.pi / 2)
       myCell?.topicLabel.transform = topicFinish
       
-      
     })
     
-    
+    UIView.animate(withDuration: 0.15, delay: 0.2, animations: { () -> Void in
+      
+      var imageFinish = CGAffineTransform.identity
+      imageFinish = imageFinish.translatedBy(x: 0, y: 0)
+      myCell?.imageView.transform = imageFinish
+    })
     
   }
   
@@ -411,10 +409,11 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     
     // Build the slider.  Changing slider frame size so it only occupies bottom of page and doesn't cover cell
-//    slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: self.view.bounds)
+
     
-//    let sliderYPositionMultiplier = CGFloat(0.74362)
-    let sliderYPositionMultiplier = CGFloat(0.73)
+//    let sliderYPositionMultiplier = CGFloat(0.73)
+    let sliderYPositionMultiplier = CGFloat(0.65)
+
 
     let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
     
