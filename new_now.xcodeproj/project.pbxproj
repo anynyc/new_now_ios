@@ -24,6 +24,10 @@
 		279BEDA01E7AF81E00E52B3A /* MainCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED9F1E7AF81E00E52B3A /* MainCacheManager.swift */; };
 		279BEDA31E7B011800E52B3A /* NewNowAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BEDA21E7B011800E52B3A /* NewNowAPIConstants.swift */; };
 		279BEDA51E7B013700E52B3A /* PostAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BEDA41E7B013700E52B3A /* PostAPIManager.swift */; };
+		279E005F1EC621AF0075C844 /* GreetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E005E1EC621AF0075C844 /* GreetingModel.swift */; };
+		279E00611EC6238E0075C844 /* GreetingAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00601EC6238E0075C844 /* GreetingAPIManager.swift */; };
+		279E00631EC626F00075C844 /* GreetingContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00621EC626EF0075C844 /* GreetingContentManager.swift */; };
+		279E00651EC627E80075C844 /* GreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00641EC627E80075C844 /* GreetingViewModel.swift */; };
 		27BA14991E89D48C0025663C /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA14981E89D48B0025663C /* GridLayout.swift */; };
 		27BA149B1E89D6CF0025663C /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA149A1E89D6CF0025663C /* ImageCell.swift */; };
 		27C481951E7AD38D00E6022B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C481941E7AD38D00E6022B /* AppDelegate.swift */; };
@@ -54,6 +58,10 @@
 		279BED9F1E7AF81E00E52B3A /* MainCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCacheManager.swift; sourceTree = "<group>"; };
 		279BEDA21E7B011800E52B3A /* NewNowAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNowAPIConstants.swift; sourceTree = "<group>"; };
 		279BEDA41E7B013700E52B3A /* PostAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAPIManager.swift; sourceTree = "<group>"; };
+		279E005E1EC621AF0075C844 /* GreetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModel.swift; sourceTree = "<group>"; };
+		279E00601EC6238E0075C844 /* GreetingAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingAPIManager.swift; sourceTree = "<group>"; };
+		279E00621EC626EF0075C844 /* GreetingContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingContentManager.swift; sourceTree = "<group>"; };
+		279E00641EC627E80075C844 /* GreetingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewModel.swift; sourceTree = "<group>"; };
 		27BA14981E89D48B0025663C /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		27BA149A1E89D6CF0025663C /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		27C481911E7AD38D00E6022B /* new_now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new_now.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				279BED971E7AF3C600E52B3A /* PostViewModel.swift */,
+				279E00641EC627E80075C844 /* GreetingViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -115,6 +124,7 @@
 			children = (
 				279BED9D1E7AF80C00E52B3A /* PostContentManager.swift */,
 				279BED9F1E7AF81E00E52B3A /* MainCacheManager.swift */,
+				279E00621EC626EF0075C844 /* GreetingContentManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -125,6 +135,7 @@
 				279BED991E7AF47900E52B3A /* PostModel.swift */,
 				279BED9B1E7AF55100E52B3A /* ContentItemModel.swift */,
 				27354FB51EA9364D009816B5 /* GratificationModel.swift */,
+				279E005E1EC621AF0075C844 /* GreetingModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -165,6 +176,7 @@
 			children = (
 				279BEDA21E7B011800E52B3A /* NewNowAPIConstants.swift */,
 				279BEDA41E7B013700E52B3A /* PostAPIManager.swift */,
+				279E00601EC6238E0075C844 /* GreetingAPIManager.swift */,
 			);
 			name = APIClient;
 			sourceTree = "<group>";
@@ -373,13 +385,17 @@
 				27DED27B1E8D85470084C92C /* BWCircularSlider.swift in Sources */,
 				279BED9A1E7AF47900E52B3A /* PostModel.swift in Sources */,
 				27354FB81EA94A46009816B5 /* GratificationCell.swift in Sources */,
+				279E00651EC627E80075C844 /* GreetingViewModel.swift in Sources */,
 				279BEDA51E7B013700E52B3A /* PostAPIManager.swift in Sources */,
 				279BED901E7AF0DC00E52B3A /* PostsViewController.swift in Sources */,
+				279E005F1EC621AF0075C844 /* GreetingModel.swift in Sources */,
 				279BED8C1E7AEFD400E52B3A /* BaseViewController.swift in Sources */,
 				279BED861E7AEE1800E52B3A /* ViewIdentifierConstants.swift in Sources */,
 				27C481951E7AD38D00E6022B /* AppDelegate.swift in Sources */,
 				279BED9E1E7AF80C00E52B3A /* PostContentManager.swift in Sources */,
 				279BED8A1E7AEF5B00E52B3A /* LaunchViewController.swift in Sources */,
+				279E00631EC626F00075C844 /* GreetingContentManager.swift in Sources */,
+				279E00611EC6238E0075C844 /* GreetingAPIManager.swift in Sources */,
 				279BEDA01E7AF81E00E52B3A /* MainCacheManager.swift in Sources */,
 				27354FB61EA9364E009816B5 /* GratificationModel.swift in Sources */,
 				279BED9C1E7AF55100E52B3A /* ContentItemModel.swift in Sources */,

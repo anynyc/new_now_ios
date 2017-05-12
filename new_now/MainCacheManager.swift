@@ -16,6 +16,7 @@ enum ItemStatus {
 enum ItemCacheType: String {
   case postHomePage = "HomePagePosts"
   case gratificationHomePage = "HomePageGratifications"
+  case greetingLaunchScreen = "LaunchScreenGreeting"
 
 }
 

@@ -11,6 +11,7 @@ import Foundation
 struct APIConstants {
   static let newNowApiUrl = "/api/v1"
   static let postUrl = "/posts"
+  static let greetingUrl = "/greetings"
 }
 
 

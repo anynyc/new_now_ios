@@ -24,7 +24,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     puts(String(indexPath.row))
     if indexPath.row != 7 {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCell
-      
+      let post = postViewModel.postsArray[indexPath.row]
       let topicText = postViewModel.postsArray[indexPath.row].category
       let attributedString = NSMutableAttributedString(string: topicText)
       attributedString.addAttribute(NSKernAttributeName, value: 2.0, range: NSMakeRange(0, topicText.characters.count))
@@ -35,7 +35,18 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       
       let lineArray = getIndividualLines(string: bodyText)
 //      var newSpacedBodyText = ""
-      let backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.76)
+      
+      let rValue = Int(post.rValue)
+      let gValue = Int(post.gValue)
+      let bValue = Int(post.bValue)
+      let aValue = Double(post.aValue)
+      
+      let backgroundColor = UIColor(red: CGFloat(rValue!) / 255, green: CGFloat(gValue!) / 255, blue: CGFloat(bValue!) / 255, alpha: CGFloat(aValue!))
+
+      self.readThisButton?.setTitleColor(backgroundColor, for: .normal)
+      self.view.setNeedsLayout()
+      self.view.layoutIfNeeded()
+
       let foregroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
       let fullAttributedString = NSMutableAttributedString()
       var count = 1
@@ -197,6 +208,8 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     myCell?.topicLabel.alpha = 0
 
     
+    
+    
     var bodyTextTransform = CGAffineTransform.identity
     bodyTextTransform = bodyTextTransform.translatedBy(x: -10, y: 0)
     myCell?.bodyLabelContainer.transform = bodyTextTransform
@@ -258,6 +271,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       self.longLabelText.isHidden = false
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
       self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
+      
     } else {
       self.readThisButton.isHidden = true
       self.counterLabel.isHidden = true

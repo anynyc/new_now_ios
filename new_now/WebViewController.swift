@@ -52,7 +52,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
     imageView.contentMode = .scaleAspectFill
-    let image = UIImage(named: "anyGoodLogo")
+    let image = UIImage(named: "anyPdf")
     imageView.image = image
     navigationItem.titleView = imageView
 //    self.navigationItem.rightBarButtonItem = rightButtonItem

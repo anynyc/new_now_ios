@@ -19,6 +19,11 @@ struct PostConstants {
   static let image = "image_url"
   static let category = "category"
   static let linkText = "link_text"
+  static let rValue = "r_value"
+  static let gValue = "g_value"
+  static let bValue = "b_value"
+  static let aValue = "a_value"
+
 //  static let timesShared = "times_shared"
 
   
@@ -36,6 +41,11 @@ class PostModel: ContentItemModel, NSCoding {
   var image: UIImage?
   var category: String
   var linkText: String
+  var rValue: String
+  var gValue: String
+  var bValue: String
+  var aValue: String
+
 //  var timesShared: Int
   
   
@@ -94,6 +104,30 @@ class PostModel: ContentItemModel, NSCoding {
     linkText = linkDescription
     
     
+    guard let rText = dictionary[PostConstants.rValue] as? String else {
+      return nil
+    }
+    
+    rValue = rText
+    
+    guard let gText = dictionary[PostConstants.gValue] as? String else {
+      return nil
+    }
+    
+    gValue = gText
+    
+    guard let bText = dictionary[PostConstants.bValue] as? String else {
+      return nil
+    }
+    
+    bValue = bText
+    
+    guard let aText = dictionary[PostConstants.aValue] as? String else {
+      return nil
+    }
+    
+    aValue = aText
+    
     super.init(dictionary: dictionary)
   }
   
@@ -109,6 +143,11 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(category, forKey: PostConstants.category)
     aCoder.encode(imageUrl, forKey: PostConstants.imageUrl)
     aCoder.encode(image, forKey: PostConstants.image)
+    aCoder.encode(rValue, forKey: PostConstants.rValue)
+    aCoder.encode(gValue, forKey: PostConstants.gValue)
+    aCoder.encode(bValue, forKey: PostConstants.bValue)
+    aCoder.encode(aValue, forKey: PostConstants.aValue)
+
     super.encodeWithEncoder(aCoder)
   }
   
@@ -167,7 +206,30 @@ class PostModel: ContentItemModel, NSCoding {
     
     linkText = linkDescription
     
+    guard let rText = aDecoder.decodeObject(forKey: PostConstants.rValue) as? String else {
+      return nil
+    }
     
+    rValue = rText
+    
+    
+    guard let gText = aDecoder.decodeObject(forKey: PostConstants.gValue) as? String else {
+      return nil
+    }
+    
+    gValue = gText
+    
+    guard let bText = aDecoder.decodeObject(forKey: PostConstants.bValue) as? String else {
+      return nil
+    }
+    
+    bValue = bText
+    
+    guard let aText = aDecoder.decodeObject(forKey: PostConstants.aValue) as? String else {
+      return nil
+    }
+    
+    aValue = aText
     
     
     super.init(coder: aDecoder)
