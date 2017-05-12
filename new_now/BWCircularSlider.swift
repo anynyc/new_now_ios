@@ -52,7 +52,6 @@ class BWCircularSlider: UIControl {
     
     self.startColor = startColor
     self.endColor = endColor
-    
   }
   
   // Default initializer

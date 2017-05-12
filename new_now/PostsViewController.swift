@@ -188,7 +188,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       }
       cell.titleLabel.text = postViewModel.gratification!.title
       cell.searchTerm = postViewModel.gratification!.keyword
-
+      
 
       return cell
     }
@@ -433,7 +433,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
     
 //    let sliderYPositionMultiplier = CGFloat(0.73)
-    let sliderYPositionMultiplier = CGFloat(0.65)
+    let sliderYPositionMultiplier = CGFloat(0.68)
 
 
     let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
