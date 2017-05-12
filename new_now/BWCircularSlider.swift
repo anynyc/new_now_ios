@@ -241,7 +241,7 @@ class BWCircularSlider: UIControl {
     //shadows
 //    let shadowColor = UIColor.black
 //    let shadowWithAlpha = shadowColor.withAlphaComponent(0.25)
-    ctx.setShadow(offset: CGSize(width: 0, height: 2), blur: 10)
+    ctx.setShadow(offset: CGSize(width: 0, height: 14), blur: 14)
     
     
     //Get the handle position
@@ -254,8 +254,8 @@ class BWCircularSlider: UIControl {
     
     //Draw It!
 //    UIColor.white.set();
-//    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.5)
-    let strokeColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.5)
+    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.25)
+//    let strokeColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.5)
 
     ctx.setStrokeColor(strokeColor.cgColor)
     ctx.setLineWidth(3.0)
@@ -367,7 +367,7 @@ class BWCircularSlider: UIControl {
 
 
     UIView.animate(withDuration: 0.25, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
-      outerLayer.transform = CGAffineTransform(scaleX: 18, y: 18)
+      outerLayer.transform = CGAffineTransform(scaleX: 14, y: 14)
     })
     outerLayer.isUserInteractionEnabled = false
     self.addSubview(outerLayer)
