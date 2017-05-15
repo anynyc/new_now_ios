@@ -130,7 +130,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       cell.articleUrl = postViewModel.postsArray[indexPath.row].link
       cell.isHidden = false
       
-      feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+//      feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
       
       //    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
       //                               animations: {
@@ -482,6 +482,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
     self.view.addSubview(slider)
     
+//    let toolTipView = ToolTipView()
+//    self.view.addSubview(toolTipView)
     setupBottomButtons()
 
     

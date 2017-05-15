@@ -43,7 +43,7 @@ class BWCircularSlider: UIControl {
   var currentHotspot:Int = 67
   var startColor = UIColor.blue
   var endColor = UIColor.purple
-//  var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
+  var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
   var selectionGenerator: UISelectionFeedbackGenerator?
   var impactGenerator: UIImpactFeedbackGenerator?
   // Custom initializer
@@ -68,12 +68,12 @@ class BWCircularSlider: UIControl {
     let radiusMultiplier = CGFloat(1.0666)
     let radiusSize = screenWidth * radiusMultiplier
     radius = radiusSize
-//    feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
-//    feedbackGenerator?.prepare()
+    feedbackGenerator = UINotificationFeedbackGenerator()  // Instantiate the generator.
+    feedbackGenerator?.prepare()
     selectionGenerator = UISelectionFeedbackGenerator()
     selectionGenerator?.prepare()
-//    impactGenerator = UIImpactFeedbackGenerator(style: .light)
-//    impactGenerator?.prepare()
+    impactGenerator = UIImpactFeedbackGenerator(style: .light)
+    impactGenerator?.prepare()
 
 
   }
@@ -254,11 +254,11 @@ class BWCircularSlider: UIControl {
     
     //Draw It!
 //    UIColor.white.set();
-    let strokeColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 0.25)
+    let strokeColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.21)
 //    let strokeColor = UIColor(red: 80 / 255, green: 68 / 255, blue: 231 / 255, alpha: 0.5)
 
     ctx.setStrokeColor(strokeColor.cgColor)
-    ctx.setLineWidth(3.0)
+    ctx.setLineWidth(10.0)
     
     ctx.strokeEllipse(in: CGRect(x: handleCenter.x, y: handleCenter.y, width: Config.TB_LINE_WIDTH, height: Config.TB_LINE_WIDTH));
     
@@ -328,10 +328,10 @@ class BWCircularSlider: UIControl {
     if crossedThresholdReturn.0 == true {
       angle = crossedThresholdReturn.1
       //trigger heptic feedback
-//      self.feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
+//      self.feedbackGenerator?.notificationOccurred(.error)     // Trigger the haptic feedback.
       print("impact hit")
-      self.selectionGenerator?.selectionChanged()
-//      self.impactGenerator?.impactOccurred()
+//      self.selectionGenerator?.selectionChanged()
+      self.impactGenerator?.impactOccurred()
 
       self.setNeedsDisplay()
       //call animation of dot to be enlarged
@@ -367,11 +367,11 @@ class BWCircularSlider: UIControl {
 
 
     UIView.animate(withDuration: 0.25, delay: 0,options: UIViewAnimationOptions.curveEaseOut,animations: {
-      outerLayer.transform = CGAffineTransform(scaleX: 14, y: 14)
+      outerLayer.transform = CGAffineTransform(scaleX: 22, y: 22)
     })
     outerLayer.isUserInteractionEnabled = false
     self.addSubview(outerLayer)
-    
+
 
 //    self.layer.addSublayer(redLayer)
   }

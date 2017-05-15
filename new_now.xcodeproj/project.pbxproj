@@ -28,6 +28,7 @@
 		279E00611EC6238E0075C844 /* GreetingAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00601EC6238E0075C844 /* GreetingAPIManager.swift */; };
 		279E00631EC626F00075C844 /* GreetingContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00621EC626EF0075C844 /* GreetingContentManager.swift */; };
 		279E00651EC627E80075C844 /* GreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279E00641EC627E80075C844 /* GreetingViewModel.swift */; };
+		27B242241ECA2D5700F398B8 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B242231ECA2D5700F398B8 /* ToolTipView.swift */; };
 		27BA14991E89D48C0025663C /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA14981E89D48B0025663C /* GridLayout.swift */; };
 		27BA149B1E89D6CF0025663C /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BA149A1E89D6CF0025663C /* ImageCell.swift */; };
 		27C481951E7AD38D00E6022B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C481941E7AD38D00E6022B /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		279E00601EC6238E0075C844 /* GreetingAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingAPIManager.swift; sourceTree = "<group>"; };
 		279E00621EC626EF0075C844 /* GreetingContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingContentManager.swift; sourceTree = "<group>"; };
 		279E00641EC627E80075C844 /* GreetingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewModel.swift; sourceTree = "<group>"; };
+		27B242231ECA2D5700F398B8 /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		27BA14981E89D48B0025663C /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		27BA149A1E89D6CF0025663C /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		27C481911E7AD38D00E6022B /* new_now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new_now.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				27604A7D1EAFD05800E2A69E /* CustomClasses */,
-				27DED2791E8D85310084C92C /* Slider */,
+				27DED2791E8D85310084C92C /* CustomViews */,
 				279BEDA11E7B00FF00E52B3A /* APIClient */,
 				279BED821E7AED2500E52B3A /* Models */,
 				279BED7F1E7AED0A00E52B3A /* Views */,
@@ -217,12 +219,13 @@
 			path = new_now;
 			sourceTree = "<group>";
 		};
-		27DED2791E8D85310084C92C /* Slider */ = {
+		27DED2791E8D85310084C92C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				27DED27A1E8D85470084C92C /* BWCircularSlider.swift */,
+				27B242231ECA2D5700F398B8 /* ToolTipView.swift */,
 			);
-			name = Slider;
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		27DED27C1E9421E90084C92C /* Resources */ = {
@@ -382,6 +385,7 @@
 				27604A7F1EAFD06F00E2A69E /* NRLabel.swift in Sources */,
 				27BA14991E89D48C0025663C /* GridLayout.swift in Sources */,
 				279BED981E7AF3C600E52B3A /* PostViewModel.swift in Sources */,
+				27B242241ECA2D5700F398B8 /* ToolTipView.swift in Sources */,
 				27DED27B1E8D85470084C92C /* BWCircularSlider.swift in Sources */,
 				279BED9A1E7AF47900E52B3A /* PostModel.swift in Sources */,
 				27354FB81EA94A46009816B5 /* GratificationCell.swift in Sources */,

@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/WebViewController.swift"
-            timestampString = "516060613.202764"
+            timestampString = "516571200.053941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "rightButtonAction(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562614.855784"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "697"
-            endingLineNumber = "697"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
             landmarkName = "setUpConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562614.855784"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "valueChanged(slider:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562614.855784"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
+            startingLineNumber = "623"
+            endingLineNumber = "623"
             landmarkName = "setupBottomButtons()"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/WebViewController.swift"
-            timestampString = "516060613.202764"
+            timestampString = "516571200.053941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "webView(_:didFinish:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562684.465913"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "763"
-            endingLineNumber = "763"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
             landmarkName = "goToGoogle(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562684.465913"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "797"
-            endingLineNumber = "797"
+            startingLineNumber = "799"
+            endingLineNumber = "799"
             landmarkName = "goToGoogle(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,28 +634,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562614.855784"
+            timestampString = "516568143.989145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "readThisBtnPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "new_now/PostsViewController.swift"
-            timestampString = "516562614.855784"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

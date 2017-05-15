@@ -24,8 +24,8 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.bringSubview(toFront: loaderView)
-    loaderView.type = .ballClipRotate
-    loaderView.color = UIColor.blue
+    loaderView.type = .ballScale
+    loaderView.color = UIColor.black
     loaderView.startAnimating()
     let webConfiguration = WKWebViewConfiguration()
 
@@ -45,10 +45,10 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
 //
 //    self.navigationItem.rightBarButtonItem = barButton
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sharePdf"), style: .plain, target: self, action: #selector(rightButtonAction))
-    navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 87 / 255, green: 73 / 255 , blue: 226 / 255, alpha: 1.0)
+    navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0 / 255, green: 0 / 255 , blue: 0 / 255, alpha: 1.0)
     
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backPdf"), style: .plain, target: self, action: #selector(leftButtonAction))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"backNoLine"), style: .plain, target: self, action: #selector(leftButtonAction))
     navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
     imageView.contentMode = .scaleAspectFill
@@ -65,6 +65,10 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     webView.alpha = 0
     
     
+    navigationController?.navigationBar.clipsToBounds = false
+    navigationController?.navigationBar.layer.shadowOpacity = 0.2
+    navigationController?.navigationBar.layer.shadowOffset.height = 5
+    navigationController?.navigationBar.layer.shadowRadius = 100
     
     let topConstraint = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 50)
     view.addConstraints([topConstraint])
