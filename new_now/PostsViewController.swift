@@ -49,9 +49,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       
       let backgroundColor = UIColor(red: CGFloat(rValue!) / 255, green: CGFloat(gValue!) / 255, blue: CGFloat(bValue!) / 255, alpha: CGFloat(aValue!))
 
-//      self.readThisButton?.setTitleColor(backgroundColor, for: .normal)
-//      self.view.setNeedsLayout()
-//      self.view.layoutIfNeeded()
+
 
       let foregroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
       let fullAttributedString = NSMutableAttributedString()
@@ -186,6 +184,8 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let prefs = UserDefaults.standard
       if prefs.string(forKey: "locationGiven") == "true" {
         cell.messageLabel.text = postViewModel.gratification!.message
+        
+        //button in place of read this with proper click event
         cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
         cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
       } else {
@@ -212,7 +212,9 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       
       let backgroundColor = UIColor(red: CGFloat(rValue!) / 255, green: CGFloat(gValue!) / 255, blue: CGFloat(bValue!) / 255, alpha: CGFloat(aValue!))
       
-
+      self.readThisButton?.setTitleColor(backgroundColor, for: .normal)
+      self.view.setNeedsLayout()
+      self.view.layoutIfNeeded()
       self.counterLabel?.textColor = backgroundColor
       self.view.setNeedsLayout()
       self.view.layoutIfNeeded()
