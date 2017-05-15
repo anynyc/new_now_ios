@@ -186,8 +186,9 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         cell.messageLabel.text = postViewModel.gratification!.message
         
         //button in place of read this with proper click event
-        cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
-        cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+//        cell.buttonLabel.setTitle(postViewModel.gratification!.buttonLabel, for: .normal)
+//        cell.buttonLabel.addTarget(self, action: #selector(goToGoogle), for: .touchUpInside)
+
       } else {
         cell.messageLabel.text = postViewModel.gratification!.alternateMessage
         cell.buttonLabel.isHidden = true
@@ -277,6 +278,14 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
       })
       
+    } else {
+      if let myCell = cell as? GratificationCell {
+        self.showMeWhereButton.isHidden = false
+        self.view.bringSubview(toFront: self.showMeWhereButton)
+        self.showMeWhereButton.setNeedsLayout()
+        self.showMeWhereButton.layoutIfNeeded()
+        self.readThisButton.isUserInteractionEnabled = false
+      }
     }
 
   }
@@ -286,15 +295,22 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     //if making non active cells invisible, this will be the only cell with visible attributes
     if indexPath.row != 7 {
       self.readThisButton.isHidden = false
+      self.readThisButton.isUserInteractionEnabled = true
       self.counterLabel.isHidden = false
       self.totalCountLabel.isHidden = false
       self.latLabelText.isHidden = false
       self.longLabelText.isHidden = false
+      self.showMeWhereButton.isHidden = true
+      self.showMeWhereButton.isUserInteractionEnabled = false
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
       self.readThisButton.setTitle(postViewModel.postsArray[indexPath.row].linkText, for: .normal)
       
     } else {
+      
       self.readThisButton.isHidden = true
+      self.readThisButton.isUserInteractionEnabled = false
+      self.showMeWhereButton.isUserInteractionEnabled = true
+
       self.counterLabel.isHidden = true
       self.totalCountLabel.isHidden = true
       self.latLabelText.isHidden = true
@@ -360,6 +376,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   @IBInspectable var startColor:UIColor = UIColor.red
   @IBInspectable var endColor:UIColor = UIColor.blue
   
+  @IBOutlet weak var showMeWhereButton: UIButton!
   @IBOutlet weak var latLabelText: UILabel!
   
   @IBOutlet weak var longLabelText: UILabel!
@@ -679,7 +696,70 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
   }
   
-  func goToGoogle(_button : UIButton) {
+//  func goToGoogle(_button : UIButton) {
+//    let searchTerm = postViewModel.gratification!.keyword
+//    let searchArray = searchTerm.characters.split{$0 == " "}.map(String.init)
+//    let searchString = searchArray.joined(separator: "+")
+//    let urlBaseString = "https://www.google.com/maps/search/\(searchString)/@"
+//    var lat = ""
+//    var long = ""
+//    //get user lat and long
+//
+//    let prefs = UserDefaults.standard
+//    
+//    if prefs.string(forKey: "latitude") != ""  {
+//      let latitude = prefs.string(forKey: "latitude")!
+//      if latitude.characters.first! != "-" {
+//        let first5 = String(latitude.characters.prefix(5))
+//        lat = first5
+//      } else {
+//        let first6 = String(latitude.characters.prefix(6))
+//        lat = first6
+//      }
+//    } else {
+//      //      lat = "-74.45"
+//    }
+//    if prefs.string(forKey: "longitude") != "" {
+//      let longitude = prefs.string(forKey: "longitude")!
+//      if longitude.characters.first! != "-" {
+//        let first5 = String(longitude.characters.prefix(5))
+//        long = first5
+//      } else {
+//        let first6 = String(longitude.characters.prefix(6))
+//        long = first6
+//      }
+//    } else {
+//      //      long = "45.14"
+//    }
+//    
+//    let locationString = "\(lat),\(long)"
+//    let fullURLString = urlBaseString + locationString
+//    
+//    // do other task
+//    let webViewStoryboard = StoryboardInstanceConstants.webView
+//    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+//    webViewController.urlString = fullURLString
+//    navigationController?.pushViewController(webViewController, animated: true)
+//  }
+  
+  
+  
+  func showYouAreHere() {
+    youAreHereLabel.isHidden = false
+    let screenSize = UIScreen.main.bounds
+    let screenWidth = screenSize.width
+    let screenHeight = screenSize.height
+    let leadingMultiplier = CGFloat(0.7333333)
+    let leadingDistance = screenWidth * leadingMultiplier
+    
+    //    //constraints. verticalConstraint
+    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: anyLogo, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+    let leadingConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: leadingDistance)
+    self.view.addConstraints([verticalConstraint, leadingConstraint])
+
+  }
+  @IBAction func goToGoogle(_ sender: Any) {
+    
     let searchTerm = postViewModel.gratification!.keyword
     let searchArray = searchTerm.characters.split{$0 == " "}.map(String.init)
     let searchString = searchArray.joined(separator: "+")
@@ -687,7 +767,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     var lat = ""
     var long = ""
     //get user lat and long
-
+    
     let prefs = UserDefaults.standard
     
     if prefs.string(forKey: "latitude") != ""  {
@@ -723,22 +803,6 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
     webViewController.urlString = fullURLString
     navigationController?.pushViewController(webViewController, animated: true)
-  }
-  
-  
-  
-  func showYouAreHere() {
-    youAreHereLabel.isHidden = false
-    let screenSize = UIScreen.main.bounds
-    let screenWidth = screenSize.width
-    let screenHeight = screenSize.height
-    let leadingMultiplier = CGFloat(0.7333333)
-    let leadingDistance = screenWidth * leadingMultiplier
-    
-    //    //constraints. verticalConstraint
-    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: anyLogo, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-    let leadingConstraint = NSLayoutConstraint(item: youAreHereLabel, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: leadingDistance)
-    self.view.addConstraints([verticalConstraint, leadingConstraint])
 
   }
 

@@ -86,6 +86,16 @@
                                 <color key="textColor" red="0.68235294117647061" green="0.70196078431372544" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVa-Zm-Jaz" userLabel="showMeWhere">
+                                <rect key="frame" x="32" y="608" width="169" height="26"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                <state key="normal" title="SHOW ME WHERE!">
+                                    <color key="titleColor" red="0.29331555962562561" green="0.37109845876693726" blue="0.8738599419593811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToGoogle:" destination="BQc-PW-zHq" eventType="touchUpInside" id="wbU-Z0-fj3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -93,12 +103,15 @@
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="leading" secondItem="eVg-gs-wIo" secondAttribute="trailing" constant="3" id="4BV-u2-nv2"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="top" secondItem="Fc0-2c-33y" secondAttribute="top" id="7py-6L-xdg"/>
                             <constraint firstItem="Ote-hV-NcC" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" constant="266" id="C4D-U2-5lh"/>
+                            <constraint firstItem="eVg-gs-wIo" firstAttribute="centerY" secondItem="LVa-Zm-Jaz" secondAttribute="centerY" id="Czz-EQ-hXB"/>
+                            <constraint firstItem="LVa-Zm-Jaz" firstAttribute="leading" secondItem="wQG-AY-ZWV" secondAttribute="leading" id="FKd-tT-GaD"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="NCg-Ee-H4k" secondAttribute="trailing" id="Pif-PK-pGZ"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="leading" secondItem="wQG-AY-ZWV" secondAttribute="leading" id="QvM-cb-RDp"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.913694" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
+                            <constraint firstItem="LVa-Zm-Jaz" firstAttribute="width" secondItem="Fc0-2c-33y" secondAttribute="width" multiplier="0.45" id="kYZ-du-6cB"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leading" id="pQB-Aa-xQL"/>
                             <constraint firstItem="rE3-nM-Qi8" firstAttribute="bottom" secondItem="eVg-gs-wIo" secondAttribute="bottom" constant="-2" id="rBX-3x-22b"/>
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="centerY" secondItem="eVg-gs-wIo" secondAttribute="centerY" id="t9b-nb-HaU"/>
@@ -113,6 +126,7 @@
                         <outlet property="latLabelText" destination="NCg-Ee-H4k" id="GDm-ha-nFX"/>
                         <outlet property="longLabelText" destination="Moz-nE-niF" id="gHx-6k-bia"/>
                         <outlet property="readThisButton" destination="ygK-jw-gjf" id="FcX-ht-BHL"/>
+                        <outlet property="showMeWhereButton" destination="LVa-Zm-Jaz" id="Goh-so-1Lh"/>
                         <outlet property="totalCountLabel" destination="rE3-nM-Qi8" id="NwS-dx-r89"/>
                         <outlet property="youAreHereLabel" destination="Ote-hV-NcC" id="ohz-wJ-t37"/>
                     </connections>
