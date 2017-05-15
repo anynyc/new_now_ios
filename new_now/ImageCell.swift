@@ -19,7 +19,10 @@ class ImageCell: UICollectionViewCell {
   var articleUrl: String!
   var bodyLabelContainer: UIView!
   var preBodyBackground: UIView!
-  
+  var rValue: Int!
+  var bValue: Int!
+  var gValue: Int!
+  var aValue: Double!
   
   
   

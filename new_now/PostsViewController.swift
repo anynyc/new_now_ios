@@ -36,16 +36,22 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let lineArray = getIndividualLines(string: bodyText)
 //      var newSpacedBodyText = ""
       
+      //check if cell is visible.  if visible update the read this
       let rValue = Int(post.rValue)
       let gValue = Int(post.gValue)
       let bValue = Int(post.bValue)
       let aValue = Double(post.aValue)
       
+      cell.rValue = rValue
+      cell.gValue = gValue
+      cell.bValue = bValue
+      cell.aValue = aValue
+      
       let backgroundColor = UIColor(red: CGFloat(rValue!) / 255, green: CGFloat(gValue!) / 255, blue: CGFloat(bValue!) / 255, alpha: CGFloat(aValue!))
 
-      self.readThisButton?.setTitleColor(backgroundColor, for: .normal)
-      self.view.setNeedsLayout()
-      self.view.layoutIfNeeded()
+//      self.readThisButton?.setTitleColor(backgroundColor, for: .normal)
+//      self.view.setNeedsLayout()
+//      self.view.layoutIfNeeded()
 
       let foregroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
       let fullAttributedString = NSMutableAttributedString()
@@ -197,67 +203,80 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    let myCell = cell as? ImageCell
-    
-
-    var topicTransform = CGAffineTransform.identity
-    topicTransform = topicTransform.translatedBy(x: 25, y: 0)
-    topicTransform = topicTransform.rotated(by: CGFloat.pi / 2)
-    // ... add as many as you want, then apply it to to the view
-    myCell?.topicLabel.transform = topicTransform
-    myCell?.topicLabel.alpha = 0
-
-    
-    
-    
-    var bodyTextTransform = CGAffineTransform.identity
-    bodyTextTransform = bodyTextTransform.translatedBy(x: -10, y: 0)
-    myCell?.bodyLabelContainer.transform = bodyTextTransform
-    myCell?.preBodyBackground.transform = bodyTextTransform
-    myCell?.bodyLabelContainer.alpha = 0
-    myCell?.preBodyBackground.alpha = 0
-
-
-    var imageTransform = CGAffineTransform.identity
-    imageTransform = imageTransform.translatedBy(x: 0, y: 0)
-    imageTransform = imageTransform.scaledBy(x: 0.96, y: 0.96)
-    myCell?.imageView.transform = imageTransform
-    
-    
-
-    
-    UIView.animate(withDuration: 0.2, delay: 0.2, animations: { () -> Void in
+    if let myCell = cell as? ImageCell {
       
-      var bodyTextFinish = CGAffineTransform.identity
-      bodyTextFinish = bodyTextFinish.translatedBy(x: 0, y: 0)
-      myCell?.bodyLabelContainer.transform = bodyTextFinish
-      myCell?.preBodyBackground.transform = bodyTextFinish
-      myCell?.preBodyBackground.alpha = 1
-      myCell?.bodyLabelContainer.alpha = 1
+      let rValue = myCell.rValue
+      let gValue = myCell.gValue
+      let bValue = myCell.bValue
+      let aValue = myCell.aValue
+      
+      let backgroundColor = UIColor(red: CGFloat(rValue!) / 255, green: CGFloat(gValue!) / 255, blue: CGFloat(bValue!) / 255, alpha: CGFloat(aValue!))
+      
 
-    })
-    
-    UIView.animate(withDuration: 0.25, delay: 0.2, animations: { () -> Void in
+      self.counterLabel?.textColor = backgroundColor
+      self.view.setNeedsLayout()
+      self.view.layoutIfNeeded()
       
-      //      myCell?.bodyLabelContainer.alpha = 1
-      //      myCell?.preBodyBackground.alpha = 1
-      var topicFinish = CGAffineTransform.identity
-      topicFinish = topicFinish.translatedBy(x: 0, y: 0)
-      topicFinish = topicFinish.rotated(by: CGFloat.pi / 2)
-      myCell?.topicLabel.transform = topicFinish
-      myCell?.topicLabel.alpha = 1
+      var topicTransform = CGAffineTransform.identity
+      topicTransform = topicTransform.translatedBy(x: 25, y: 0)
+      topicTransform = topicTransform.rotated(by: CGFloat.pi / 2)
+      // ... add as many as you want, then apply it to to the view
+      myCell.topicLabel.transform = topicTransform
+      myCell.topicLabel.alpha = 0
       
-    })
-    
-    UIView.animate(withDuration: 0.25, animations: { () -> Void in
       
-      var imageFinish = CGAffineTransform.identity
-      imageFinish = imageFinish.translatedBy(x: 0, y: 0)
-      imageFinish = imageFinish.scaledBy(x: 1, y: 1)
-      myCell?.imageView.transform = imageFinish
+      
+      
+      var bodyTextTransform = CGAffineTransform.identity
+      bodyTextTransform = bodyTextTransform.translatedBy(x: -10, y: 0)
+      myCell.bodyLabelContainer.transform = bodyTextTransform
+      myCell.preBodyBackground.transform = bodyTextTransform
+      myCell.bodyLabelContainer.alpha = 0
+      myCell.preBodyBackground.alpha = 0
+      
+      
+      var imageTransform = CGAffineTransform.identity
+      imageTransform = imageTransform.translatedBy(x: 0, y: 0)
+      imageTransform = imageTransform.scaledBy(x: 0.96, y: 0.96)
+      myCell.imageView.transform = imageTransform
+      
+      
+      
+      
+      UIView.animate(withDuration: 0.2, delay: 0.2, animations: { () -> Void in
+        
+        var bodyTextFinish = CGAffineTransform.identity
+        bodyTextFinish = bodyTextFinish.translatedBy(x: 0, y: 0)
+        myCell.bodyLabelContainer.transform = bodyTextFinish
+        myCell.preBodyBackground.transform = bodyTextFinish
+        myCell.preBodyBackground.alpha = 1
+        myCell.bodyLabelContainer.alpha = 1
+        
+      })
+      
+      UIView.animate(withDuration: 0.25, delay: 0.2, animations: { () -> Void in
+        
+        //      myCell?.bodyLabelContainer.alpha = 1
+        //      myCell?.preBodyBackground.alpha = 1
+        var topicFinish = CGAffineTransform.identity
+        topicFinish = topicFinish.translatedBy(x: 0, y: 0)
+        topicFinish = topicFinish.rotated(by: CGFloat.pi / 2)
+        myCell.topicLabel.transform = topicFinish
+        myCell.topicLabel.alpha = 1
+        
+      })
+      
+      UIView.animate(withDuration: 0.25, animations: { () -> Void in
+        
+        var imageFinish = CGAffineTransform.identity
+        imageFinish = imageFinish.translatedBy(x: 0, y: 0)
+        imageFinish = imageFinish.scaledBy(x: 1, y: 1)
+        myCell.imageView.transform = imageFinish
+        
+      })
+      
+    }
 
-    })
-    
   }
   
   
