@@ -11,9 +11,10 @@ import UIKit
 import NVActivityIndicatorView
 
 
-class LaunchViewController: BaseViewController, PostViewModelDelegate {
+class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingViewModelDelegate {
   
   let postViewModel = PostViewModel()
+  let greetingViewModel = GreetingViewModel()
   
   @IBOutlet weak var anyLogo: UIImageView!
   @IBOutlet weak var loaderView: NVActivityIndicatorView!
@@ -34,6 +35,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     super.viewDidLoad()
     setupConstraints()
     postViewModel.delegate = self
+    greetingViewModel.delegate = self
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +56,6 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     mainContentLabel.numberOfLines = 3
     mainContentLabel.font = UIFont(name: "Miller-Display", size: 30)
     mainContentLabel.textAlignment = .left
-    mainContentLabel.text = "7 things you need to know about design today."
     self.view.addSubview(mainContentLabel)
 
     
@@ -81,59 +82,8 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
     
     
 
-    
-    editionLabel = UILabel()
-    editionLabel.font = UIFont(name: "Avenir-Heavy", size: 9)
-    editionLabel.textColor = UIColor.lightGray
-    editionLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
-    editionLabel.textAlignment = .left
-   
-    //attributed text need character spacing 2
-    let editionText = "EDITION 004"
-    
-    let attributedBodyString = NSMutableAttributedString(string: editionText)
-    attributedBodyString.addAttribute(NSKernAttributeName, value:   CGFloat(2.0), range: NSRange(location: 0, length: editionText.characters.count))
-    
 
-    editionLabel.attributedText = attributedBodyString
     
-    self.view.addSubview(editionLabel)
-    //make dynamic
-    var editionFrame = editionLabel.frame
-    editionFrame.size.height = 100
-    editionFrame.size.width = 12
-    
-    editionFrame.origin.x = 38.0
-    editionFrame.origin.y = 80.0
-    
-    editionLabel.frame = editionFrame
-
-    editionLabel.setNeedsLayout()
-    editionLabel.layoutIfNeeded()
-    
-    progressBar = UIProgressView()
-    
-    let progressXMultiplier = CGFloat(0.109333)
-    let progressYMultiplier = CGFloat(0.65667)
-    let progressHeightMultiplier = CGFloat(0.00449)
-    let progressWidthMultiplier = CGFloat(0.770666)
-    
-    let progressXPosition = self.view.frame.size.width * progressXMultiplier
-    let progressYPosition = self.view.frame.size.height * progressYMultiplier
-    let progressHeight = self.view.frame.size.height * progressHeightMultiplier
-    let progressWidth = self.view.frame.size.width * progressWidthMultiplier
-    
-    
-    var progressFrame = progressBar.frame
-    progressFrame.origin.x = progressXPosition
-    progressFrame.origin.y = progressYPosition
-    progressFrame.size.width = progressWidth
-    progressFrame.size.height = progressHeight
-    
-    progressBar.frame = progressFrame
-    
-    progressBar.setProgress(0.1, animated: true)
-    self.view.addSubview(progressBar)
 
 
   }
@@ -144,14 +94,16 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
   
   func presentInterstitialLoadingIndicator() {
 
-      postViewModel.loadPosts()
+    greetingViewModel.loadGreeting()
+    
+    
   }
   
   
   func postsReceived() {
     progressBar.setProgress(1.0, animated: true)
 
-    UIView.animate(withDuration: 1.5, delay: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
+    UIView.animate(withDuration: 0.25, delay: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
       self.view.alpha = 0
 //      self.view.center.y = self.view.center.y + 195
 //      self.view.center.x = self.view.center.x - 155
@@ -252,5 +204,85 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate {
 
   }
 
+  func greetingDidLoad() {
+    mainContentLabel.text = greetingViewModel.greeting?.title
+    
+    editionLabel = UILabel()
+    editionLabel.font = UIFont(name: "Avenir-Heavy", size: 9)
+    editionLabel.textColor = UIColor.lightGray
+    editionLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+    editionLabel.textAlignment = .left
+    
+    //attributed text need character spacing 2
+    let editionText = greetingViewModel.greeting?.edition
+    
+    let attributedBodyString = NSMutableAttributedString(string: editionText!)
+    attributedBodyString.addAttribute(NSKernAttributeName, value:   CGFloat(2.0), range: NSRange(location: 0, length: (editionText?.characters.count)!))
+    
+    
+    editionLabel.attributedText = attributedBodyString
+    
+    self.view.addSubview(editionLabel)
+    //make dynamic
+    var editionFrame = editionLabel.frame
+    editionFrame.size.height = 100
+    editionFrame.size.width = 12
+    
+    editionFrame.origin.x = 38.0
+    editionFrame.origin.y = 80.0
+    
+    editionLabel.frame = editionFrame
+    
+    editionLabel.setNeedsLayout()
+    editionLabel.layoutIfNeeded()
+    
+    progressBar = UIProgressView()
+    
+    let progressXMultiplier = CGFloat(0.109333)
+    let progressYMultiplier = CGFloat(0.65667)
+    let progressHeightMultiplier = CGFloat(0.00449)
+    let progressWidthMultiplier = CGFloat(0.770666)
+    
+    let progressXPosition = self.view.frame.size.width * progressXMultiplier
+    let progressYPosition = self.view.frame.size.height * progressYMultiplier
+    let progressHeight = self.view.frame.size.height * progressHeightMultiplier
+    let progressWidth = self.view.frame.size.width * progressWidthMultiplier
+    
+    
+    var progressFrame = progressBar.frame
+    progressFrame.origin.x = progressXPosition
+    progressFrame.origin.y = progressYPosition
+    progressFrame.size.width = progressWidth
+    progressFrame.size.height = progressHeight
+    
+    progressBar.frame = progressFrame
+    
+    progressBar.setProgress(0.1, animated: true)
+    self.view.addSubview(progressBar)
+
+    editionLabel.alpha = 0
+    progressBar.alpha = 0
+    mainContentLabel.alpha = 0
+    
+    UIView.animate(withDuration: 0.5, delay: 0.2, animations: { () -> Void in
+      self.editionLabel.alpha = 1
+      self.progressBar.alpha = 1
+      self.anyLogo.alpha = 1
+      self.mainContentLabel.alpha = 1
+      
+      
+    })
+    
+    UIView.animate(withDuration: 0, delay: 0.5, animations: { () -> Void in
+      self.postViewModel.loadPosts()
+
+      
+    })
+
+  }
+  
+  func noGreeting() {
+
+  }
   
 }

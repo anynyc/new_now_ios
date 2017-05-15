@@ -34,7 +34,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="typeName" value=".semiCircleSpin"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="anyPdf" translatesAutoresizingMaskIntoConstraints="NO" id="QLs-fW-48k">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="anyPdf" translatesAutoresizingMaskIntoConstraints="NO" id="QLs-fW-48k">
                                 <rect key="frame" x="10" y="10" width="53" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="CYY-Sm-mkG"/>

@@ -41,10 +41,8 @@ class GreetingViewModel: NSObject {
   
 
   
-  //it is called by loadGames after all games finished downloading
-  //downloads pictures for users
   func greetingDidLoad() {
-
+    
   }
   
 
