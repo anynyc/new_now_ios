@@ -364,6 +364,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
   var slider: BWCircularSlider!
+  var toolTip: ToolTipView!
   var activeCell = 0
   let fullImageView = UIImageView()
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
@@ -482,8 +483,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
     self.view.addSubview(slider)
     
-//    let toolTipView = ToolTipView()
-//    self.view.addSubview(toolTipView)
+
     setupBottomButtons()
 
     
@@ -491,6 +491,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   func valueChanged(slider:BWCircularSlider){
     //depending on the angle value reveal certain card
+    if toolTip != nil {
+      clearToolTip()
+    }
+    
     let row = getSection(int: slider.angle)
     if row != activeCell && row != 7 {
       activeCell = row
@@ -621,30 +625,22 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   func setupBottomButtons() {
     self.view.bringSubview(toFront: readThisButton)
     self.view.bringSubview(toFront: anyLogo)
+    
+    let prefs = UserDefaults.standard
+    if prefs.string(forKey: "returningVisitor") != "true" {
+      toolTip = ToolTipView()
+      toolTip.setupView(superView: self.view)
+      toolTip.animateHand()
+      self.view.addSubview(toolTip)
+      self.view.bringSubview(toFront: slider)
+    }
+  
+    
+    
+    
+    
 
-    //REPURPOSE THE BELOW FOR POSITION COUNTER ON LEFT SIDE OF SCREEN
-    
-    /*
-    readThisButton =  UIButton()
-    readThisButton.titleLabel?.text = "READ THIS"
-    readThisButton.titleLabel?.textColor = UIColor.blue
-    readThisButton.titleLabel
-    
-    
-    self.view.addSubview(readThisButton)
-    var readThisButtonFrame = readThisButton.frame
-    readThisButtonFrame.size.height = 200.0
-    readThisButtonFrame.size.width = 300.0
-    readThisButtonFrame.origin.x = self.view.frame.width / 2
-    readThisButtonFrame.origin.y = self.view.frame.height / 2
-    readThisButton.frame = readThisButtonFrame
-    */
-    
-    //constraints
-//    let bottomConstraint = NSLayoutConstraint(item: readThisButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
-//    let rightConstraint = NSLayoutConstraint(item: readThisButton, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
-//    self.view.addConstraints([bottomConstraint, rightConstraint])
-//    
+
   }
   
   
@@ -808,6 +804,24 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   }
 
+  func clearToolTip() {
+    
+      //animate out
+    let prefs = UserDefaults.standard
+    prefs.set("true", forKey: "returningVisitor")
+
+    
+      UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+        
+        self.toolTip.alpha = 0
+      }, completion:  { (finished: Bool) in
+        self.toolTip.isHidden = true
+        self.view.bringSubview(toFront: self.readThisButton)
+      })
+
+
+  }
+  
 }
 
 
