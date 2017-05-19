@@ -578,10 +578,34 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   }
   
   func showArticle(of link:String) {
-    let webViewStoryboard = StoryboardInstanceConstants.webView
-    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
-    webViewController.urlString = link
-    navigationController?.pushViewController(webViewController, animated: true)
+    
+    
+    //animate any logo up and then on completion do this transition
+    
+    
+    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 16
+      
+    }, completion:  { (finished: Bool) in
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 16
+
+      let transition: CATransition = CATransition()
+      transition.duration = 0.4
+      transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+      transition.type = kCATransitionFade
+      self.navigationController?.view.layer.add(transition, forKey: nil)
+      
+      let webViewStoryboard = StoryboardInstanceConstants.webView
+      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+      webViewController.urlString = link
+      self.navigationController?.pushViewController(webViewController, animated: false)
+      
+      
+    })
+    
+
+    
+
   }
 
   func getSection(int: Int) -> Int {
@@ -796,19 +820,40 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let locationString = "\(lat),\(long)"
     let fullURLString = urlBaseString + locationString
     
+    
+    
+    
+    
     // do other task
-    let webViewStoryboard = StoryboardInstanceConstants.webView
-    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
-    webViewController.urlString = fullURLString
-    navigationController?.pushViewController(webViewController, animated: true)
+    
+    
+    UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 16
+      
+    }, completion:  { (finished: Bool) in
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 16
+      
+      let transition: CATransition = CATransition()
+      transition.duration = 0.4
+      transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+      transition.type = kCATransitionFade
+      self.navigationController?.view.layer.add(transition, forKey: nil)
+      
+      let webViewStoryboard = StoryboardInstanceConstants.webView
+      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+      webViewController.urlString = fullURLString
+      self.navigationController?.pushViewController(webViewController, animated: false)
+
+      
+    })
 
   }
 
   func clearToolTip() {
     
       //animate out
-    let prefs = UserDefaults.standard
-    prefs.set("true", forKey: "returningVisitor")
+//    let prefs = UserDefaults.standard
+//    prefs.set("true", forKey: "returningVisitor")
 
     
       UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
