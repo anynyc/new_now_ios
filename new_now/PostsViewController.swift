@@ -852,8 +852,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   func clearToolTip() {
     
       //animate out
-//    let prefs = UserDefaults.standard
-//    prefs.set("true", forKey: "returningVisitor")
+    let prefs = UserDefaults.standard
+    prefs.set("true", forKey: "returningVisitor")
 
     
       UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {

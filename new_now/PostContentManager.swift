@@ -69,6 +69,9 @@ class PostContentManager: NSObject {
     //      completion(nil)
     //      return
     //    }
+    
+    MainCacheManager.clearAllCachedPosts()
+    
     PostAPIManager.fetchPostsWithCompletion(comp: { contentArray, gratificationArray in
       guard let posts = contentArray, posts.count > 0 else {
         completion(nil)
