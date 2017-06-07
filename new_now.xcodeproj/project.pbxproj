@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		27354FB61EA9364E009816B5 /* GratificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27354FB51EA9364D009816B5 /* GratificationModel.swift */; };
 		27354FB81EA94A46009816B5 /* GratificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27354FB71EA94A46009816B5 /* GratificationCell.swift */; };
+		275D9AD61EE7575E00A9C35F /* ScrollWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D9AD51EE7575E00A9C35F /* ScrollWebViewController.swift */; };
+		275D9AD81EE7579E00A9C35F /* ScrollWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275D9AD71EE7579E00A9C35F /* ScrollWebViewController.storyboard */; };
 		27604A7F1EAFD06F00E2A69E /* NRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27604A7E1EAFD06F00E2A69E /* NRLabel.swift */; };
 		279BED861E7AEE1800E52B3A /* ViewIdentifierConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED851E7AEE1800E52B3A /* ViewIdentifierConstants.swift */; };
 		279BED8A1E7AEF5B00E52B3A /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BED891E7AEF5B00E52B3A /* LaunchViewController.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		27354FB51EA9364D009816B5 /* GratificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GratificationModel.swift; sourceTree = "<group>"; };
 		27354FB71EA94A46009816B5 /* GratificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GratificationCell.swift; sourceTree = "<group>"; };
+		275D9AD51EE7575E00A9C35F /* ScrollWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollWebViewController.swift; sourceTree = "<group>"; };
+		275D9AD71EE7579E00A9C35F /* ScrollWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScrollWebViewController.storyboard; sourceTree = "<group>"; };
 		27604A7E1EAFD06F00E2A69E /* NRLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRLabel.swift; sourceTree = "<group>"; };
 		279BED851E7AEE1800E52B3A /* ViewIdentifierConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewIdentifierConstants.swift; sourceTree = "<group>"; };
 		279BED891E7AEF5B00E52B3A /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275D9AD41EE7573700A9C35F /* ScrollWebView */ = {
+			isa = PBXGroup;
+			children = (
+				275D9AD51EE7575E00A9C35F /* ScrollWebViewController.swift */,
+				275D9AD71EE7579E00A9C35F /* ScrollWebViewController.storyboard */,
+			);
+			name = ScrollWebView;
+			sourceTree = "<group>";
+		};
 		27604A7D1EAFD05800E2A69E /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		279BED7F1E7AED0A00E52B3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				275D9AD41EE7573700A9C35F /* ScrollWebView */,
 				279BED911E7AF30A00E52B3A /* WebView */,
 				279BED841E7AEDC100E52B3A /* PostsScreen */,
 				279BED831E7AEDB100E52B3A /* LaunchScreen */,
@@ -318,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				279BED941E7AF32A00E52B3A /* WebViewController.storyboard in Resources */,
+				275D9AD81EE7579E00A9C35F /* ScrollWebViewController.storyboard in Resources */,
 				27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */,
 				279BED8E1E7AF01C00E52B3A /* PostsViewController.storyboard in Resources */,
 				27DED2811E9426160084C92C /* Miller-DisplayItalic.otf in Resources */,
@@ -386,6 +401,7 @@
 				27BA14991E89D48C0025663C /* GridLayout.swift in Sources */,
 				279BED981E7AF3C600E52B3A /* PostViewModel.swift in Sources */,
 				27B242241ECA2D5700F398B8 /* ToolTipView.swift in Sources */,
+				275D9AD61EE7575E00A9C35F /* ScrollWebViewController.swift in Sources */,
 				27DED27B1E8D85470084C92C /* BWCircularSlider.swift in Sources */,
 				279BED9A1E7AF47900E52B3A /* PostModel.swift in Sources */,
 				27354FB81EA94A46009816B5 /* GratificationCell.swift in Sources */,

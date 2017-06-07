@@ -595,8 +595,14 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-      let webViewStoryboard = StoryboardInstanceConstants.webView
-      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+//      let webViewStoryboard = StoryboardInstanceConstants.webView
+//      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+//      webViewController.urlString = link
+//      self.navigationController?.pushViewController(webViewController, animated: false)
+      
+      let webViewStoryboard = StoryboardInstanceConstants.scrollWebView
+      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.scrollWebView) as! ScrollWebViewController
+      
       webViewController.urlString = link
       self.navigationController?.pushViewController(webViewController, animated: false)
       
@@ -839,8 +845,12 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-      let webViewStoryboard = StoryboardInstanceConstants.webView
-      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+//      let webViewStoryboard = StoryboardInstanceConstants.webView
+//      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
+//      webViewController.urlString = fullURLString
+//      self.navigationController?.pushViewController(webViewController, animated: false)
+      let webViewStoryboard = StoryboardInstanceConstants.scrollWebView
+      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.scrollWebView) as! ScrollWebViewController
       webViewController.urlString = fullURLString
       self.navigationController?.pushViewController(webViewController, animated: false)
 

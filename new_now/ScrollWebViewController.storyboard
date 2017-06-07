@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scroll Web View Controller-->
+        <scene sceneID="Pf4-6n-XbB">
+            <objects>
+                <viewController storyboardIdentifier="scrollWebViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gPI-VN-VXj" customClass="ScrollWebViewController" customModule="new_now" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QNw-bb-iXD"/>
+                        <viewControllerLayoutGuide type="bottom" id="VnG-jI-UOU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sZ4-X8-aRB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIc-Gn-3R9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deX-gV-ZUw" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxu-1a-8Mx" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                <rect key="frame" x="162.5" y="308" width="50" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="ccp-oQ-5Uv"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ipt-YJ-FGt"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballClipRotate"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="0.20383439519999999" green="0.40259410610000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Hxu-1a-8Mx" firstAttribute="centerX" secondItem="deX-gV-ZUw" secondAttribute="centerX" id="5no-EX-zrN"/>
+                                            <constraint firstAttribute="height" constant="2000" id="O2g-QV-uPe"/>
+                                            <constraint firstItem="Hxu-1a-8Mx" firstAttribute="top" secondItem="deX-gV-ZUw" secondAttribute="top" constant="308" id="Q3e-rW-5Cc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="deX-gV-ZUw" secondAttribute="bottom" id="K25-Tr-Siw"/>
+                                    <constraint firstItem="deX-gV-ZUw" firstAttribute="leading" secondItem="KIc-Gn-3R9" secondAttribute="leading" id="LeY-1E-le8"/>
+                                    <constraint firstItem="deX-gV-ZUw" firstAttribute="top" secondItem="KIc-Gn-3R9" secondAttribute="top" id="aD3-T8-V5g"/>
+                                    <constraint firstAttribute="trailing" secondItem="deX-gV-ZUw" secondAttribute="trailing" id="uig-yU-Gvm"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KIc-Gn-3R9" firstAttribute="top" secondItem="sZ4-X8-aRB" secondAttribute="top" id="MiC-r7-NGT"/>
+                            <constraint firstItem="VnG-jI-UOU" firstAttribute="top" secondItem="KIc-Gn-3R9" secondAttribute="bottom" id="TfW-bO-5Qb"/>
+                            <constraint firstItem="KIc-Gn-3R9" firstAttribute="leading" secondItem="sZ4-X8-aRB" secondAttribute="leading" id="d1K-6G-pX6"/>
+                            <constraint firstItem="deX-gV-ZUw" firstAttribute="width" secondItem="sZ4-X8-aRB" secondAttribute="width" id="m39-mN-IYQ"/>
+                            <constraint firstAttribute="trailing" secondItem="KIc-Gn-3R9" secondAttribute="trailing" id="von-TO-OSt"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="contentView" destination="deX-gV-ZUw" id="1yc-kl-bFI"/>
+                        <outlet property="loaderView" destination="Hxu-1a-8Mx" id="0aQ-vx-ELz"/>
+                        <outlet property="scrollView" destination="KIc-Gn-3R9" id="EC3-sa-O4i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x6a-pK-uQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="169.11544227886057"/>
+        </scene>
+    </scenes>
+</document>

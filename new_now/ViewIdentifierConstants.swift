@@ -13,12 +13,14 @@ struct VCNameConstants {
   static let launch = "Launch"
   static let posts = "postScreenVC"
   static let webView = "webViewVC"
+  static let scrollWebView = "scrollWebViewVC"
 }
 
 struct StoryboardInstanceConstants {
   static let launch = UIStoryboard(name: "LaunchViewController", bundle: nil)
   static let webView = UIStoryboard(name: "WebViewController", bundle: nil)
   static let postsScreen = UIStoryboard(name: "PostsViewController", bundle: nil)
+  static let scrollWebView = UIStoryboard(name: "ScrollWebViewController", bundle: nil)
   
 }
 
