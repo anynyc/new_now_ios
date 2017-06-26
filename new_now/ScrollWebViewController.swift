@@ -15,6 +15,9 @@ import NVActivityIndicatorView
 
 class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
   
+  private var notification: NSObjectProtocol?
+  private var newNotification: NSObjectProtocol?
+
   var navBar: UINavigationBar = UINavigationBar()
   var urlString = ""
   var webView: WKWebView!
@@ -141,13 +144,60 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     
     animateButtons()
+   
+    
+    
+    
+    notification = NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: .main) {
+      [unowned self] notification in
+      self.navBar.alpha = 0
+      self.navigationController?.navigationBar.alpha = 0
+      self.automaticallyAdjustsScrollViewInsets = false
+
+      self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 65)
+      
+      self.navigationItem.rightBarButtonItem?.setBackgroundVerticalPositionAdjustment(-10.0, for: .default)
+      self.animateNavBackIn()
+      
+
+    }
+    
+    newNotification = NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: .main) {
+      [unowned self] notification in
+      
+      self.navigationController?.navigationBar.alpha = 0
+      self.navBar.alpha = 0
+
+      
+    }
+    
+    
     
   }
   
   
   func goToArticle() {
-    let url = NSURL(string: self.urlString)
-    UIApplication.shared.open(url as! URL)
+    
+    
+    //Animate nav bar out first
+    UIView.animate(withDuration: 0.5, delay: 0, options: [], animations: {
+      
+      self.navBar.alpha = 0
+      self.navigationController?.navigationBar.alpha = 0
+      
+      
+    }, completion:  { (finished: Bool) in
+      
+      
+      let url = NSURL(string: self.urlString)
+      self.navigationController?.navigationBar.isHidden = true
+      self.navBar.isHidden = true
+      UIApplication.shared.open(url as! URL)
+      
+    })
+    
+    
+
   }
   
   func animateButtons() {
@@ -287,4 +337,30 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   //    UIApplication.shared.open(url as! URL)
   //  }
   
+
+  func animateNavBackIn() {
+    UIView.animate(withDuration: 0.4, delay: 0, animations: { () -> Void in
+    self.navigationController?.navigationBar.isHidden = false
+    self.navBar.isHidden = false
+    self.navigationController?.navigationBar.alpha = 1
+    self.navBar.alpha = 1
+
+      
+    })
+  }
+  
+
+  deinit {
+    
+    if let notification = notification {
+      NotificationCenter.default.removeObserver(notification)
+    }
+    
+    if let newNotification = newNotification {
+      NotificationCenter.default.removeObserver(newNotification)
+      
+    }
+    
+  }
+
 }

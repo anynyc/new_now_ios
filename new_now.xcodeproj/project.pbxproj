@@ -70,6 +70,7 @@
 		27B242231ECA2D5700F398B8 /* ToolTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		27BA14981E89D48B0025663C /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		27BA149A1E89D6CF0025663C /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		27C03BAB1EFD97DA0053385A /* new_now.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = new_now.entitlements; sourceTree = "<group>"; };
 		27C481911E7AD38D00E6022B /* new_now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new_now.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C481941E7AD38D00E6022B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27C4819B1E7AD38D00E6022B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 		27C481931E7AD38D00E6022B /* new_now */ = {
 			isa = PBXGroup;
 			children = (
+				27C03BAB1EFD97DA0053385A /* new_now.entitlements */,
 				27604A7D1EAFD05800E2A69E /* CustomClasses */,
 				27DED2791E8D85310084C92C /* CustomViews */,
 				279BEDA11E7B00FF00E52B3A /* APIClient */,
@@ -305,6 +307,14 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 25L98CM939;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
