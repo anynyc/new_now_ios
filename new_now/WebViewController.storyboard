@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,45 +35,15 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballClipRotate"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8so-PQ-Ibh" userLabel="overView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnH-zY-gRk">
-                                        <rect key="frame" x="0.0" y="8" width="375" height="659"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsF-S0-kv7">
-                                        <rect key="frame" x="87.5" y="583" width="200" height="35"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="7WY-cM-yO2"/>
-                                            <constraint firstAttribute="width" constant="200" id="uz7-Sh-pUc"/>
-                                        </constraints>
-                                        <state key="normal" title="Go To Full Article" backgroundImage="viewOnWebButton">
-                                            <color key="titleColor" red="0.20383439519999999" green="0.40259410610000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="CsF-S0-kv7" firstAttribute="centerX" secondItem="8so-PQ-Ibh" secondAttribute="centerX" id="AW0-LR-NaW"/>
-                                    <constraint firstItem="CsF-S0-kv7" firstAttribute="centerY" secondItem="8so-PQ-Ibh" secondAttribute="centerY" multiplier="1.8" id="jCM-M4-rZ9"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X4C-rr-tSs" firstAttribute="centerY" secondItem="pPo-zz-sqv" secondAttribute="centerY" id="2UV-OO-gTj"/>
-                            <constraint firstItem="8so-PQ-Ibh" firstAttribute="leading" secondItem="pPo-zz-sqv" secondAttribute="leading" id="4Jf-vy-aKx"/>
                             <constraint firstItem="X4C-rr-tSs" firstAttribute="centerX" secondItem="pPo-zz-sqv" secondAttribute="centerX" id="B7Z-Wr-VhK"/>
-                            <constraint firstItem="8so-PQ-Ibh" firstAttribute="top" secondItem="pPo-zz-sqv" secondAttribute="top" id="NS9-aN-dzS"/>
-                            <constraint firstAttribute="trailing" secondItem="8so-PQ-Ibh" secondAttribute="trailing" id="cBp-Up-XrQ"/>
-                            <constraint firstItem="E3X-QA-52T" firstAttribute="top" secondItem="8so-PQ-Ibh" secondAttribute="bottom" id="oxA-hx-uZk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="loaderView" destination="X4C-rr-tSs" id="tfy-fr-Ehk"/>
-                        <outlet property="overView" destination="8so-PQ-Ibh" id="lhP-yZ-00U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53s-T4-8x1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +51,4 @@
             <point key="canvasLocation" x="225" y="48"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="viewOnWebButton" width="265" height="94"/>
-    </resources>
 </document>

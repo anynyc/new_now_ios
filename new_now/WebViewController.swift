@@ -18,8 +18,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   var navBar: UINavigationBar = UINavigationBar()
   var urlString = ""
   var webView: WKWebView!
-  var gradientLayer: CAGradientLayer!
-  var overView: UIView!
+
   
 //  @IBOutlet weak var viewOnWebButton: UIButton!
 //  @IBOutlet weak var overView: UIView!
@@ -32,7 +31,6 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     loaderView.color = UIColor.black
     loaderView.startAnimating()
     let webConfiguration = WKWebViewConfiguration()
-    let overView = UIView()
     navigationController?.setNavigationBarHidden(false, animated: false)
 
     navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 65)
@@ -71,24 +69,12 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     webView.navigationDelegate = self
     webView.uiDelegate = self
     //overview size. add subview gradient image to it and button
-    overView.frame = CGRect(x: 0, y: 400, width: self.view.frame.width, height: 1000)
+
 
     
-    //not USING GRADIENT NOW??
-    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
-    let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor
-    let bottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1).cgColor
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.colors = [colorTop, lineBottom, bottom]
-    gradientLayer.locations = [0.0, 0.1, 1.0]
-    gradientLayer.frame = self.overView.frame
-    
-    overView.layer.insertSublayer(gradientLayer, at: 3)
-
     
 //
     view.addSubview(webView)
-    webView.addSubview(overView)
     webView.alpha = 0
     
     
@@ -245,7 +231,6 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
       
     }, completion: {(true) in
       
-      self.webView.bringSubview(toFront: self.overView)
 //      self.overView.bringSubview(toFront: self.viewOnWebButton)
     })
 
