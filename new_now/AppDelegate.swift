@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     createNavController()
     UIApplication.shared.statusBarView?.backgroundColor = .white
     initLocationManager()
-
     return true
   }
 

@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 
 
 
-class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
+class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate {
   
   private var notification: NSObjectProtocol?
   private var newNotification: NSObjectProtocol?
@@ -79,7 +79,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     titleView.addSubview(titleImage)
     navigationItem.titleView = titleView
     
-    let webFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 2000.0)
+    let webFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 6000.0)
     webView = WKWebView(frame: webFrame, configuration: webConfiguration)
 //    webView = WKWebView(frame: UIScreen.main.bounds, configuration: webConfiguration)
 
@@ -88,7 +88,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     webView.scrollView.isScrollEnabled = false
 //    webView.isUserInteractionEnabled = false
     //overview size. add subview gradient image to it and button
-    overView.frame = CGRect(x: 0, y: 750, width: self.view.frame.width, height: 1250)
+    overView.frame = CGRect(x: 0, y: 2850, width: self.view.frame.width, height: 500)
     
     
     //not USING GRADIENT NOW??
@@ -103,7 +103,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     overView.layer.insertSublayer(gradientLayer, at: 3)
     
     //view on web button
-    let buttonFrame = CGRect(x: self.view.frame.width / 4, y: 1100.0, width: 200.0, height: 50.0)
+    let buttonFrame = CGRect(x: self.view.frame.width / 4, y: 3050.0, width: 200.0, height: 50.0)
     viewOnWebButton.frame = buttonFrame
     viewOnWebButton.setTitle("View On Safari", for: .normal)
     viewOnWebButton.titleLabel?.font = UIFont(name: "Miller-Display", size: 15)
@@ -171,8 +171,93 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       
     }
     
+
+    self.scrollView.pinchGestureRecognizer?.isEnabled = false
+    
+    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.didSwipeLeft))
+    swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+    swipeLeft.require(toFail: self.scrollView.panGestureRecognizer)
+    self.scrollView.addGestureRecognizer(swipeLeft)
+  }
+  
+  
+  func didSwipeLeft(gesture: UIGestureRecognizer) {
+    
+    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    let fakeNavView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+    fakeNavView.backgroundColor = UIColor.white
+    fakeNavView.alpha = 0
+    
+    let fakeNavBar = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+    fakeNavBar.backgroundColor = UIColor.white
+    fakeNavBar.alpha = 1
+    fakeNavBar.layer.shadowOpacity = 0.2
+    fakeNavBar.layer.shadowOffset.height = 5
+    fakeNavBar.layer.shadowRadius = 100
     
     
+    
+    titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+    self.view.addSubview(fakeNavView)
+    self.view.bringSubview(toFront: fakeNavView)
+    self.view.addSubview(fakeNavBar)
+    self.view.bringSubview(toFront: fakeNavBar)
+    
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0
+    self.navigationController?.navigationBar.layer.shadowOffset.height = 0
+    self.navigationController?.navigationBar.layer.shadowRadius = 0
+    
+    self.view.addSubview(titleImage)
+    self.view.bringSubview(toFront: titleImage)
+    
+    
+    
+    let when = DispatchTime.now() + 0.1 // change 2 to desired number of seconds
+    DispatchQueue.main.asyncAfter(deadline: when) {
+      // Your code with delay
+      
+      self.navigationController?.setNavigationBarHidden(true, animated: false)
+      
+    }
+    
+    
+    
+    //fade everything out.  on completion do the transition
+    UIView.animate(withDuration: 0.1, delay: 0, options: [], animations: {
+      fakeNavView.alpha = 1
+      fakeNavBar.layer.shadowOpacity = 0.0
+      fakeNavBar.layer.shadowOffset.height = 0
+      fakeNavBar.layer.shadowRadius = 0
+    })
+    
+    
+    
+    UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
+      
+      titleImage.frame.origin.y = titleImage.frame.origin.y + 16
+      
+      
+      
+    }, completion:  { (finished: Bool) in
+      
+      let transition: CATransition = CATransition()
+      transition.duration = 0.2
+      transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+      transition.type = kCATransitionFade
+      self.navigationController?.view.layer.add(transition, forKey: nil)
+      
+      
+      self.navigationController?.popViewController(animated: false)
+      
+    })
+  }
+  
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    
+    
+    
+    
+    return true
   }
   
   

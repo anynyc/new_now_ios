@@ -36,6 +36,15 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
     setupConstraints()
     postViewModel.delegate = self
     greetingViewModel.delegate = self
+    
+    
+    //check iOS version.  If less than 10 show message
+    
+    let floatVersion = (UIDevice.current.systemVersion as NSString).floatValue
+    
+    
+
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -46,39 +55,55 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
   //checks if credentials are cached, if they are go to home page
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.setNavigationBarHidden(true, animated: false)
-//    loaderView.type = .ballClipRotate
-//    loaderView.color = UIColor.blue
-//    loaderView.startAnimating()
-    presentInterstitialLoadingIndicator()
     
-    mainContentLabel = UILabel()
-    mainContentLabel.numberOfLines = 3
-    mainContentLabel.font = UIFont(name: "Miller-Display", size: 30)
-    mainContentLabel.textAlignment = .left
-    self.view.addSubview(mainContentLabel)
+    let floatVersion = (UIDevice.current.systemVersion as NSString).floatValue
 
     
-    let mainContentXMultiplier = CGFloat(0.09333)
-    let mainContentYMultiplier = CGFloat(0.4197)
-    let mainContentWidthMultiplier = CGFloat(0.621333)
-    let mainContentHeightMultiplier = CGFloat(0.16191)
-
-    let mainContentWidth = self.view.frame.size.width * mainContentWidthMultiplier
-    let mainContentHeight = self.view.frame.size.height * mainContentHeightMultiplier
-    let mainContentXPosition = self.view.frame.size.width * mainContentXMultiplier
-    let mainContentYPosition = self.view.frame.size.height * mainContentYMultiplier
-    
-    var contentFrame = mainContentLabel.frame
-    contentFrame.origin.x = mainContentXPosition
-    contentFrame.origin.y = mainContentYPosition
-    contentFrame.size.width = mainContentWidth
-    contentFrame.size.height = mainContentHeight
-
-    mainContentLabel.frame = contentFrame
-    
-    mainContentLabel.setNeedsLayout()
-    mainContentLabel.layoutIfNeeded()
+    if floatVersion < 10 {
+      //display error notice that they need to upgrade their operating system
+      let alertController = UIAlertController(title: title, message: "Any_ is made for iOS 10 or later.  Please update your Version", preferredStyle: .alert)
+      let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+      alertController.addAction(OKAction)
+      self.present(alertController, animated: true, completion: nil)
+      
+    } else {
+      navigationController?.setNavigationBarHidden(true, animated: false)
+      //    loaderView.type = .ballClipRotate
+      //    loaderView.color = UIColor.blue
+      //    loaderView.startAnimating()
+      presentInterstitialLoadingIndicator()
+      
+      mainContentLabel = UILabel()
+      mainContentLabel.numberOfLines = 3
+      mainContentLabel.font = UIFont(name: "Miller-Display", size: 30)
+      mainContentLabel.textAlignment = .left
+      self.view.addSubview(mainContentLabel)
+      
+      
+      let mainContentXMultiplier = CGFloat(0.09333)
+      let mainContentYMultiplier = CGFloat(0.4197)
+      let mainContentWidthMultiplier = CGFloat(0.621333)
+      let mainContentHeightMultiplier = CGFloat(0.16191)
+      
+      let mainContentWidth = self.view.frame.size.width * mainContentWidthMultiplier
+      let mainContentHeight = self.view.frame.size.height * mainContentHeightMultiplier
+      let mainContentXPosition = self.view.frame.size.width * mainContentXMultiplier
+      let mainContentYPosition = self.view.frame.size.height * mainContentYMultiplier
+      
+      var contentFrame = mainContentLabel.frame
+      contentFrame.origin.x = mainContentXPosition
+      contentFrame.origin.y = mainContentYPosition
+      contentFrame.size.width = mainContentWidth
+      contentFrame.size.height = mainContentHeight
+      
+      mainContentLabel.frame = contentFrame
+      
+      mainContentLabel.setNeedsLayout()
+      mainContentLabel.layoutIfNeeded()
+      
+      
+      
+    }
     
     
 
