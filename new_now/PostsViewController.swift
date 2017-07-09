@@ -133,8 +133,10 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
       
      //maybe depending on height of body label or size to fit I can calculate origin.y??  
-      //Does this work on different screen sizes?  what are the other heights if 1 or 4 and 5 lines?
-      if preBodySize.height == 127.5 {
+      //Does NOT WORK ON DIFFERENT SCREEN SIZES.  DIFF FOR EACH ONE
+      
+      //plus the height for 3 lines comes out to 127.33333333
+      if Int(preBodySize.height) == 127 {
         //3 lines
 
         cell.preBodyBackground.frame.origin.y = 332.249777
@@ -143,7 +145,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         //4 lines
         cell.preBodyBackground.frame.origin.y = 311.4
 
-      } else if preBodySize.height == 212.5 {
+      } else if Int(preBodySize.height) == 212 {
         //5 lines 
         cell.preBodyBackground.frame.origin.y = 290.4
 
@@ -151,7 +153,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         //2 lines
         cell.preBodyBackground.frame.origin.y = 353.4
 
-      } else if preBodySize.height == 42.5 {
+      } else if Int(preBodySize.height) == 42 {
         //1 line
         cell.preBodyBackground.frame.origin.y = 374.4
       }

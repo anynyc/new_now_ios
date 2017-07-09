@@ -121,19 +121,31 @@ class ImageCell: UICollectionViewCell {
 //    preTextBackgroundFrame.size.height = 127.5
     //need to make this dynamic.  distance between leading edge of frame and origin x of bodyLabelContainerFrame
     preTextBackgroundFrame.size.width = 20.0
-//    preTextBackgroundFrame.origin.y = bodyLabelContainer.frame.origin.y + 80
-    preTextBackgroundFrame.origin.x = 20.0
+
+    if UIScreen.main.bounds.size.width == 414 {
+      preTextBackgroundFrame.origin.x = 24.0
+
+    } else if UIScreen.main.bounds.size.width == 375 {
+      preTextBackgroundFrame.origin.x = 20.0
+
+    } else {
+      preTextBackgroundFrame.origin.x = 19.0
+
+    }
+    
+    
     preBodyBackground.frame = preTextBackgroundFrame
     
     
     //constraints.  equal heights btw pretextBackground and bodyLabel. verticalConstraint
-    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-    let preTextHeightConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
-    let preTextTopConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: .top, multiplier: 1, constant: 0)
-    let preTextLeadingConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-
-    
-    self.contentView.addConstraints([verticalConstraint, preTextHeightConstraint, preTextTopConstraint, preTextLeadingConstraint])
+    //CONSTRAINTS ARE NOT DOING ANYTHING SUCCESSFULLY RIGHT NOW SO COMMENTING OUT
+//    let verticalConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+//    let preTextHeightConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
+//    let preTextTopConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: .top, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: .top, multiplier: 1, constant: 0)
+//    let preTextLeadingConstraint:NSLayoutConstraint = NSLayoutConstraint(item: preBodyBackground, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: bodyLabel, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+//
+//    
+//    self.contentView.addConstraints([verticalConstraint, preTextHeightConstraint, preTextTopConstraint, preTextLeadingConstraint])
     
 
     //making the frame for imageView.  subview of container.  positioned off centered
@@ -167,21 +179,7 @@ class ImageCell: UICollectionViewCell {
     
     //same frame as image view
     grayOverlay.frame = frame
-    //not USING GRADIENT NOW??
-//    let colorTop = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.0).cgColor
-//    let colorMid = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.2).cgColor
-//    let colorMiddle = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
-//    let colorBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.9).cgColor
-//    let lineBottom = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.99).cgColor
-//    gl = CAGradientLayer()
-//    gl.colors = [colorTop, colorMid, colorMiddle, colorBottom, lineBottom]
-//    gl.locations = [0.0, 0.4, 0.8, 0.99, 0.99999999]
-////    gl.frame = frame
-////    let gl = CALayer()
-////    gl.backgroundColor = UIColor.green.cgColor
-//    gl.frame = frame
-//    
-//    cellContainer.layer.insertSublayer(gl, at: 3)
+
     
     //set origin x
     let topicFrameOriginXMultiplier = CGFloat(0.09333333)
