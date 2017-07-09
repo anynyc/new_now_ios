@@ -348,6 +348,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var gridCollectionView: UICollectionView!
   var gridLayout: GridLayout!
   var slider: BWCircularSlider!
+  var plusSlider: PlusCircularSlider!
   var toolTip: ToolTipView!
   var activeCell = 0
   let fullImageView = UIImageView()
@@ -452,20 +453,39 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     fullImageView.addGestureRecognizer(dismissWihtTap)
     
     
-    // Build the slider.  Changing slider frame size so it only occupies bottom of page and doesn't cover cell
 
+    //CHECK SCREEN SIZE TO DETERMINE WHAT SLIDER TO USE AS WELL AS POSITION?
     
-//    let sliderYPositionMultiplier = CGFloat(0.73)
-    let sliderYPositionMultiplier = CGFloat(0.68)
-
-
-    let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
+//    UIScreen.main.bounds
     
-    slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: CGRect(x: 0, y: sliderYPosition, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+    
+    if UIScreen.main.bounds.size.width == 414 {
+      //plus 
+      let sliderYPositionMultiplier = CGFloat(0.73)
 
-    // Attach an Action and a Target to the slider
-    slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
-    self.view.addSubview(slider)
+      let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
+      
+      plusSlider = PlusCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: CGRect(x: 0, y: sliderYPosition, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+      
+      // Attach an Action and a Target to the slider
+      plusSlider.addTarget(self, action: #selector(valueDidChange), for: UIControlEvents.valueChanged)
+      self.view.addSubview(plusSlider)
+    } else if UIScreen.main.bounds.size.width == 375 {
+      //6 and 7
+      let sliderYPositionMultiplier = CGFloat(0.68)
+
+      let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
+      
+      slider = BWCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: CGRect(x: 0, y: sliderYPosition, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+      
+      // Attach an Action and a Target to the slider
+      slider.addTarget(self, action: #selector(valueChanged), for: UIControlEvents.valueChanged)
+      self.view.addSubview(slider)
+    } else {
+      //5
+    }
+
+
     
 
     setupBottomButtons()
@@ -505,6 +525,40 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
     print("Value changed \(slider.angle)")
   }
+  
+  func valueDidChange(plusSlider:PlusCircularSlider){
+    //depending on the angle value reveal certain card
+    if toolTip != nil {
+      clearToolTip()
+    }
+    
+    let row = getSection(int: plusSlider.angle)
+    if row != activeCell && row != 7 {
+      activeCell = row
+      counterLabel.text = "0\(row + 1)"
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+    } else if row == 7 {
+      activeCell = row
+      counterLabel.text = "07"
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+      
+    }
+    //if cell is different call below to display a new cell. maybe call an animate out method first?
+    
+    
+    
+    print("Value changed \(plusSlider.angle)")
+  }
+  
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
@@ -714,52 +768,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
   }
   
-//  func goToGoogle(_button : UIButton) {
-//    let searchTerm = postViewModel.gratification!.keyword
-//    let searchArray = searchTerm.characters.split{$0 == " "}.map(String.init)
-//    let searchString = searchArray.joined(separator: "+")
-//    let urlBaseString = "https://www.google.com/maps/search/\(searchString)/@"
-//    var lat = ""
-//    var long = ""
-//    //get user lat and long
-//
-//    let prefs = UserDefaults.standard
-//    
-//    if prefs.string(forKey: "latitude") != ""  {
-//      let latitude = prefs.string(forKey: "latitude")!
-//      if latitude.characters.first! != "-" {
-//        let first5 = String(latitude.characters.prefix(5))
-//        lat = first5
-//      } else {
-//        let first6 = String(latitude.characters.prefix(6))
-//        lat = first6
-//      }
-//    } else {
-//      //      lat = "-74.45"
-//    }
-//    if prefs.string(forKey: "longitude") != "" {
-//      let longitude = prefs.string(forKey: "longitude")!
-//      if longitude.characters.first! != "-" {
-//        let first5 = String(longitude.characters.prefix(5))
-//        long = first5
-//      } else {
-//        let first6 = String(longitude.characters.prefix(6))
-//        long = first6
-//      }
-//    } else {
-//      //      long = "45.14"
-//    }
-//    
-//    let locationString = "\(lat),\(long)"
-//    let fullURLString = urlBaseString + locationString
-//    
-//    // do other task
-//    let webViewStoryboard = StoryboardInstanceConstants.webView
-//    let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
-//    webViewController.urlString = fullURLString
-//    navigationController?.pushViewController(webViewController, animated: true)
-//  }
-  
+
   
   
   func showYouAreHere() {
@@ -776,6 +785,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     self.view.addConstraints([verticalConstraint, leadingConstraint])
 
   }
+  
   @IBAction func goToGoogle(_ sender: Any) {
     
     let searchTerm = postViewModel.gratification!.keyword
