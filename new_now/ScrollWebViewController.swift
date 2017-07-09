@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 
 
 
-class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate {
+class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
   
   private var notification: NSObjectProtocol?
   private var newNotification: NSObjectProtocol?
@@ -42,8 +42,8 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     loaderView.color = UIColor.black
     loaderView.startAnimating()
     let webConfiguration = WKWebViewConfiguration()
-    let overView = UIView()
-    let viewOnWebButton = UIButton()
+    overView = UIView()
+    viewOnWebButton = UIButton()
     navigationController?.setNavigationBarHidden(false, animated: false)
     
     self.automaticallyAdjustsScrollViewInsets = false
@@ -85,8 +85,8 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
 
     webView.navigationDelegate = self
     webView.uiDelegate = self
-    webView.scrollView.isScrollEnabled = false
-//    webView.isUserInteractionEnabled = false
+//    webView.scrollView.isScrollEnabled = false
+    webView.isUserInteractionEnabled = false
     //overview size. add subview gradient image to it and button
     overView.frame = CGRect(x: 0, y: 2850, width: self.view.frame.width, height: 500)
     
@@ -103,7 +103,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     overView.layer.insertSublayer(gradientLayer, at: 3)
     
     //view on web button
-    let buttonFrame = CGRect(x: self.view.frame.width / 4, y: 3050.0, width: 200.0, height: 50.0)
+    let buttonFrame = CGRect(x: self.view.frame.width / 4, y: 5850.0, width: 200.0, height: 50.0)
     viewOnWebButton.frame = buttonFrame
     viewOnWebButton.setTitle("View On Safari", for: .normal)
     viewOnWebButton.titleLabel?.font = UIFont(name: "Miller-Display", size: 15)
@@ -118,11 +118,15 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     viewOnWebButton.addTarget(self, action: #selector(goToArticle), for: .touchUpInside)
     
-    overView.addSubview(viewOnWebButton)
+//    overView.addSubview(viewOnWebButton)
+//    overView.bringSubview(toFront: viewOnWebButton)
+    overView.isUserInteractionEnabled = true
     overView.alpha = 1
     contentView.addSubview(overView)
     contentView.addSubview(webView)
+    contentView.addSubview(viewOnWebButton)
     contentView.bringSubview(toFront: overView)
+    contentView.bringSubview(toFront: viewOnWebButton)
     webView.alpha = 0
     
     
@@ -178,6 +182,12 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     swipeLeft.direction = UISwipeGestureRecognizerDirection.left
     swipeLeft.require(toFail: self.scrollView.panGestureRecognizer)
     self.scrollView.addGestureRecognizer(swipeLeft)
+    
+    
+    
+    
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
   
   
@@ -255,7 +265,12 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     
     
-    
+    if gestureRecognizer.state == UIGestureRecognizerState.ended {
+      puts("gesture ended")
+      
+      //how to check if this view is still the active one?
+      
+    }
     
     return true
   }
@@ -413,15 +428,10 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       
     }, completion: {(true) in
       
-//      self.webView.bringSubview(toFront: self.overView)
+      self.webView.bringSubview(toFront: self.overView)
     })
     
   }
-  //  @IBAction func viewOnWebButtonPressed(_ sender: Any) {
-  //    let url = NSURL(string: self.urlString)
-  //    UIApplication.shared.open(url as! URL)
-  //  }
-  
 
   func animateNavBackIn() {
     UIView.animate(withDuration: 0.4, delay: 0, animations: { () -> Void in
@@ -433,6 +443,12 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       
     })
   }
+  
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+  }
+  
   
 
   deinit {

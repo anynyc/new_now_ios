@@ -130,23 +130,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       cell.articleUrl = postViewModel.postsArray[indexPath.row].link
       cell.isHidden = false
       
-//      feedbackGenerator?.notificationOccurred(.success)     // Trigger the haptic feedback.
-      
-      //    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
-      //                               animations: {
-      //                                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-      //
-      //    },
-      //                               completion: { finished in
-      //                                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: .curveEaseInOut,
-      //                                                           animations: {
-      //                                                            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-      //                                },
-      //                                                           completion: nil
-      //                                )
-      //                                
-      //    }
-      //    )
+
       
      //maybe depending on height of body label or size to fit I can calculate origin.y??  
       //Does this work on different screen sizes?  what are the other heights if 1 or 4 and 5 lines?
@@ -595,24 +579,30 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-//      let webViewStoryboard = StoryboardInstanceConstants.webView
-//      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
-//      webViewController.urlString = link
-//      self.navigationController?.pushViewController(webViewController, animated: false)
-      
+
       let webViewStoryboard = StoryboardInstanceConstants.scrollWebView
       let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.scrollWebView) as! ScrollWebViewController
       
       webViewController.urlString = link
       self.navigationController?.pushViewController(webViewController, animated: false)
       
+      //slide from right way
+//      let transition = CATransition()
+//      transition.duration = 0.5
+//      transition.type = kCATransitionPush
+//      transition.subtype = kCATransitionFromRight
+//      self.view.window!.layer.add(transition, forKey: kCATransition)
+//      self.navigationController?.present(webViewController, animated: false, completion: nil)
+      
       
     })
-    
-
-    
 
   }
+  
+  
+  
+  
+  
 
   func getSection(int: Int) -> Int {
     var returnInt = 0
@@ -849,8 +839,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 //      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
 //      webViewController.urlString = fullURLString
 //      self.navigationController?.pushViewController(webViewController, animated: false)
-      let webViewStoryboard = StoryboardInstanceConstants.scrollWebView
-      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.scrollWebView) as! ScrollWebViewController
+      let webViewStoryboard = StoryboardInstanceConstants.webView
+      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
       webViewController.urlString = fullURLString
       self.navigationController?.pushViewController(webViewController, animated: false)
 
