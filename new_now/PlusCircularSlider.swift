@@ -37,8 +37,8 @@ class PlusCircularSlider: UIControl {
   
   //    var textField:UITextField?
   var radius:CGFloat = 0
-  var angle:Int = 67
-  var currentHotspot:Int = 67
+  var angle:Int = 69
+  var currentHotspot:Int = 69
   var startColor = UIColor.blue
   var endColor = UIColor.purple
   var feedbackGenerator: UINotificationFeedbackGenerator?    // Declare the generator type.
@@ -267,8 +267,7 @@ class PlusCircularSlider: UIControl {
   
   func drawHotSpotDots(ctx: CGContext) {
     ctx.saveGState();
-    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 110]
-//    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 115]
+    let hotSpots = [69, 76, 82, 88, 94, 100, 106, 112]
     
     
     for spot in hotSpots {
@@ -386,8 +385,7 @@ class PlusCircularSlider: UIControl {
     //will never be more than 360
     var leastDifference = 360
     //this will need to be dynamic eventually
-    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 110]
-//    let hotSpots = [67, 74, 80, 86, 92, 98, 104, 115]
+    let hotSpots = [69, 76, 82, 82, 94, 100, 106, 112]
 
     
     for spot in hotSpots {

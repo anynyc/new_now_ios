@@ -165,7 +165,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gratificationCell", for: indexPath) as! GratificationCell
       cell.isHidden = false
       cell.imageView.image = postViewModel.gratification!.image
-      
+      cell.frame.origin.y = 0.0
       //if no lat long show alternate message and hide button.  locationAllowed Boolean on prefs?
       let prefs = UserDefaults.standard
       if prefs.string(forKey: "locationGiven") == "true" {
