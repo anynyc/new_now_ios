@@ -75,7 +75,15 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
       
       mainContentLabel = UILabel()
       mainContentLabel.numberOfLines = 3
-      mainContentLabel.font = UIFont(name: "Miller-Display", size: 30)
+      
+      
+      if UIScreen.main.bounds.size.width == 320 {
+        mainContentLabel.font = UIFont(name: "Miller-Display", size: 25)
+
+      } else {
+        mainContentLabel.font = UIFont(name: "Miller-Display", size: 30)
+
+      }
       mainContentLabel.textAlignment = .left
       self.view.addSubview(mainContentLabel)
       

@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="6000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxu-1a-8Mx" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                                <rect key="frame" x="162.5" y="308" width="50" height="50"/>
+                                                <rect key="frame" x="162.5" y="250" width="50" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="ccp-oQ-5Uv"/>
@@ -46,7 +46,7 @@
                                         <constraints>
                                             <constraint firstItem="Hxu-1a-8Mx" firstAttribute="centerX" secondItem="deX-gV-ZUw" secondAttribute="centerX" id="5no-EX-zrN"/>
                                             <constraint firstAttribute="height" constant="6000" id="O2g-QV-uPe"/>
-                                            <constraint firstItem="Hxu-1a-8Mx" firstAttribute="top" secondItem="deX-gV-ZUw" secondAttribute="top" constant="308" id="Q3e-rW-5Cc"/>
+                                            <constraint firstItem="Hxu-1a-8Mx" firstAttribute="top" secondItem="deX-gV-ZUw" secondAttribute="top" constant="250" id="Q3e-rW-5Cc"/>
                                         </constraints>
                                     </view>
                                 </subviews>

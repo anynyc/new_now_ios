@@ -42,9 +42,16 @@ class GratificationCell: UICollectionViewCell {
     buttonLabel.contentHorizontalAlignment = .left
     buttonLabel.isUserInteractionEnabled = true
     
-    
+    //should add a text size constraint so it will shrink itself to a certain size. look up how to do programatically
     titleLabel = UILabel()
-    titleLabel.font = UIFont(name: "Miller-Display", size: 40)
+    
+    if UIScreen.main.bounds.size.width == 320 {
+      titleLabel.font = UIFont(name: "Miller-Display", size: 30)
+
+    } else {
+      titleLabel.font = UIFont(name: "Miller-Display", size: 40)
+
+    }
     titleLabel.textColor = UIColor.black
     titleLabel.textAlignment = .left
     titleLabel.numberOfLines = 3

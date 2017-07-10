@@ -75,7 +75,17 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
     let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
     
-    titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+    
+    //x not as far left on 5
+    if UIScreen.main.bounds.size.width == 320 {
+      titleImage.frame = CGRect(x: -100, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      
+    } else {
+      titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      
+    }
+    
+    
     titleView.addSubview(titleImage)
     navigationItem.titleView = titleView
     
@@ -103,7 +113,11 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     overView.layer.insertSublayer(gradientLayer, at: 3)
     
     //view on web button
-    let buttonFrame = CGRect(x: self.view.frame.width / 4, y: 5850.0, width: 200.0, height: 50.0)
+    var frameDivisor = CGFloat(4)
+    if UIScreen.main.bounds.size.width == 320 {
+      frameDivisor = CGFloat(5)
+    }
+    let buttonFrame = CGRect(x: self.view.frame.width / frameDivisor, y: 5850.0, width: 200.0, height: 50.0)
     viewOnWebButton.frame = buttonFrame
     viewOnWebButton.setTitle("View On Safari", for: .normal)
     viewOnWebButton.titleLabel?.font = UIFont(name: "Miller-Display", size: 15)
@@ -187,7 +201,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     
     self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
   
   
@@ -206,8 +220,14 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     fakeNavBar.layer.shadowRadius = 100
     
     
-    
-    titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+    //x not as far left on 5
+    if UIScreen.main.bounds.size.width == 320 {
+      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
+      
+    } else {
+      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+
+    }
     self.view.addSubview(fakeNavView)
     self.view.bringSubview(toFront: fakeNavView)
     self.view.addSubview(fakeNavBar)
@@ -350,9 +370,14 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     fakeNavBar.layer.shadowOffset.height = 5
     fakeNavBar.layer.shadowRadius = 100
     
+    if UIScreen.main.bounds.size.width == 320 {
+      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
+      
+    } else {
+      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+      
+    }
     
-    
-    titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
     self.view.addSubview(fakeNavView)
     self.view.bringSubview(toFront: fakeNavView)
     self.view.addSubview(fakeNavBar)

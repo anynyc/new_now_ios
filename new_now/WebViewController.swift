@@ -60,7 +60,16 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
     let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
 
-    titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+    
+    //x not as far left on 5
+    if UIScreen.main.bounds.size.width == 320 {
+      titleImage.frame = CGRect(x: -100, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+
+    } else {
+      titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+
+    }
+    
     titleView.addSubview(titleImage)
     navigationItem.titleView = titleView
     
@@ -153,8 +162,13 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     fakeNavBar.layer.shadowRadius = 100
 
     
-    
-    titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+    if UIScreen.main.bounds.size.width == 320 {
+      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
+
+    } else {
+      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+
+    }
     self.view.addSubview(fakeNavView)
     self.view.bringSubview(toFront: fakeNavView)
     self.view.addSubview(fakeNavBar)

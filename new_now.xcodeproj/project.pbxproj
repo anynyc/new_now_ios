@@ -41,6 +41,7 @@
 		27DED2811E9426160084C92C /* Miller-DisplayItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27DED27F1E9426150084C92C /* Miller-DisplayItalic.otf */; };
 		27EE3CD01E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */; };
 		27FA619B1F12A88C00B895CD /* PlusCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA619A1F12A88C00B895CD /* PlusCircularSlider.swift */; };
+		27FA619D1F12FF2500B895CD /* MiniCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA619C1F12FF2500B895CD /* MiniCircularSlider.swift */; };
 		9138C0058D13A2DE3F6363EE /* Pods_new_now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD42200BDAA4107728A10BE /* Pods_new_now.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		27DED27F1E9426150084C92C /* Miller-DisplayItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Miller-DisplayItalic.otf"; path = "../../Downloads/Miller-DisplayItalic.otf"; sourceTree = "<group>"; };
 		27EE3CCF1E7B29DA007A5480 /* LoadingInterstitialViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingInterstitialViewController.storyboard; sourceTree = "<group>"; };
 		27FA619A1F12A88C00B895CD /* PlusCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusCircularSlider.swift; sourceTree = "<group>"; };
+		27FA619C1F12FF2500B895CD /* MiniCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCircularSlider.swift; sourceTree = "<group>"; };
 		4CD42200BDAA4107728A10BE /* Pods_new_now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_new_now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67187359C376984006590177 /* Pods-new_now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new_now.release.xcconfig"; path = "Pods/Target Support Files/Pods-new_now/Pods-new_now.release.xcconfig"; sourceTree = "<group>"; };
 		C85B92ED14670F8A82123237 /* Pods-new_now.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-new_now.debug.xcconfig"; path = "Pods/Target Support Files/Pods-new_now/Pods-new_now.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				27DED27A1E8D85470084C92C /* BWCircularSlider.swift */,
 				27FA619A1F12A88C00B895CD /* PlusCircularSlider.swift */,
 				27B242231ECA2D5700F398B8 /* ToolTipView.swift */,
+				27FA619C1F12FF2500B895CD /* MiniCircularSlider.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				279BED8A1E7AEF5B00E52B3A /* LaunchViewController.swift in Sources */,
 				279E00631EC626F00075C844 /* GreetingContentManager.swift in Sources */,
 				279E00611EC6238E0075C844 /* GreetingAPIManager.swift in Sources */,
+				27FA619D1F12FF2500B895CD /* MiniCircularSlider.swift in Sources */,
 				279BEDA01E7AF81E00E52B3A /* MainCacheManager.swift in Sources */,
 				27354FB61EA9364E009816B5 /* GratificationModel.swift in Sources */,
 				279BED9C1E7AF55100E52B3A /* ContentItemModel.swift in Sources */,

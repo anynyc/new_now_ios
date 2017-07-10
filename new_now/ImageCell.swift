@@ -129,7 +129,7 @@ class ImageCell: UICollectionViewCell {
       preTextBackgroundFrame.origin.x = 20.0
 
     } else {
-      preTextBackgroundFrame.origin.x = 19.0
+      preTextBackgroundFrame.origin.x = 14.0
 
     }
     
@@ -149,11 +149,29 @@ class ImageCell: UICollectionViewCell {
     
 
     //making the frame for imageView.  subview of container.  positioned off centered
+    //need to change this for iphone 5??
     
-    let imageFrameHeightMultiplier = CGFloat(0.6746)
-    let imageFrameWidthMultiplier = CGFloat(0.8213333)
-    let imageFrameXPositionMultiplier = CGFloat(0.17866667)
-    let imageFrameYPositionMultiplier = CGFloat(0.1634)
+    var imageFrameHeightMultiplier = CGFloat(0.0)
+    var imageFrameWidthMultiplier = CGFloat(0.0)
+    var imageFrameXPositionMultiplier = CGFloat(0.0)
+    var imageFrameYPositionMultiplier = CGFloat(0.0)
+    var yMultiplier = CGFloat(0.0)
+    if UIScreen.main.bounds.size.width == 320 {
+      imageFrameHeightMultiplier = CGFloat(0.6)
+      imageFrameWidthMultiplier = CGFloat(0.8213333)
+      imageFrameXPositionMultiplier = CGFloat(0.17866667)
+      imageFrameYPositionMultiplier = CGFloat(0.2)
+      yMultiplier = CGFloat(0.00449)
+
+    } else {
+      imageFrameHeightMultiplier = CGFloat(0.6746)
+      imageFrameWidthMultiplier = CGFloat(0.8213333)
+      imageFrameXPositionMultiplier = CGFloat(0.17866667)
+      imageFrameYPositionMultiplier = CGFloat(0.1634)
+      yMultiplier = CGFloat(0.00449)
+
+    }
+
     
     let imageFrameHeight = containerFrame.size.height * imageFrameHeightMultiplier
     let imageFrameWidth = containerFrame.size.width * imageFrameWidthMultiplier
@@ -162,7 +180,7 @@ class ImageCell: UICollectionViewCell {
     
     
     //need to bring y position up to make perfect square of white space.  3 pixels on a 6
-    let yMultiplier = CGFloat(0.00449)
+    //need to change this for iphone 5
     let yAdjustmentValue = containerFrame.size.height * yMultiplier
     
     var frame = imageView.frame

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension PostsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PostsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
   
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -351,6 +351,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
   var gridLayout: GridLayout!
   var slider: BWCircularSlider!
   var plusSlider: PlusCircularSlider!
+  var miniSlider: MiniCircularSlider!
   var toolTip: ToolTipView!
   var activeCell = 0
   let fullImageView = UIImageView()
@@ -485,13 +486,26 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       self.view.addSubview(slider)
     } else {
       //5
+      latLabelText.text = ""
+      longLabelText.text = ""
+      youAreHereLabel.text = ""
+      let sliderYPositionMultiplier = CGFloat(0.65)
+      
+      let sliderYPosition = self.view.frame.size.height * sliderYPositionMultiplier
+      
+      miniSlider = MiniCircularSlider(startColor:self.startColor, endColor:self.endColor, frame: CGRect(x: 0, y: sliderYPosition, width: self.view.frame.size.width, height: self.view.frame.size.height / 2))
+      
+      // Attach an Action and a Target to the slider
+      miniSlider.addTarget(self, action: #selector(valueChange), for: UIControlEvents.valueChanged)
+      self.view.addSubview(miniSlider)
     }
 
 
     
 
     setupBottomButtons()
-
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     
   }
 
@@ -561,6 +575,37 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     print("Value changed \(plusSlider.angle)")
   }
   
+  func valueChange(miniSlider:MiniCircularSlider){
+    //depending on the angle value reveal certain card
+    if toolTip != nil {
+      clearToolTip()
+    }
+    
+    let row = getSection(int: miniSlider.angle)
+    if row != activeCell && row != 7 {
+      activeCell = row
+      counterLabel.text = "0\(row + 1)"
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+    } else if row == 7 {
+      activeCell = row
+      counterLabel.text = "07"
+      let indexPath = IndexPath(row: row, section: 0)
+      gridCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+      //deselecet
+      //    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+      gridCollectionView.delegate?.collectionView!(gridCollectionView, didSelectItemAt: indexPath)
+      
+    }
+    //if cell is different call below to display a new cell. maybe call an animate out method first?
+    
+    
+    
+  }
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
@@ -770,7 +815,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
   }
   
-
+  override func viewDidAppear(_ animated: Bool) {
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+  }
   
   
   func showYouAreHere() {
