@@ -553,7 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C85B92ED14670F8A82123237 /* Pods-new_now.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				DEVELOPMENT_TEAM = 25L98CM939;
 				INFOPLIST_FILE = new_now/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -568,7 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 67187359C376984006590177 /* Pods-new_now.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				DEVELOPMENT_TEAM = 25L98CM939;
 				INFOPLIST_FILE = new_now/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
