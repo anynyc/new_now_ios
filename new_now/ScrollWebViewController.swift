@@ -37,6 +37,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     view.bringSubview(toFront: loaderView)
     loaderView.type = .ballScale
     loaderView.color = UIColor.black

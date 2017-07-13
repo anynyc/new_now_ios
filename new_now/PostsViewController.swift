@@ -680,11 +680,42 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-
+      
+//      //programatically add container view here?
+//      let containerView = UIView()
+//      containerView.translatesAutoresizingMaskIntoConstraints = false
+//      self.view?.addSubview(containerView)
+//      
+//      //set constraints/frame for container view
+//      
+//      NSLayoutConstraint.activate([
+//        containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+//        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+//        containerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 65),
+//        containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+//        ])
+      
+      // add child view controller view to container
       let webViewStoryboard = StoryboardInstanceConstants.scrollWebView
       let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.scrollWebView) as! ScrollWebViewController
       
+      
+      
+      
       webViewController.urlString = link
+//      self.addChildViewController(webViewController)
+//      webViewController.view.translatesAutoresizingMaskIntoConstraints = false
+//      containerView.addSubview(webViewController.view)
+//      
+//      NSLayoutConstraint.activate([
+//        webViewController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//        webViewController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+//        webViewController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+//        webViewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+//        ])
+//      
+//      webViewController.didMove(toParentViewController: self)
+
       self.navigationController?.pushViewController(webViewController, animated: false)
       
       //slide from right way
@@ -895,10 +926,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-//      let webViewStoryboard = StoryboardInstanceConstants.webView
-//      let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
-//      webViewController.urlString = fullURLString
-//      self.navigationController?.pushViewController(webViewController, animated: false)
+      
       let webViewStoryboard = StoryboardInstanceConstants.webView
       let webViewController = webViewStoryboard.instantiateViewController(withIdentifier: VCNameConstants.webView) as! WebViewController
       webViewController.urlString = fullURLString

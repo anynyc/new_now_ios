@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271552B81F1550F500E253C9 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271552B71F1550F500E253C9 /* ContainerViewController.swift */; };
 		27354FB61EA9364E009816B5 /* GratificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27354FB51EA9364D009816B5 /* GratificationModel.swift */; };
 		27354FB81EA94A46009816B5 /* GratificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27354FB71EA94A46009816B5 /* GratificationCell.swift */; };
 		275D9AD61EE7575E00A9C35F /* ScrollWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D9AD51EE7575E00A9C35F /* ScrollWebViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		271552B71F1550F500E253C9 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		27354FB51EA9364D009816B5 /* GratificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GratificationModel.swift; sourceTree = "<group>"; };
 		27354FB71EA94A46009816B5 /* GratificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GratificationCell.swift; sourceTree = "<group>"; };
 		275D9AD51EE7575E00A9C35F /* ScrollWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollWebViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				27BA14981E89D48B0025663C /* GridLayout.swift */,
 				27BA149A1E89D6CF0025663C /* ImageCell.swift */,
 				27354FB71EA94A46009816B5 /* GratificationCell.swift */,
+				271552B71F1550F500E253C9 /* ContainerViewController.swift */,
 			);
 			name = PostsScreen;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			files = (
 				27604A7F1EAFD06F00E2A69E /* NRLabel.swift in Sources */,
 				27BA14991E89D48C0025663C /* GridLayout.swift in Sources */,
+				271552B81F1550F500E253C9 /* ContainerViewController.swift in Sources */,
 				279BED981E7AF3C600E52B3A /* PostViewModel.swift in Sources */,
 				27B242241ECA2D5700F398B8 /* ToolTipView.swift in Sources */,
 				275D9AD61EE7575E00A9C35F /* ScrollWebViewController.swift in Sources */,
