@@ -27,11 +27,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="262.5" height="400"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="anyPdf" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
-                                <rect key="frame" x="40" y="30" width="53" height="23"/>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="AnyUnderscore" translatesAutoresizingMaskIntoConstraints="NO" id="wQG-AY-ZWV">
+                                <rect key="frame" x="16" y="30" width="79.5" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="TNM-8B-WJr"/>
-                                    <constraint firstAttribute="width" constant="53" id="xZS-XV-WpR"/>
+                                    <constraint firstAttribute="height" constant="34.5" id="TNM-8B-WJr"/>
+                                    <constraint firstAttribute="width" constant="79.5" id="xZS-XV-WpR"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-Ee-H4k" userLabel="latLabel">
@@ -54,8 +54,8 @@
                                 <nil key="textColor"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
-                                <rect key="frame" x="32" y="607.5" width="169" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygK-jw-gjf" userLabel="readThisBtn">
+                                <rect key="frame" x="34" y="607.5" width="169" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <state key="normal" title="READ THIS">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,8 +86,8 @@
                                 <color key="textColor" red="0.68235294117647061" green="0.70196078431372544" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVa-Zm-Jaz" userLabel="showMeWhere">
-                                <rect key="frame" x="32" y="608" width="169" height="26"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVa-Zm-Jaz" userLabel="showMeWhere">
+                                <rect key="frame" x="16" y="608" width="169" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                 <state key="normal" title="SHOW ME WHERE!">
                                     <color key="titleColor" red="0.29331555962562561" green="0.37109845876693726" blue="0.8738599419593811" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,7 +108,8 @@
                             <constraint firstItem="ygK-jw-gjf" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.95" id="LfW-mj-e2r"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="bottom" secondItem="sa7-d9-fVZ" secondAttribute="top" multiplier="0.6" id="MLT-Wb-Ovj"/>
                             <constraint firstItem="Moz-nE-niF" firstAttribute="trailing" secondItem="NCg-Ee-H4k" secondAttribute="trailing" id="Pif-PK-pGZ"/>
-                            <constraint firstItem="ygK-jw-gjf" firstAttribute="leading" secondItem="wQG-AY-ZWV" secondAttribute="leading" id="QvM-cb-RDp"/>
+                            <constraint firstItem="wQG-AY-ZWV" firstAttribute="leading" secondItem="Fc0-2c-33y" secondAttribute="leadingMargin" id="Pw3-dr-wyd"/>
+                            <constraint firstItem="ygK-jw-gjf" firstAttribute="leading" secondItem="wQG-AY-ZWV" secondAttribute="leading" constant="18" id="QvM-cb-RDp"/>
                             <constraint firstItem="NCg-Ee-H4k" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailingMargin" multiplier="0.913694" id="Wsi-rY-LH6"/>
                             <constraint firstItem="vQi-Cp-joS" firstAttribute="trailing" secondItem="Fc0-2c-33y" secondAttribute="trailing" multiplier="0.7" id="Z6m-sR-HZT"/>
                             <constraint firstItem="LVa-Zm-Jaz" firstAttribute="width" secondItem="Fc0-2c-33y" secondAttribute="width" multiplier="0.45" id="kYZ-du-6cB"/>
@@ -137,6 +138,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="anyPdf" width="53" height="23"/>
+        <image name="AnyUnderscore" width="129" height="129"/>
     </resources>
 </document>

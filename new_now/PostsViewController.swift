@@ -669,10 +669,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     
     UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 16
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 22
       
     }, completion:  { (finished: Bool) in
-      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 16
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 22
 
       let transition: CATransition = CATransition()
       transition.duration = 0.4
@@ -821,7 +821,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     let screenHeight = screenSize.height
     
     //ANY LOGO leading and top constraint added programmatically
-    let anyLeadingMultiplier = CGFloat(0.106666)
+    let anyLeadingMultiplier = CGFloat(0.059)
     let anyTopMultiplier = CGFloat(0.045)
     let anyLeadingDistance = screenWidth * anyLeadingMultiplier
     let anyTopDistance = screenHeight * anyTopMultiplier
@@ -915,10 +915,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
     
     
     UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
-      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 16
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y - 22
       
     }, completion:  { (finished: Bool) in
-      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 16
+      self.anyLogo.frame.origin.y = self.anyLogo.frame.origin.y + 22
       
       let transition: CATransition = CATransition()
       transition.duration = 0.4

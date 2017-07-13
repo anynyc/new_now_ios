@@ -219,9 +219,9 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
     let screenHeight = screenSize.height
     
     //ANY LOGO leading and top constraint added programmatically
-    let anyLeadingMultiplier = CGFloat(0.106666)
+    let anyLeadingMultiplier = CGFloat(-0.088)
 //    let anyTopMultiplier = CGFloat(0.045)
-    let anyTopMultiplier = CGFloat(0.05997001)
+    let anyTopMultiplier = CGFloat(0.025)
 
     let anyLeadingDistance = screenWidth * anyLeadingMultiplier
     let anyTopDistance = screenHeight * anyTopMultiplier
@@ -306,7 +306,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
       
     })
     
-    UIView.animate(withDuration: 0, delay: 0.5, animations: { () -> Void in
+    UIView.animate(withDuration: 0, delay: 2.0, animations: { () -> Void in
       self.postViewModel.loadPosts()
 
       

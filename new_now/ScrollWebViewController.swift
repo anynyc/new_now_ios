@@ -73,16 +73,16 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     navigationItem.leftBarButtonItem?.setBackgroundVerticalPositionAdjustment(-10.0, for: .default)
     
     
-    var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
-    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 79.5, height: 80))
+    let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
     
     
     //x not as far left on 5
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: -100, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      titleImage.frame = CGRect(x: -106, y: -8, width: titleView.frame.width, height: titleView.frame.height)
       
     } else {
-      titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      titleImage.frame = CGRect(x: -126, y: -8, width: titleView.frame.width, height: titleView.frame.height)
       
     }
     
@@ -208,7 +208,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   
   func didSwipeLeft(gesture: UIGestureRecognizer) {
     
-    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
     let fakeNavView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
     fakeNavView.backgroundColor = UIColor.white
     fakeNavView.alpha = 0
@@ -223,10 +223,10 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     //x not as far left on 5
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
+      titleImage.frame = CGRect(x: 34, y: 23.5, width: 79.5, height: 80)
       
     } else {
-      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+      titleImage.frame = CGRect(x: 40, y: 23.5, width: 79.5, height: 80)
 
     }
     self.view.addSubview(fakeNavView)
@@ -359,7 +359,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   
   func leftButtonAction(sender: UIBarButtonItem) {
     
-    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
     let fakeNavView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
     fakeNavView.backgroundColor = UIColor.white
     fakeNavView.alpha = 0
@@ -371,11 +371,21 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     fakeNavBar.layer.shadowOffset.height = 5
     fakeNavBar.layer.shadowRadius = 100
     
+    
+    //old logo x and y
+//    if UIScreen.main.bounds.size.width == 320 {
+//      titleImage.frame = CGRect(x: 34, y: 23.5, width: 79.5, height: 80)
+//      
+//    } else {
+//      titleImage.frame = CGRect(x: 40, y: 23.5, width: 79.5, height: 80)
+//      
+//    }
+    //new logo x and y
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
+      titleImage.frame = CGRect(x: 21, y: 10.5, width: 79.5, height: 80)
       
     } else {
-      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
+      titleImage.frame = CGRect(x: 22, y: -5, width: 79.5, height: 80)
       
     }
     
@@ -403,7 +413,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     
     
-    //fade everything out.  on completion do the transition
+//    fade everything out.  on completion do the transition
     UIView.animate(withDuration: 0.1, delay: 0, options: [], animations: {
       fakeNavView.alpha = 1
       fakeNavBar.layer.shadowOpacity = 0.0
@@ -415,7 +425,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
       
-      titleImage.frame.origin.y = titleImage.frame.origin.y + 16
+      titleImage.frame.origin.y = titleImage.frame.origin.y + 22
       
       
       
