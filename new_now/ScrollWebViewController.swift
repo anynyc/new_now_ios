@@ -73,13 +73,13 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     navigationItem.leftBarButtonItem?.setBackgroundVerticalPositionAdjustment(-10.0, for: .default)
     
     
-    var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 79.5, height: 80))
+    let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 79.5, height: 80))
     let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
     
     
     //x not as far left on 5
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: -106, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      titleImage.frame = CGRect(x: -101.5, y: -8, width: titleView.frame.width, height: titleView.frame.height)
       
     } else {
       titleImage.frame = CGRect(x: -126, y: -8, width: titleView.frame.width, height: titleView.frame.height)
@@ -382,7 +382,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
 //    }
     //new logo x and y
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: 21, y: 10.5, width: 79.5, height: 80)
+      titleImage.frame = CGRect(x: 19, y: -5, width: 79.5, height: 80)
       
     } else {
       titleImage.frame = CGRect(x: 22, y: -5, width: 79.5, height: 80)
