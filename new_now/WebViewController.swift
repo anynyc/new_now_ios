@@ -57,17 +57,17 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
     navigationItem.leftBarButtonItem?.setBackgroundVerticalPositionAdjustment(-10.0, for: .default)
 
     
-    var titleView = UIView(frame: CGRect(x: 0, y: 0, width: 53, height: 23))
-    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 79.5, height: 80))
+    let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
 
     
     //x not as far left on 5
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: -100, y: -8, width: titleView.frame.width, height: titleView.frame.height)
-
+      titleImage.frame = CGRect(x: -101.5, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      
     } else {
-      titleImage.frame = CGRect(x: -121, y: -8, width: titleView.frame.width, height: titleView.frame.height)
-
+      titleImage.frame = CGRect(x: -126, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      
     }
     
     titleView.addSubview(titleImage)
@@ -124,7 +124,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
 //      var leftButtonFinish = CGAffineTransform.identity
 //      leftButtonFinish = leftButtonFinish.translatedBy(x: 0, y: 0)
 //      self.navigationItem.leftBarButtonItem?.customView?.transform = leftButtonFinish
-      self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x = (self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x)! + 16
+      self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x = (self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x)! + 22
 
       
     })
@@ -149,7 +149,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   
   func leftButtonAction(sender: UIBarButtonItem) {
 
-    let titleImage = UIImageView(image: UIImage(named: "anyPdf"))
+    let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
     let fakeNavView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
     fakeNavView.backgroundColor = UIColor.white
     fakeNavView.alpha = 0
@@ -163,11 +163,11 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
 
     
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: 34, y: 23.5, width: 53.0, height: 23.0)
-
+      titleImage.frame = CGRect(x: 19, y: -5, width: 79.5, height: 80)
+      
     } else {
-      titleImage.frame = CGRect(x: 40, y: 23.5, width: 53.0, height: 23.0)
-
+      titleImage.frame = CGRect(x: 22, y: -5, width: 79.5, height: 80)
+      
     }
     self.view.addSubview(fakeNavView)
     self.view.bringSubview(toFront: fakeNavView)
@@ -205,7 +205,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
 
     UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
 
-      titleImage.frame.origin.y = titleImage.frame.origin.y + 16
+      titleImage.frame.origin.y = titleImage.frame.origin.y + 22
 
       
       

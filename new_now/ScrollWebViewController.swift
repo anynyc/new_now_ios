@@ -265,7 +265,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     UIView.animate(withDuration: 0.3, delay: 0.2, options: [], animations: {
       
-      titleImage.frame.origin.y = titleImage.frame.origin.y + 16
+      titleImage.frame.origin.y = titleImage.frame.origin.y + 21
       
       
       
@@ -334,7 +334,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       //      var leftButtonFinish = CGAffineTransform.identity
       //      leftButtonFinish = leftButtonFinish.translatedBy(x: 0, y: 0)
       //      self.navigationItem.leftBarButtonItem?.customView?.transform = leftButtonFinish
-      self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x = (self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x)! + 16
+      self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x = (self.navigationItem.leftBarButtonItem?.customView?.frame.origin.x)! + 21
       
       
     })
