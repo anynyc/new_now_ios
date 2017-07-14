@@ -112,12 +112,40 @@ class MainCacheManager : NSObject {
   }
   
   
+  static func fetchCachedGratification(_ itemType: ItemCacheType) -> GratificationModel? {
+    let gratificationDirectory = MainCacheManager.cacheLocationForItemType(ItemCacheType.gratificationHomePage)
+    let fileManager = FileManager.default
+    var gratificationModel: GratificationModel?
+    
+    if let subPaths = fileManager.subpaths(atPath: gratificationDirectory) {
+      for path in subPaths {
+        if path != ".DS_Store" {
+          let cachedGratificationPath = (gratificationDirectory as NSString).appendingPathComponent(path)
+          let item = NSKeyedUnarchiver.unarchiveObject(withFile: cachedGratificationPath)
+          if let cachedGratification = item as? GratificationModel {
+            gratificationModel = cachedGratification
+          }
+        }
+      }
+    }
+    
+    return gratificationModel
+  }
+  
   static func clearAllCachedPosts() {
     let cachedPostsArray = MainCacheManager.fetchCachedPosts(ItemCacheType.postHomePage)
     for post in cachedPostsArray {
       let filePath = MainCacheManager.cacheLocationForObject(post, itemType: ItemCacheType.postHomePage)
       MainCacheManager.clearCacheForObject(filePath)
     }
+  }
+  
+  static func clearAllCachedGratifications() {
+    if let cachedGratification = MainCacheManager.fetchCachedGratification(ItemCacheType.gratificationHomePage) {
+      let filePath = MainCacheManager.cacheLocationForObject(cachedGratification, itemType: ItemCacheType.gratificationHomePage)
+      MainCacheManager.clearCacheForObject(filePath)
+    }
+
   }
   
 

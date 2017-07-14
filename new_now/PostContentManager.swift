@@ -27,7 +27,9 @@ class PostContentManager: NSObject {
         }
       }
     }
-    return postsArray
+    
+//    postsArray.sorted({ $0.position > $1.position })
+    return postsArray.sorted(by: { $0.position > $1.position })
   }
   
   func fetchCachedGratification(_ itemType: ItemCacheType) -> GratificationModel? {
@@ -48,7 +50,6 @@ class PostContentManager: NSObject {
     }
   
     return gratificationModel
-  
   }
   
   func isPostCachePresent(_ contentItem: ContentItemModel, itemType: ItemCacheType) -> Bool {
@@ -71,6 +72,8 @@ class PostContentManager: NSObject {
     //    }
     
     MainCacheManager.clearAllCachedPosts()
+    MainCacheManager.clearAllCachedGratifications()
+    
     
     PostAPIManager.fetchPostsWithCompletion(comp: { contentArray, gratificationArray in
       guard let posts = contentArray, posts.count > 0 else {

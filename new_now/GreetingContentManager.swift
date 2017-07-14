@@ -67,9 +67,6 @@ class GreetingContentManager: NSObject {
         completion(nil)
         return
       }
-     
-
-
     })
   }
 

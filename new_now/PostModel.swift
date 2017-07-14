@@ -23,6 +23,7 @@ struct PostConstants {
   static let gValue = "g_value"
   static let bValue = "b_value"
   static let aValue = "a_value"
+  static let position = "position"
 
 //  static let timesShared = "times_shared"
 
@@ -45,6 +46,7 @@ class PostModel: ContentItemModel, NSCoding {
   var gValue: String
   var bValue: String
   var aValue: String
+  var position: Int
 
 //  var timesShared: Int
   
@@ -128,6 +130,13 @@ class PostModel: ContentItemModel, NSCoding {
     
     aValue = aText
     
+    
+    guard let positionText = dictionary[PostConstants.position] as? Int else {
+      return nil
+    }
+    
+    position = positionText
+    
     super.init(dictionary: dictionary)
   }
   
@@ -147,6 +156,7 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(gValue, forKey: PostConstants.gValue)
     aCoder.encode(bValue, forKey: PostConstants.bValue)
     aCoder.encode(aValue, forKey: PostConstants.aValue)
+    aCoder.encode(position, forKey: PostConstants.position)
 
     super.encodeWithEncoder(aCoder)
   }
@@ -230,6 +240,16 @@ class PostModel: ContentItemModel, NSCoding {
     }
     
     aValue = aText
+    
+//    guard let positionInt = aDecoder.decodeObject(forKey: PostConstants.position) as? Int else {
+//      return nil
+//    }
+//    
+//    position = positionInt
+    
+    
+    let positionInt = aDecoder.decodeInteger(forKey: PostConstants.position)
+    position = positionInt
     
     
     super.init(coder: aDecoder)
