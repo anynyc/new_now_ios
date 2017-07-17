@@ -118,17 +118,19 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     if UIScreen.main.bounds.size.width == 320 {
       frameDivisor = CGFloat(5)
     }
-    let buttonFrame = CGRect(x: self.view.frame.width / frameDivisor, y: 5850.0, width: 200.0, height: 50.0)
+    
+    let lightBlue = UIColor(red: 0/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1)
+    let buttonFrame = CGRect(x: self.view.frame.width / frameDivisor, y: 5850.0, width: 200.0, height: 45.0)
     viewOnWebButton.frame = buttonFrame
-    viewOnWebButton.setTitle("View On Safari", for: .normal)
-    viewOnWebButton.titleLabel?.font = UIFont(name: "Miller-Display", size: 15)
-    viewOnWebButton.setTitleColor(UIColor.blue, for: .normal)
+    viewOnWebButton.setTitle("OPEN IN SAFARI", for: .normal)
+    viewOnWebButton.titleLabel?.font = UIFont(name: "Miller-Display", size: 12)
+    viewOnWebButton.setTitleColor(lightBlue, for: .normal)
     viewOnWebButton.backgroundColor = UIColor.white
     viewOnWebButton.layer.shadowColor = UIColor.black.cgColor
     viewOnWebButton.layer.shadowOffset.height = 5
     viewOnWebButton.layer.shadowOpacity = 0.6
     viewOnWebButton.layer.shadowRadius = 10
-    viewOnWebButton.layer.cornerRadius = 10
+    viewOnWebButton.layer.cornerRadius = 20
     viewOnWebButton.layer.borderColor = UIColor.gray.cgColor
     
     viewOnWebButton.addTarget(self, action: #selector(goToArticle), for: .touchUpInside)
