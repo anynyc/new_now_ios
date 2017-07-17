@@ -63,12 +63,31 @@ class ToolTipView: UIView {
     backgroundFrame.origin.y = 0.0
     background.frame = backgroundFrame
     
-    
     var handFrame = hand.frame
-    handFrame.size.height = 39
-    handFrame.size.width = 40
-    handFrame.origin.x = 20.0
-    handFrame.origin.y = 575.0
+
+    if UIScreen.main.bounds.size.width == 414 {
+      //plus
+      handFrame.size.height = 39
+      handFrame.size.width = 40
+      handFrame.origin.x = 20.0
+      handFrame.origin.y = 595.0
+    } else if UIScreen.main.bounds.size.width == 375 {
+      //6 and 7
+      handFrame.size.height = 39
+      handFrame.size.width = 40
+      handFrame.origin.x = 20.0
+      handFrame.origin.y = 575.0
+      
+    } else {
+      //5
+      handFrame.size.height = 39
+      handFrame.size.width = 40
+      handFrame.origin.x = 20.0
+      handFrame.origin.y = 500.0
+      
+    }
+    
+
     hand.frame = handFrame
     
     hand.image = UIImage(named: "handSwipe")

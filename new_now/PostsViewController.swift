@@ -784,7 +784,21 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       toolTip.setupView(superView: self.view)
       toolTip.animateHand()
       self.view.addSubview(toolTip)
-      self.view.bringSubview(toFront: slider)
+      
+      //check for which slider is active and bring that one to front
+      
+      if UIScreen.main.bounds.size.width == 414 {
+        //plus
+        self.view.bringSubview(toFront: plusSlider)
+      } else if UIScreen.main.bounds.size.width == 375 {
+        //6 and 7
+
+        self.view.bringSubview(toFront: slider)
+      } else {
+        //5
+
+        self.view.bringSubview(toFront: miniSlider)
+      }
     }
   
     
