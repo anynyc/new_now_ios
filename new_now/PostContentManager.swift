@@ -8,6 +8,15 @@
 
 import Foundation
 import UIKit
+
+
+struct ContentConstants {
+  static let pushToken = "pushtoken"
+  static let storedPushToken = "storedpushtoken"
+
+
+}
+
 class PostContentManager: NSObject {
   
   //access item type directory, add each item in
@@ -145,7 +154,32 @@ class PostContentManager: NSObject {
       completion(gratificationImage)
   }
 
-  
+  static func checkPushToken() {
+    let prefs = UserDefaults.standard
+    //check for current push token
+    var currentPushToken = ""
+    var storedPushToken = ""
+    if let token = prefs.string(forKey: ContentConstants.pushToken) {
+      currentPushToken = token
+    }
+    
+    if let storedToken = prefs.string(forKey: ContentConstants.storedPushToken) {
+      storedPushToken = storedToken
+    }
+    
+    if currentPushToken != "" && currentPushToken != storedPushToken {
+      //Send currentPushToken to backend and set storedPushToken as currentPushToken in prefs
+      PostAPIManager.storePushToken(pushToken: currentPushToken)
+      
+    } else if currentPushToken == "" && storedPushToken != "" {
+      //push token has been removed. 
+//      PostAPIManager.removePushToken(pushToken: storedPushToken)
+    }
+    
+    
+    
+    
+  }
 
   
   

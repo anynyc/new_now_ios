@@ -104,6 +104,68 @@ class PostAPIManager: NSObject {
     }
   }
   
+  static func storePushToken(pushToken: String) {
+    let baseUrl = "http://otheranother.com"
+//    let baseUrl = "https://27ec82f5.ngrok.io"
+
+    
+    let pushTokenUrlString = baseUrl + APIConstants.newNowApiUrl + APIConstants.pushTokenUrl
+    
+    guard let pushTokenUrl = URL(string: pushTokenUrlString) else {
+      print("CAPI: contacts url failed")
+      return
+    }
+    
+    let tokenParams = ["push_token": pushToken]
+    
+    Alamofire.request(pushTokenUrl, method: .post, parameters: tokenParams, encoding: URLEncoding.default).responseJSON { response in
+      guard let jsonDict = response.result.value as? [String: AnyObject] else {
+        return
+      }
+      if let pushTokenDictArray = jsonDict["token"] as? [String: AnyObject] {
+        //set prefs storedPushToken equals this returned one
+        let prefs = UserDefaults.standard
+  
+        guard let token = pushTokenDictArray["push_token"] as? String else {
+          return
+        }
+        
+        prefs.set(token, forKey: "storedpushtoken")
+
+      } else {
+      }
+    }
+  }
+//  
+//  static func removePushToken(pushToken: String) {
+//    let baseUrl = "http://otheranother.com"
+//    //    let baseUrl = "https://27ec82f5.ngrok.io"
+//    
+//    
+//    let pushTokenUrlString = baseUrl + APIConstants.newNowApiUrl + APIConstants.removePushTokenUrl
+//    
+//    guard let pushTokenUrl = URL(string: pushTokenUrlString) else {
+//      print("CAPI: contacts url failed")
+//      return
+//    }
+//    
+//    let tokenParams = ["push_token": pushToken]
+//    
+//    Alamofire.request(pushTokenUrl, method: .delete, parameters: tokenParams, encoding: URLEncoding.default).responseJSON { response in
+//      guard let jsonDict = response.result.value as? [String: AnyObject] else {
+//        return
+//      }
+//      if let success = jsonDict["success"] as? [String: AnyObject] {
+//        //set prefs storedPushToken equals this returned one
+//        let prefs = UserDefaults.standard
+//        
+//        prefs.set("", forKey: "storedpushtoken")
+//        
+//      } else {
+//      }
+//    }
+//  }
+  
   
   
   

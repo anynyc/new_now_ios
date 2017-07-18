@@ -12,6 +12,8 @@ struct APIConstants {
   static let newNowApiUrl = "/api/v1"
   static let postUrl = "/posts"
   static let greetingUrl = "/greetings"
+  static let pushTokenUrl = "/push_token"
+  static let removePushTokenUrl = "/remove_push_token"
 }
 
 

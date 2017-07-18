@@ -60,12 +60,6 @@ class PostViewModel: NSObject {
   //it is called by loadGames after all games finished downloading
   //downloads pictures for users
   func postsDidLoad() {
-//    if gameChallengesHomePageArray.count == 0 {
-//      DispatchQueue.main.async {
-//        self.delegate?.imagesDidLoad()
-//      }
-//    } else {
-      //for game in gameChallengesHomePageArray {
       //checks if the images have already been added to the games from the previously cached games
       guard postIndex <= postsArray.count - 1 else {
         delegate?.imagesDidLoad()
@@ -75,7 +69,11 @@ class PostViewModel: NSObject {
       //this does an asynchronous download of the images on each game
       //adds to the index so that it does it for all games in the game array
       loadImage(post, postIndex)
-//    }
+    
+    
+    //check user defaults.  if they have push token send it to back end
+    PostContentManager.checkPushToken()
+    
   }
   
   func loadImage(_ post: PostModel,_ postIndex: Int) {
@@ -83,11 +81,6 @@ class PostViewModel: NSObject {
 //      delegate?.imagesDidLoad()
 //      return
 ////    }
-//    guard game.challenger.userProfileImage == nil else {
-//      photoIndex += 1
-//      gamesDidLoad()
-//      return
-//    }
     PostAPIManager.fetchImageWithCompletion(post, comp: { [weak self] (image) in
       post.image = image
       guard let i = self?.postIndex else {
@@ -98,7 +91,6 @@ class PostViewModel: NSObject {
       self?.postsArray[i].image = image
       let postFilePath = MainCacheManager.cacheLocationForObject(post, itemType: .postHomePage)
       MainCacheManager.cacheInformationForItem(post, filePath: postFilePath)
-      //go back to gamesdidload to check if more photos need to be downloaded
       self?.postIndex += 1
       self?.postsDidLoad()
     })
