@@ -35,6 +35,7 @@ func Square (value:CGFloat) -> CGFloat {
 
 // MARK: Circular Slider
 
+@available(iOS 10.0, *)
 class BWCircularSlider: UIControl {
   
   //    var textField:UITextField?

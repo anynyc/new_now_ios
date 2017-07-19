@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
     
   }
   
+  @available(iOS 10.0, *)
   func navigateToHomeViewController() {
     guard let navCon = navigationController else {
       return

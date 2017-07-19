@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, *)
 extension PostsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
   
   
@@ -345,6 +346,7 @@ extension PostsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 
 
+@available(iOS 10.0, *)
 class PostsViewController: BaseViewController, PostViewModelDelegate {
   
   var gridCollectionView: UICollectionView!

@@ -565,7 +565,7 @@
 				CODE_SIGN_ENTITLEMENTS = new_now/new_now.entitlements;
 				DEVELOPMENT_TEAM = 25L98CM939;
 				INFOPLIST_FILE = new_now/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = weareany;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -581,7 +581,7 @@
 				CODE_SIGN_ENTITLEMENTS = new_now/new_now.entitlements;
 				DEVELOPMENT_TEAM = 25L98CM939;
 				INFOPLIST_FILE = new_now/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = weareany;
 				PRODUCT_NAME = "$(TARGET_NAME)";

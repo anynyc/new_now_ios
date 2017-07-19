@@ -33,6 +33,7 @@ func RadToDegree (value:Double) -> Double {
 
 // MARK: Circular Slider
 
+@available(iOS 10.0, *)
 class MiniCircularSlider: UIControl {
   
   //    var textField:UITextField?

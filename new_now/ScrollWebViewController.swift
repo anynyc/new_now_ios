@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 
 
 
+@available(iOS 10.0, *)
 class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
   
   private var notification: NSObjectProtocol?
@@ -299,6 +300,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   }
   
   
+  @available(iOS 10.0, *)
   func goToArticle() {
     
     
