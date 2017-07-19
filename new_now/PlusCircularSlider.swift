@@ -385,7 +385,7 @@ class PlusCircularSlider: UIControl {
     //will never be more than 360
     var leastDifference = 360
     //this will need to be dynamic eventually
-    let hotSpots = [69, 76, 82, 82, 94, 100, 106, 112]
+    let hotSpots = [69, 76, 82, 88, 94, 100, 106, 112]
 
     
     for spot in hotSpots {
