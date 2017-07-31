@@ -550,7 +550,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       clearToolTip()
     }
     
-    let row = getSection(int: plusSlider.angle)
+    let row = getPlusSection(int: plusSlider.angle)
     if row != activeCell && row != 7 {
       activeCell = row
       counterLabel.text = "0\(row + 1)"
@@ -583,7 +583,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       clearToolTip()
     }
     
-    let row = getSection(int: miniSlider.angle)
+    let row = getMiniSection(int: miniSlider.angle)
     if row != activeCell && row != 7 {
       activeCell = row
       counterLabel.text = "0\(row + 1)"
@@ -604,7 +604,8 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       
     }
     //if cell is different call below to display a new cell. maybe call an animate out method first?
-    
+    print("Value changed \(miniSlider.angle)")
+
     
     
   }
@@ -740,7 +741,6 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   func getSection(int: Int) -> Int {
     var returnInt = 0
-    
     if int <= 71 {
         returnInt = 0
     } else if int >= 72 && int <= 77  {
@@ -759,9 +759,53 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       returnInt = 7
       
     }
-    
     return returnInt
-    
+  }
+  
+  func getPlusSection(int: Int) -> Int {
+    var returnInt = 0
+    if int <= 73 {
+      returnInt = 0
+    } else if int >= 74 && int <= 79  {
+      returnInt = 1
+    } else if int >= 80 && int <= 85 {
+      returnInt = 2
+    } else if int >= 86 && int <= 91 {
+      returnInt = 3
+    } else if int >= 92 && int <= 97 {
+      returnInt = 4
+    } else if int >= 98 && int <= 103 {
+      returnInt = 5
+    } else if int >= 104 && int <= 108 {
+      returnInt = 6
+    } else if int >= 109 {
+      returnInt = 7
+      
+    }
+    return returnInt
+  }
+  
+  func getMiniSection(int: Int) -> Int {
+    var returnInt = 0
+    if int <= 69 {
+      returnInt = 0
+    } else if int >= 70 && int <= 76  {
+      returnInt = 1
+    } else if int >= 77 && int <= 82 {
+      returnInt = 2
+    } else if int >= 83 && int <= 88 {
+      returnInt = 3
+    } else if int >= 89 && int <= 96 {
+      returnInt = 4
+    } else if int >= 97 && int <= 103 {
+      returnInt = 5
+    } else if int >= 104 && int <= 108 {
+      returnInt = 6
+    } else if int >= 109 {
+      returnInt = 7
+      
+    }
+    return returnInt
   }
 
   @IBAction func readThisBtnPressed(_ sender: Any) {
