@@ -45,12 +45,12 @@ class PostAPIManager: NSObject {
   }
   
   static func fetchImageWithCompletion(_ post: PostModel, comp: @escaping (UIImage?) -> Void) {
-//    guard let url = post.imageUrl else {
-//      comp(nil)
-//      return
-//    }
+    guard let url = post.imageUrl else {
+      comp(nil)
+      return
+    }
     
-    let url = post.imageUrl!
+//    let url = post.imageUrl!
 //    let urlString = "https://27ec82f5.ngrok.io" + "\(url)"
     let urlString = "http://otheranother.com" + "\(url)"
 
