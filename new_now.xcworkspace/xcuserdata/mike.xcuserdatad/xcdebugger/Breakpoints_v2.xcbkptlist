@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "goToArticle()"
             landmarkType = "7">
             <Locations>
@@ -698,12 +698,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/ScrollWebViewController.swift"
-                  timestampString = "523213702.90816"
+                  timestampString = "523383782.624923"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "308"
-                  endingLineNumber = "308"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "15">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -713,12 +713,12 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/ScrollWebViewController.swift"
-                  timestampString = "523213702.912035"
+                  timestampString = "523383782.628482"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "310"
-                  endingLineNumber = "310"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "316"
+                  endingLineNumber = "316"
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/ScrollWebViewController.swift"
-            timestampString = "522171256.761004"
+            timestampString = "523383777.592081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "didSwipeLeft(gesture:)"
             landmarkType = "7">
          </BreakpointContent>

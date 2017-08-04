@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import WebKit
 import NVActivityIndicatorView
+import SafariServices
 
 
 
@@ -159,6 +160,11 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     if let url = URL(string: urlString) {
       let request = URLRequest(url: url)
+      
+      
+//      let safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+//      present(safariVC, animated: true, completion: nil)
+//      
       webView.load(request)
     }
     
