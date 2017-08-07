@@ -193,6 +193,7 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
   func imagesDidLoad() {
     //70%
     progressBar.setProgress(0.7, animated: true)
+    self.postViewModel.getPostHtml()
     postsReceived()
 
   }

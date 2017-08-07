@@ -24,6 +24,7 @@ struct PostConstants {
   static let bValue = "b_value"
   static let aValue = "a_value"
   static let position = "position"
+  static let html = "html"
 
 //  static let timesShared = "times_shared"
 
@@ -47,6 +48,7 @@ class PostModel: ContentItemModel, NSCoding {
   var bValue: String
   var aValue: String
   var position: Int
+  var html: String?
 
 //  var timesShared: Int
   
@@ -82,6 +84,14 @@ class PostModel: ContentItemModel, NSCoding {
     if let userRead = dictionary[PostConstants.read] as? Bool {
       read = userRead
     }
+    
+    
+    
+    if let postHtml = dictionary[PostConstants.html] as? String {
+      html = postHtml
+    }
+    
+    
     
     if let imageString = dictionary[PostConstants.imageUrl] as? String {
       self.imageUrl = URL(string: imageString)
@@ -147,6 +157,8 @@ class PostModel: ContentItemModel, NSCoding {
     aCoder.encode(body, forKey: PostConstants.body)
     aCoder.encode(headline, forKey: PostConstants.headline)
     aCoder.encode(read, forKey: PostConstants.read)
+    aCoder.encode(html, forKey: PostConstants.html)
+
 //    aCoder.encode(timesShared, forKey: PostConstants.timesShared)
     aCoder.encode(linkText, forKey: PostConstants.linkText)
     aCoder.encode(category, forKey: PostConstants.category)
@@ -188,6 +200,9 @@ class PostModel: ContentItemModel, NSCoding {
       self.read = userRead
     }
     
+    if let postHtml = aDecoder.decodeObject(forKey: PostConstants.html) as? String {
+      self.html = postHtml
+    }
     
     
     if let imageURL = aDecoder.decodeObject(forKey: PostConstants.imageUrl) as? URL {

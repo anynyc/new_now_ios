@@ -22,6 +22,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
 
   var navBar: UINavigationBar = UINavigationBar()
   var urlString = ""
+  var html = ""
   var webView: WKWebView!
   var overView: UIView!
   var viewOnWebButton: UIButton!
@@ -158,17 +159,31 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     let topConstraint = NSLayoutConstraint(item: webView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 50)
     view.addConstraints([topConstraint])
     
-    if let url = URL(string: urlString) {
-      let request = URLRequest(url: url)
+    //if there is html go to site using that else check for url
+    
+    if self.html != "" {
       
-      
-//      let safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
-//      present(safariVC, animated: true, completion: nil)
-//      
-      webView.load(request)
+      webView.loadHTMLString(self.html, baseURL: nil)
+
+      //need to move this somewhere on load of the app and cache this on post
+//            do {
+//              let htmlString:String! = myHTMLString
+//              webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
+//            } catch let error {
+//              print("Error: \(error)")
+//            }
+
+    } else {
+          if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            webView.load(request)
+          }
     }
     
     
+
+    
+
     
     
     animateButtons()

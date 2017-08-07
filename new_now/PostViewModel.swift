@@ -42,10 +42,39 @@ class PostViewModel: NSObject {
     }
   }
   
+  func getPostHtml() {
+    //iterate through all posts. For each one make the call and save html to post Model. use background thread
+    DispatchQueue.global(qos: .background).async { // 1
+      DispatchQueue.main.async { // 2
+        
+        for postModel in self.postsArray {
+          
+          do {
+            if let url = URL(string: postModel.link){
+                let myHTMLString = try String(contentsOf: url, encoding: .utf8)
+                let htmlString:String! = myHTMLString
+              postModel.html = htmlString
+              let newPostFilePath = MainCacheManager.cacheLocationForObject(postModel, itemType: ItemCacheType.postHomePage)
+              MainCacheManager.cacheInformationForItem(postModel, filePath: newPostFilePath)
+              print("Got string for post Model")
+            }
+            
+//            webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
+          } catch let error {
+            print("Error: \(error)")
+          }
+          
+          
+          
+        }
+
+      }
+    }
+  }
+  
   
   
   func getPostImages() {
-    //main.async
     PostContentManager.getPostImages(postArray: postsArray) {[weak self] (imageArray) in
       
       guard imageArray != nil else {

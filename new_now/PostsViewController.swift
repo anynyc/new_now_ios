@@ -665,7 +665,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       }, completion: nil)
   }
   
-  func showArticle(of link:String) {
+  func showArticle(of link:String, html:String) {
     
     
     //animate any logo up and then on completion do this transition
@@ -706,6 +706,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
       
       
       webViewController.urlString = link
+      webViewController.html = html
 //      self.addChildViewController(webViewController)
 //      webViewController.view.translatesAutoresizingMaskIntoConstraints = false
 //      containerView.addSubview(webViewController.view)
@@ -810,15 +811,25 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   @IBAction func readThisBtnPressed(_ sender: Any) {
     let articleUrl = postViewModel.postsArray[activeCell].link
-    
-    showArticle(of: articleUrl)
+    if let articleHtml = postViewModel.postsArray[activeCell].html {
+      showArticle(of: articleUrl, html: articleHtml)
+
+    } else {
+      showArticle(of: articleUrl, html: "")
+
+    }
     
   }
   
   func articleBtnPressed(_ sender: Any) {
     let articleUrl = postViewModel.postsArray[activeCell].link
-    
-    showArticle(of: articleUrl)
+    if let articleHtml = postViewModel.postsArray[activeCell].html {
+      showArticle(of: articleUrl, html: articleHtml)
+      
+    } else {
+      showArticle(of: articleUrl, html: "")
+      
+    }
   }
   func setupBottomButtons() {
     self.view.bringSubview(toFront: readThisButton)
