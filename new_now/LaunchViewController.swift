@@ -134,13 +134,10 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
   
   
   func postsReceived() {
-    progressBar.setProgress(1.0, animated: true)
 
-    UIView.animate(withDuration: 0.25, delay: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
+    UIView.animate(withDuration: 0.5, delay: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
       self.view.alpha = 0
-//      self.view.center.y = self.view.center.y + 195
-//      self.view.center.x = self.view.center.x - 155
-//      self.loaderView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+
 
     }, completion: {(true) in
       self.perform(#selector(self.navigateToMainScreen), with: self, afterDelay: 0.0)
@@ -194,6 +191,12 @@ class LaunchViewController: BaseViewController, PostViewModelDelegate, GreetingV
     //70%
     progressBar.setProgress(0.7, animated: true)
     self.postViewModel.getPostHtml()
+
+  }
+  
+  func htmlDidLoad() {
+    progressBar.setProgress(1.0, animated: true)
+
     postsReceived()
 
   }

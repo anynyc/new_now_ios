@@ -1026,6 +1026,10 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 
   }
   
+  
+  func htmlDidLoad() {
+  }
+  
 }
 
 

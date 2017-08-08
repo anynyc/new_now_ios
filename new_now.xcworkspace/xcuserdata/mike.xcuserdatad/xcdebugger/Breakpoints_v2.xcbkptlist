@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "new_now/PostViewModel.swift"
-            timestampString = "523814259.872885"
+            timestampString = "523912501.491886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "getPostImages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,11 +682,11 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/ScrollWebViewController.swift"
-                  timestampString = "523815444.144042"
+                  timestampString = "523913077.447398"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "358"
-                  endingLineNumber = "358"
+                  startingLineNumber = "357"
+                  endingLineNumber = "357"
                   offsetFromSymbolStart = "15">
                </Location>
                <Location
@@ -697,11 +697,11 @@
                   moduleName = "new_now"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mike/good_repo/new_now/new_now/ScrollWebViewController.swift"
-                  timestampString = "523815444.186871"
+                  timestampString = "523913077.451172"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "363"
-                  endingLineNumber = "363"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
                   offsetFromSymbolStart = "15">
                </Location>
             </Locations>
@@ -1104,6 +1104,38 @@
             startingLineNumber = "166"
             endingLineNumber = "166"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "new_now/LaunchViewController.swift"
+            timestampString = "523913041.12028"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "postsReceived()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "new_now/LaunchViewController.swift"
+            timestampString = "523913041.12028"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "htmlDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -14,6 +14,7 @@ protocol PostViewModelDelegate: class {
   func postsDidLoad()
   func noPosts()
   func imagesDidLoad()
+  func htmlDidLoad()
 }
 //store background emoji arrays.  Positive and negative arrays
 class PostViewModel: NSObject {
@@ -44,7 +45,7 @@ class PostViewModel: NSObject {
   
   func getPostHtml() {
     //iterate through all posts. For each one make the call and save html to post Model. use background thread
-    DispatchQueue.global(qos: .background).async { // 1
+    DispatchQueue.global(qos: .userInteractive).async { // 1
       DispatchQueue.main.async { // 2
         
         for postModel in self.postsArray {
@@ -59,14 +60,13 @@ class PostViewModel: NSObject {
               print("Got string for post Model")
             }
             
-//            webView.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
           } catch let error {
             print("Error: \(error)")
           }
           
           
-          
         }
+        self.delegate?.htmlDidLoad()
 
       }
     }
