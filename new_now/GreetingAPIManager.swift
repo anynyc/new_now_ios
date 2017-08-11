@@ -19,7 +19,7 @@ class GreetingAPIManager: NSObject {
   
   static func fetchGreetingWithCompletion(comp: @escaping ([String: AnyObject]?) -> Void) {
 //    let baseUrl = "https://27ec82f5.ngrok.io"
-    let baseUrl = "http://otheranother.com"
+    let baseUrl = "https://otheranother.com"
 
     
     let greetingUrlString = baseUrl + APIConstants.newNowApiUrl + APIConstants.greetingUrl

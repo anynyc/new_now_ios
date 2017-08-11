@@ -92,6 +92,8 @@ class PostViewModel: NSObject {
       //checks if the images have already been added to the games from the previously cached games
       guard postIndex <= postsArray.count - 1 else {
         delegate?.imagesDidLoad()
+        print("CHECKING PUSH TOKEN!!!!!!")
+        PostContentManager.checkPushToken()
         return
       }
       let post = postsArray[postIndex]
@@ -101,7 +103,6 @@ class PostViewModel: NSObject {
     
     
     //check user defaults.  if they have push token send it to back end
-    PostContentManager.checkPushToken()
     
   }
   
