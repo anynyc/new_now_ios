@@ -719,7 +719,7 @@ class PostsViewController: BaseViewController, PostViewModelDelegate {
 //        ])
 //      
 //      webViewController.didMove(toParentViewController: self)
-
+      
       self.navigationController?.pushViewController(webViewController, animated: false)
       
       //slide from right way

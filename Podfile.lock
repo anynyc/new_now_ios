@@ -1,15 +1,21 @@
 PODS:
   - Alamofire (4.4.0)
+  - Flurry-iOS-SDK/FlurryAds (7.10.0):
+    - Flurry-iOS-SDK/FlurrySDK
+  - Flurry-iOS-SDK/FlurrySDK (7.10.0)
   - NVActivityIndicatorView (3.5.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Flurry-iOS-SDK/FlurryAds
+  - Flurry-iOS-SDK/FlurrySDK
   - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Flurry-iOS-SDK: e6975df9e57010d582bf9bed0f6312553cf24bc2
   NVActivityIndicatorView: 075563b3547445ebcff840e3297ce9dd4a23731f
 
-PODFILE CHECKSUM: 784a0680f73524ccc31867e8c6ca356b3afb81e2
+PODFILE CHECKSUM: e164cc972b23b9e81f17dda41313fc5bf840db72
 
 COCOAPODS: 1.2.0

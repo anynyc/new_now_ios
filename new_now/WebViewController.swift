@@ -26,6 +26,7 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
     view.bringSubview(toFront: loaderView)
     loaderView.type = .ballScale
     loaderView.color = UIColor.black
@@ -136,9 +137,11 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
   }
   
   func rightButtonAction(sender: UIBarButtonItem) {
+
     let message = "Take a look at this great article!"
     //Set the link to share.
     if let link = NSURL(string: urlString)
+      
     {
       let objectsToShare = [message,link] as [Any]
       let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -210,14 +213,15 @@ class WebViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate 
       
       
     }, completion:  { (finished: Bool) in
-
+      // In a function that captures when a user navigates away from article
+      // You can pass in additional params or update existing ones here as well
       let transition: CATransition = CATransition()
       transition.duration = 0.2
       transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-
+      
       self.navigationController?.popViewController(animated: false)
       
     })

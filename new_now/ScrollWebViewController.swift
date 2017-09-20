@@ -11,6 +11,7 @@ import UIKit
 import WebKit
 import NVActivityIndicatorView
 import SafariServices
+import Flurry_iOS_SDK //this is only needed if the libraries were obtained using CocoaPods
 
 
 
@@ -40,7 +41,12 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    // Capture the author info & user status
+    let postParams = ["PostUrl": urlString];
     
+    Flurry.logEvent("Post Read", withParameters: postParams, timed: true);
+    
+
     view.bringSubview(toFront: loaderView)
     loaderView.type = .ballScale
     loaderView.color = UIColor.black
@@ -229,7 +235,7 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
   
-  
+  //not using this anymore.  Should remove
   func didSwipeLeft(gesture: UIGestureRecognizer) {
     
     let titleImage = UIImageView(image: UIImage(named: "AnyUnderscore"))
@@ -294,13 +300,14 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       
       
     }, completion:  { (finished: Bool) in
-      
+      Flurry.endTimedEvent("Article_Read", withParameters: nil);
+
       let transition: CATransition = CATransition()
       transition.duration = 0.2
       transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
-      
+
       
       self.navigationController?.popViewController(animated: false)
       
@@ -373,6 +380,8 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   func rightButtonAction(sender: UIBarButtonItem) {
     let message = "Take a look at this great article!"
     //Set the link to share.
+    Flurry.logEvent("Share button pressed");
+
     if let link = NSURL(string: urlString)
     {
       let objectsToShare = [message,link] as [Any]
@@ -455,14 +464,15 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
       
       
     }, completion:  { (finished: Bool) in
-      
+      Flurry.endTimedEvent("Article_Read", withParameters: nil);
+
       let transition: CATransition = CATransition()
       transition.duration = 0.2
       transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
       transition.type = kCATransitionFade
       self.navigationController?.view.layer.add(transition, forKey: nil)
       
-      
+
       self.navigationController?.popViewController(animated: false)
       
     })
@@ -508,6 +518,8 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
   
   override func viewDidDisappear(_ animated: Bool) {
     self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    Flurry.endTimedEvent("Article_Read", withParameters: nil);
+
   }
   
   

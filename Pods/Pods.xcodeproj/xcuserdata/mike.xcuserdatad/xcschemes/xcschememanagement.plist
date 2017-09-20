@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E1776B1E0FA02C93333A2F03C6DFE50</key>
+		<key>4C3AAFF387C321D89902AA2FFC7B2EB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7C0FC660E0F100CBD92A4A9FDEB3902</key>
 		<dict>
 			<key>primary</key>
 			<true/>

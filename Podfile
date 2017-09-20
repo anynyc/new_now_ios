@@ -8,5 +8,7 @@ target 'new_now' do
 
   pod 'Alamofire', '~> 4.4'
   pod 'NVActivityIndicatorView'
+  pod 'Flurry-iOS-SDK/FlurrySDK' #Analytics Pod
+  pod 'Flurry-iOS-SDK/FlurryAds' #Advertising Pod (requires Analytics)
 
 end

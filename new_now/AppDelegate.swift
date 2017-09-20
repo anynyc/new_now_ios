@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import Flurry_iOS_SDK //this is only needed if the libraries were obtained using CocoaPods
 
 extension UIApplication {
   var statusBarView: UIView? {
@@ -31,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     createNavController()
     UIApplication.shared.statusBarView?.backgroundColor = .white
     initLocationManager()
-    
+
+    // Replace YOUR_API_KEY with the api key in the downloaded package
     
     // iOS 10 support
     if #available(iOS 10, *) {
@@ -53,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
       application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
     }
     
+    let builder = FlurrySessionBuilder.init()
+//      .withAppVersion("1.0")
+      .withLogLevel(FlurryLogLevelAll)
+      .withCrashReporting(true)
+      .withSessionContinueSeconds(10)
+    Flurry.startSession("CNF9449G8TK3FTHTJ77H", with: builder)
+
     return true
   }
 
