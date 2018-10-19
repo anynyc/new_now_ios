@@ -88,10 +88,10 @@ class ScrollWebViewController: BaseViewController, WKUIDelegate, WKNavigationDel
     
     //x not as far left on 5
     if UIScreen.main.bounds.size.width == 320 {
-      titleImage.frame = CGRect(x: -101.5, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      titleImage.frame = CGRect(x: -101.5, y: -20, width: titleView.frame.width, height: titleView.frame.height)
       
     } else {
-      titleImage.frame = CGRect(x: -126, y: -8, width: titleView.frame.width, height: titleView.frame.height)
+      titleImage.frame = CGRect(x: -126, y: -20, width: titleView.frame.width, height: titleView.frame.height)
       
     }
     
